@@ -9,17 +9,21 @@
     "dev": "next dev",
     "build": "next build",
     "build:ci": "NEXT_PUBLIC_BASE_PATH=/sample-integration-next-js-offline npm run build",
-    "start": "next start"
+    "start": "next start",
+    "npm:outdated": "npm outdated",
+    "npm:upgrade": "npx npm-check-updates -u && npm install",
+    "npm:remove": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
+    "npm:clean": "npm cache clean --force"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "^3.29.0",
     "next": "15.5.2",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
