@@ -3422,7 +3422,7 @@ const isTouchDevice = () => {
 
 const isWithinForm = (host) => !!getClosestHTMLElement(host, 'form');
 
-const getCDNBaseURL = () => global.PORSCHE_DESIGN_SYSTEM_CDN_URL + "/porsche-design-system";
+const getCDNBaseURL = () => "./assets";
 
 // index.ts
 var CRESTS_MANIFEST = { "porscheCrest": { "1x": { "png": "porsche-crest.d76137c@1x.png", "webp": "porsche-crest.0d0cc89@1x.webp" }, "2x": { "png": "porsche-crest.8a292fb@2x.png", "webp": "porsche-crest.2245c45@2x.webp" }, "3x": { "png": "porsche-crest.18d6f02@3x.png", "webp": "porsche-crest.19b4292@3x.webp" } } };

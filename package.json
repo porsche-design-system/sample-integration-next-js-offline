@@ -8,8 +8,13 @@
     "copy:@porsche-design-system/components-js": "rm -rf ./node_modules/@porsche-design-system/components-js && cp -r ./@porsche-design-system/components-js/. ./node_modules/@porsche-design-system/components-js",
     "dev": "next dev",
     "build": "next build",
-    "build:ci": "NEXT_PUBLIC_BASE_PATH=/examples/next-js npm run build",
-    "start": "next start"
+    "build:ci": "NEXT_PUBLIC_BASE_PATH=/sample-integration-next-js-offline npm run build",
+    "serve": "serve dist",
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
+    "npm:outdated": "npm outdated",
+    "npm:upgrade": "npx npm-check-updates -u && npm install",
+    "npm:remove": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
+    "npm:clean": "npm cache clean --force"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "^3.29.0",
@@ -18,10 +23,12 @@
     "react-dom": "19.1.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "serve": "^14.2.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
