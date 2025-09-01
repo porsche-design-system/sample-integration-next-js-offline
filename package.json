@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:ci": "NEXT_PUBLIC_BASE_PATH=/sample-integration-next-js-offline npm run build",
-    "start": "serve dist",
+    "serve": "serve dist",
     "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "npm:outdated": "npm outdated",
     "npm:upgrade": "npx npm-check-updates -u && npm install",

@@ -14,7 +14,7 @@ test.describe('Integrity checks', () => {
       networkRequests.push(request.url());
     });
 
-    await page.goto('/');
+    await page.goto('/', {waitUntil: 'networkidle'});
 
     const nonLocalhostRequests = networkRequests.filter(url => !url.startsWith('http://localhost') && !url.startsWith('https://localhost'));
 
