@@ -4,7 +4,7 @@ test.describe('Integrity checks', () => {
   test('should have a title', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page).toHaveTitle('Angular');
+    await expect(page).toHaveTitle('Next.js');
   });
 
   test('should serve all requests from localhost', async ({page}) => {
