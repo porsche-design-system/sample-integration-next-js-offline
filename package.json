@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:ci": "NEXT_PUBLIC_BASE_PATH=/sample-integration-next-js-offline npm run build",
-    "start": "next start",
+    "start": "serve dist",
     "npm:outdated": "npm outdated",
     "npm:upgrade": "npx npm-check-updates -u && npm install",
     "npm:remove": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
@@ -26,6 +26,7 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "serve": "^14.2.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
