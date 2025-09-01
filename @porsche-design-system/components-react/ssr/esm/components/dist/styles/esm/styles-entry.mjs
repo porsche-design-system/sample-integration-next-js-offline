@@ -3879,7 +3879,7 @@ hasWindow &&
         }
     });
 
-const getCDNBaseURL = () => global.PORSCHE_DESIGN_SYSTEM_CDN_URL + "/porsche-design-system";
+const getCDNBaseURL = () => "./assets";
 
 // index.ts
 var MODEL_SIGNATURES_MANIFEST = { "718": { "src": "718.493a9e3.svg", "width": 79, "height": 26 }, "911": { "src": "911.b68f913.svg", "width": 94, "height": 25 }, "boxster": { "src": "boxster.c321738.svg", "width": 239, "height": 26 }, "cayenne": { "src": "cayenne.2556201.svg", "width": 245, "height": 35 }, "cayman": { "src": "cayman.cc89196.svg", "width": 229, "height": 35 }, "macan": { "src": "macan.a1844f4.svg", "width": 196, "height": 26 }, "panamera": { "src": "panamera.6dae809.svg", "width": 260, "height": 25 }, "taycan": { "src": "taycan.df444c6.svg", "width": 167, "height": 36 }, "turbo-s": { "src": "turbo-s.73f1e10.svg", "width": 199, "height": 25 }, "turbo": { "src": "turbo.6a4084a.svg", "width": 143, "height": 25 } };
