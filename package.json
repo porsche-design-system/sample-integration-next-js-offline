@@ -8,6 +8,7 @@
     "copy:@porsche-design-system/components-js": "rm -rf ./node_modules/@porsche-design-system/components-js && cp -r ./@porsche-design-system/components-js/. ./node_modules/@porsche-design-system/components-js",
     "dev": "next dev",
     "build": "next build",
+    "build:ci": "NEXT_PUBLIC_BASE_PATH=/examples/next-js npm run build",
     "start": "next start"
   },
   "dependencies": {
