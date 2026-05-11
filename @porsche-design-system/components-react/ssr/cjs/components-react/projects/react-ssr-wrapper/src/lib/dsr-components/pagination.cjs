@@ -47,6 +47,8 @@ class DSRPagination extends react.Component {
                                             }).map(([key, value]) => value && key).filter(Boolean).join(' '), children: jsxRuntime.jsx("span", { ...spanProps, tabIndex: 0, "aria-label": `${this.props.allyLabelPage || this.props.intl.page} ${value}`, "aria-current": isActive ? 'page' : null, children: value }) }, value));
                                     case utilsEntry.ItemType.NEXT:
                                         return (jsxRuntime.jsx("li", { className: "next", children: jsxRuntime.jsx("span", { ...spanProps, "aria-label": this.props.allyLabelNext || this.props.intl.next, "aria-disabled": isActive ? null : 'true', children: jsxRuntime.jsx(icon_wrapper.PIcon, { ...iconProps, name: "arrow-right" }) }) }, "next"));
+                                    default:
+                                        return null;
                                 }
                             }) }) })] }) }));
     }

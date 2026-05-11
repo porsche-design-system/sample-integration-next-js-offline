@@ -26,7 +26,8 @@ export type PRadioButtonWrapperProps = BaseProps & {
      */
     theme?: Theme;
 };
-export declare const PRadioButtonWrapper: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+/** @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead. */
+export declare const PRadioButtonWrapper: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Show or hide label. For better accessibility it's recommended to show the label.
      */

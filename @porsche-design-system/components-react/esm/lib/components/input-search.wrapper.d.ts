@@ -42,9 +42,17 @@ export type PInputSearchProps = BaseProps & {
      */
     loading?: boolean;
     /**
+     * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+     */
+    maxLength?: number;
+    /**
      * Dynamic feedback text for validation or status.
      */
     message?: string;
+    /**
+     * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+     */
+    minLength?: number;
     /**
      * The name of the input field, used when submitting the form data.
      */
@@ -86,7 +94,7 @@ export type PInputSearchProps = BaseProps & {
      */
     value?: string;
 };
-export declare const PInputSearch: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PInputSearch: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
      */
@@ -128,9 +136,17 @@ export declare const PInputSearch: import("react").ForwardRefExoticComponent<imp
      */
     loading?: boolean;
     /**
+     * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+     */
+    maxLength?: number;
+    /**
      * Dynamic feedback text for validation or status.
      */
     message?: string;
+    /**
+     * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+     */
+    minLength?: number;
     /**
      * The name of the input field, used when submitting the form data.
      */

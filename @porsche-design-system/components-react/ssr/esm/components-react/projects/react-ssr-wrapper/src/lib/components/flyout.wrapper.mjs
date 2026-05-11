@@ -5,23 +5,23 @@ import { useEventCallback, usePrefix, useTheme, useBrowserLayoutEffect, useMerge
 import { syncRef } from '../../utils.mjs';
 import { DSRFlyout } from '../dsr-components/flyout.mjs';
 
-const PFlyout = /*#__PURE__*/ forwardRef(({ aria, disableBackdropClick = false, footerBehavior = 'sticky', onDismiss, onMotionHiddenEnd, onMotionVisibleEnd, open = false, position = 'end', theme, className, children, ...rest }, ref) => {
+const PFlyout = /*#__PURE__*/ forwardRef(({ aria, backdrop = 'blur', disableBackdropClick = false, footerBehavior = 'sticky', onDismiss, onMotionHiddenEnd, onMotionVisibleEnd, open = false, position = 'end', theme, className, children, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     useEventCallback(elementRef, 'dismiss', onDismiss);
     useEventCallback(elementRef, 'motionHiddenEnd', onMotionHiddenEnd);
     useEventCallback(elementRef, 'motionVisibleEnd', onMotionVisibleEnd);
     const WebComponentTag = usePrefix('p-flyout');
-    const propsToSync = [aria, disableBackdropClick, footerBehavior, open, position, theme || useTheme()];
+    const propsToSync = [aria, backdrop, disableBackdropClick, footerBehavior, open, position, theme || useTheme()];
     useBrowserLayoutEffect(() => {
         const { current } = elementRef;
-        ['aria', 'disableBackdropClick', 'footerBehavior', 'open', 'position', 'theme'].forEach((propName, i) => (current[propName] = propsToSync[i]));
+        ['aria', 'backdrop', 'disableBackdropClick', 'footerBehavior', 'open', 'position', 'theme'].forEach((propName, i) => (current[propName] = propsToSync[i]));
     }, propsToSync);
     const props = {
         ...rest,
         // @ts-ignore
         ...(!process.browser
             ? {
-                children: (jsx(DSRFlyout, { aria, disableBackdropClick, footerBehavior, open, position, theme: theme || useTheme(), children })),
+                children: (jsx(DSRFlyout, { aria, backdrop, disableBackdropClick, footerBehavior, open, position, theme: theme || useTheme(), children })),
             }
             : {
                 children,

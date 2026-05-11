@@ -18,7 +18,7 @@ export type PStepperHorizontalProps = BaseProps & {
      */
     theme?: Theme;
 };
-export declare const PStepperHorizontal: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PStepperHorizontal: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when active step is changed.
      */

@@ -14,7 +14,7 @@ export type PTableHeadCellProps = BaseProps & {
      */
     sort?: TableHeadCellSort;
 };
-export declare const PTableHeadCell: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PTableHeadCell: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
      */

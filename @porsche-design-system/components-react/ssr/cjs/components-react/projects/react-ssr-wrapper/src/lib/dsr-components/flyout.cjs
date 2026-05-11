@@ -35,7 +35,7 @@ class DSRFlyout extends react.Component {
         const hasHeader = namedSlotChildren.filter(({ props: { slot } }) => slot === 'header').length > 0;
         const hasFooter = namedSlotChildren.filter(({ props: { slot } }) => slot === 'footer').length > 0;
         const hasSubFooter = namedSlotChildren.filter(({ props: { slot } }) => slot === 'sub-footer').length > 0;
-        const style = minifyCss.minifyCss(stylesEntry.getFlyoutCss(this.props.open, (positionDeprecationMap[this.props.position] || this.props.position), hasHeader, hasFooter, hasSubFooter, this.props.footerBehavior, this.props.theme));
+        const style = minifyCss.minifyCss(stylesEntry.getFlyoutCss(this.props.open, this.props.backdrop, (positionDeprecationMap[this.props.position] || this.props.position), hasHeader, hasFooter, hasSubFooter, this.props.footerBehavior, this.props.theme));
         return (jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsxs("template", { shadowroot: "open", shadowrootmode: "open", children: [jsxRuntime.jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsxRuntime.jsx("dialog", { tabIndex: -1, ...utilsEntry.parseAndGetAriaAttributes({
                                 'aria-modal': true,
                                 ...{ 'aria-label': hasHeader ? namedSlotChildren.find(({ props: { slot } }) => slot === 'header')?.props.children : 'Flyout' },

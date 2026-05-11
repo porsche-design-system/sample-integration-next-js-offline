@@ -4,13 +4,13 @@ import { forwardRef, useRef } from 'react';
 import { usePrefix, useTheme, useBrowserLayoutEffect, useMergedClass } from '../../hooks.mjs';
 import { syncRef } from '../../utils.mjs';
 
-const PTag = /*#__PURE__*/ forwardRef(({ color = 'background-surface', compact = false, icon, iconSource, theme, className, ...rest }, ref) => {
+const PTag = /*#__PURE__*/ forwardRef(({ color = 'background-surface', compact = false, icon, iconSource, theme, variant, className, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     const WebComponentTag = usePrefix('p-tag');
-    const propsToSync = [color, compact, icon, iconSource, theme || useTheme()];
+    const propsToSync = [color, compact, icon, iconSource, theme || useTheme(), variant];
     useBrowserLayoutEffect(() => {
         const { current } = elementRef;
-        ['color', 'compact', 'icon', 'iconSource', 'theme'].forEach((propName, i) => (current[propName] = propsToSync[i]));
+        ['color', 'compact', 'icon', 'iconSource', 'theme', 'variant'].forEach((propName, i) => (current[propName] = propsToSync[i]));
     }, propsToSync);
     const props = {
         ...rest,

@@ -2,7 +2,7 @@ import { jsxs, Fragment, jsx } from 'react/jsx-runtime';
 import { splitChildren } from '../../splitChildren.mjs';
 import { Component } from 'react';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getGridItemCss as getComponentCss$_ } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getGridItemCss as getComponentCss$12 } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 
 /**
  * @slot {"name": "", "description": "Default slot to render the content." }
@@ -13,7 +13,7 @@ class DSRGridItem extends Component {
     host;
     render() {
         splitChildren(this.props.children);
-        const style = minifyCss(getComponentCss$_(this.props.size, this.props.offset));
+        const style = minifyCss(getComponentCss$12(this.props.size, this.props.offset));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsx("slot", {})] }), this.props.children] }));
     }
 }

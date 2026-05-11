@@ -5,20 +5,20 @@ import { usePrefix, useTheme, useBrowserLayoutEffect, useMergedClass } from '../
 import { syncRef } from '../../utils.mjs';
 import { DSRTagDismissible } from '../dsr-components/tag-dismissible.mjs';
 
-const PTagDismissible = /*#__PURE__*/ forwardRef(({ aria, color = 'background-surface', label, theme, className, children, ...rest }, ref) => {
+const PTagDismissible = /*#__PURE__*/ forwardRef(({ aria, color = 'background-surface', compact = false, label, theme, className, children, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     const WebComponentTag = usePrefix('p-tag-dismissible');
-    const propsToSync = [aria, color, label, theme || useTheme()];
+    const propsToSync = [aria, color, compact, label, theme || useTheme()];
     useBrowserLayoutEffect(() => {
         const { current } = elementRef;
-        ['aria', 'color', 'label', 'theme'].forEach((propName, i) => (current[propName] = propsToSync[i]));
+        ['aria', 'color', 'compact', 'label', 'theme'].forEach((propName, i) => (current[propName] = propsToSync[i]));
     }, propsToSync);
     const props = {
         ...rest,
         // @ts-ignore
         ...(!process.browser
             ? {
-                children: (jsx(DSRTagDismissible, { aria, color, label, theme: theme || useTheme(), children })),
+                children: (jsx(DSRTagDismissible, { aria, color, compact, label, theme: theme || useTheme(), children })),
             }
             : {
                 children,

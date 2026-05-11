@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getPopoverCss as getComponentCss$y } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getPopoverCss as getComponentCss$A } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { getHasNativePopoverSupport, parseAndGetAriaAttributes } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
 import { PIcon } from '../components/icon.wrapper.mjs';
 
@@ -25,7 +25,7 @@ class DSRPopover extends Component {
     render() {
         const { namedSlotChildren} = splitChildren(this.props.children);
         const hasSlottedButton = namedSlotChildren.filter(({ props: { slot } }) => slot === 'button').length > 0;
-        const style = minifyCss(getComponentCss$y(this.props.theme).replace(/(:host {[\S\s]+?})[\S\s]+(button {[\S\s]+?})[\S\s]+(.icon {[\S\s]+?})[\S\s]+(.label {[\S\s]+?})[\S\s]+/, '$1\n$2\n$3\n$4'));
+        const style = minifyCss(getComponentCss$A(this.props.theme).replace(/(:host {[\S\s]+?})[\S\s]+(button {[\S\s]+?})[\S\s]+(.icon {[\S\s]+?})[\S\s]+(.label {[\S\s]+?})[\S\s]+/, '$1\n$2\n$3\n$4'));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsxs(Fragment, { children: [hasSlottedButton ? (jsx("slot", { name: "button" })) : (jsxs("button", { type: "button", ...parseAndGetAriaAttributes({
                                         ...parseAndGetAriaAttributes(this.props.aria),
                                         ...{ 'aria-expanded': this.props.isOpen },

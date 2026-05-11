@@ -3,8 +3,8 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getMultiSelectCss as getComponentCss$B } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
-import { getHasNativePopoverSupport, getSelectedOptionValues, getComboboxAriaAttributes, getSelectedOptionsString, labelId } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
+import { getMultiSelectCss as getComponentCss$D } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getHasNativePopoverSupport, getComboboxAriaAttributes, labelId } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
 import { PButtonPure } from '../components/button-pure.wrapper.mjs';
 import { Label } from './label.mjs';
 import { messageId, StateMessage } from './state-message.mjs';
@@ -14,9 +14,13 @@ import { NoResultsOption } from './no-results-option.mjs';
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label-after", "description": "Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`)."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "selected", "description": "Use this slot to provide custom markup for the selected options display in the button area." }
  * @slot {"name": "", "description": "Default slot for the p-multi-select-option tags." }
+ * @slot {"name": "options-status", "description": "When implementing a custom filter with the `filter` slot, use this slot for loading, error and no results status." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "filter", "description": "Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior." }
  *
  * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
  */
@@ -26,13 +30,14 @@ class DSRMultiSelect extends Component {
     // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
     isOpen = false;
     hasFilterResults = true;
+    selectedOptions = [];
     internals;
     defaultValue;
     multiSelectOptions = [];
     multiSelectOptgroups = [];
     buttonElement;
     inputSearchElement;
-    inputSearchInputElement;
+    filterSlot;
     listboxElement;
     resetButtonElement;
     preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -40,9 +45,6 @@ class DSRMultiSelect extends Component {
     hasNativePopoverSupport = getHasNativePopoverSupport();
     cleanUpAutoUpdate;
     currentlyHighlightedOption = null;
-    get currentValue() {
-        return getSelectedOptionValues(splitChildren(this.props.children).otherChildren);
-    }
     setFormValue(value) {
         const formData = new FormData();
         for (const val of value) {
@@ -51,6 +53,7 @@ class DSRMultiSelect extends Component {
         this.props.internals?.setFormValue(formData);
     }
     formDisabledCallback() {
+        // Called when a parent fieldset is disabled or enabled
     }
     formStateRestoreCallback() {
     }
@@ -58,14 +61,16 @@ class DSRMultiSelect extends Component {
         this.props.setFormValue(this.props.defaultValue);
     }
     render() {
-        const { namedSlotChildren, otherChildren } = splitChildren(this.props.children);
+        const { namedSlotChildren} = splitChildren(this.props.children);
+        const hasCustomFilterSlot = namedSlotChildren.filter(({ props: { slot } }) => slot === 'filter').length > 0;
+        const hasCustomSelectedSlot = namedSlotChildren.filter(({ props: { slot } }) => slot === 'selected').length > 0;
         const buttonId = 'button';
         const popoverId = 'list';
         const descriptionId = this.props.description ? 'description' : undefined;
         const selectMessageId = (this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state) ? messageId : undefined;
         const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
-        const style = minifyCss(getComponentCss$B(this.props.isOpen, this.props.disabled, this.props.hideLabel, this.props.state, this.props.compact, this.props.theme));
-        return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", shadowrootdelegatesfocus: "true", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsxs("div", { className: "root", children: [jsx(Label, { hasLabel: this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0, hasDescription: this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0, host: null, label: this.props.label, description: this.props.description, htmlFor: buttonId, isRequired: this.props.required, isDisabled: this.props.disabled }), jsxs("button", { "aria-invalid": this.props.state === 'error' ? 'true' : null, type: "button", role: "combobox", id: buttonId, ...getComboboxAriaAttributes(this.props.isOpen, this.props.required, labelId, ariaDescribedBy, popoverId), disabled: this.props.disabled, children: [jsx("span", { children: getSelectedOptionsString(otherChildren) }), this.props.currentValue && (jsx(PButtonPure, { type: "button", className: "button", icon: "close", hideLabel: true, theme: this.props.theme, disabled: this.props.disabled, children: "Reset selection" })), jsx(PIcon, { className: "icon", name: "arrow-head-down", theme: this.props.theme, color: this.props.disabled ? 'state-disabled' : 'primary', "aria-hidden": "true" })] }), jsxs("div", { id: popoverId, popover: "manual", tabIndex: -1, role: "dialog", "aria-label": this.props.label, "aria-hidden": this.props.isOpen ? null : 'true', children: [jsx(PInputSearch, { className: "filter", name: "filter", label: "Filter options", hideLabel: true, autoComplete: "off", clear: true, indicator: true, compact: true, theme: this.props.theme }), jsxs("div", { className: "options", role: "listbox", "aria-label": this.props.label, "aria-multiselectable": "true", onPointerMove: this.props.onPointerMove, children: [!this.props.hasFilterResults && jsx(NoResultsOption, {}), jsx("slot", {})] })] }), jsx(StateMessage, { hasMessage: (this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state), state: this.props.state, message: this.props.message, theme: this.props.theme, host: null })] })] }), this.props.children] }));
+        const style = minifyCss(getComponentCss$D(this.props.isOpen, this.props.disabled, this.props.hideLabel, this.props.state, this.props.compact, this.props.theme));
+        return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", shadowrootdelegatesfocus: "true", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsxs("div", { className: "root", children: [jsx(Label, { hasLabel: this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0, hasDescription: this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0, host: null, label: this.props.label, description: this.props.description, htmlFor: buttonId, isRequired: this.props.required, isDisabled: this.props.disabled }), jsxs("button", { "aria-invalid": this.props.state === 'error' ? 'true' : null, type: "button", role: "combobox", id: buttonId, ...getComboboxAriaAttributes(this.props.isOpen, this.props.required, labelId, ariaDescribedBy, popoverId), disabled: this.props.disabled, onBlur: this.props.onComboBlur, children: [hasCustomSelectedSlot ? (jsx("slot", { name: "selected" })) : (jsx("span", { children: this.selectedOptions.map((option) => (option.textContent ?? '').toString().trim()).join(', ') })), this.props.value.length > 0 && (jsx(PButtonPure, { type: "button", className: "button", icon: "close", hideLabel: true, theme: this.props.theme, disabled: this.props.disabled, children: "Reset selection" })), jsx(PIcon, { className: "icon", name: "arrow-head-down", theme: this.props.theme, color: this.props.disabled ? 'state-disabled' : 'primary', "aria-hidden": "true" })] }), jsxs("div", { id: popoverId, popover: "manual", tabIndex: -1, onBlur: (e) => e.stopPropagation(), role: "dialog", "aria-label": this.props.label, "aria-hidden": this.props.isOpen ? null : 'true', children: [hasCustomFilterSlot ? (jsx("slot", { name: "filter" })) : (jsx(PInputSearch, { className: "filter", name: "filter", label: "Filter options", hideLabel: true, autoComplete: "off", clear: true, indicator: true, compact: true, theme: this.props.theme, onBlur: (e) => e.stopPropagation() })), jsxs("div", { className: "options", role: "listbox", "aria-label": this.props.label, "aria-multiselectable": "true", onPointerMove: this.props.onPointerMove, children: [!this.props.hasFilterResults && jsx(NoResultsOption, {}), jsx("slot", { name: "options-status" }), jsx("slot", {})] })] }), jsx(StateMessage, { hasMessage: (this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state), state: this.props.state, message: this.props.message, theme: this.props.theme, host: null })] })] }), this.props.children] }));
     }
 }
 

@@ -1,6 +1,10 @@
 import type { BaseProps } from '../../BaseProps';
-import type { BreakpointCustomizable, PinCodeLength, PinCodeUpdateEventDetail, PinCodeState, Theme, PinCodeType } from '../types';
+import type { BreakpointCustomizable, PinCodeLength, PinCodeChangeEventDetail, PinCodeUpdateEventDetail, PinCodeState, Theme, PinCodeType } from '../types';
 export type PPinCodeProps = BaseProps & {
+    /**
+     * A boolean value that, if present, renders the pin-code as a compact version.
+     */
+    compact?: boolean;
     /**
      * The description text.
      */
@@ -38,7 +42,15 @@ export type PPinCodeProps = BaseProps & {
      */
     name?: string;
     /**
-     * Emitted when selected element changes.
+     * Emitted when the pin-code has lost focus.
+     */
+    onBlur?: (event: CustomEvent<void>) => void;
+    /**
+     * Emitted when the input is changed.
+     */
+    onChange?: (event: CustomEvent<PinCodeChangeEventDetail>) => void;
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
      */
     onUpdate?: (event: CustomEvent<PinCodeUpdateEventDetail>) => void;
     /**
@@ -62,7 +74,11 @@ export type PPinCodeProps = BaseProps & {
      */
     value?: string;
 };
-export declare const PPinCode: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PPinCode: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+    /**
+     * A boolean value that, if present, renders the pin-code as a compact version.
+     */
+    compact?: boolean;
     /**
      * The description text.
      */
@@ -100,7 +116,15 @@ export declare const PPinCode: import("react").ForwardRefExoticComponent<import(
      */
     name?: string;
     /**
-     * Emitted when selected element changes.
+     * Emitted when the pin-code has lost focus.
+     */
+    onBlur?: (event: CustomEvent<void>) => void;
+    /**
+     * Emitted when the input is changed.
+     */
+    onChange?: (event: CustomEvent<PinCodeChangeEventDetail>) => void;
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the input is changed.
      */
     onUpdate?: (event: CustomEvent<PinCodeUpdateEventDetail>) => void;
     /**

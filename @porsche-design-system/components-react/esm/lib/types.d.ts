@@ -221,8 +221,16 @@ declare const ICON_NAMES: readonly [
     "add",
     "adjust",
     "aggregation",
+    "ai-3d-object",
+    "ai-code",
+    "ai-edit",
+    "ai-image",
+    "ai-scale",
+    "ai-sound",
     "ai-spark",
     "ai-spark-filled",
+    "ai-text",
+    "ai-video",
     "arrow-compact-down",
     "arrow-compact-left",
     "arrow-compact-right",
@@ -494,13 +502,16 @@ declare const ICON_NAMES: readonly [
 ];
 export type IconName = typeof ICON_NAMES[number];
 declare const FLAG_NAMES: readonly [
+    "ad",
     "ae",
+    "al",
     "am",
     "ar",
     "at",
     "au",
     "az",
     "ba",
+    "bd",
     "be",
     "bg",
     "bh",
@@ -530,6 +541,7 @@ declare const FLAG_NAMES: readonly [
     "gb",
     "ge",
     "gh",
+    "gi",
     "gr",
     "gt",
     "hk",
@@ -552,12 +564,15 @@ declare const FLAG_NAMES: readonly [
     "kw",
     "kz",
     "lb",
+    "li",
     "lk",
     "lt",
     "lu",
     "lv",
     "ma",
+    "mc",
     "md",
+    "me",
     "mk",
     "mn",
     "mo",
@@ -581,6 +596,7 @@ declare const FLAG_NAMES: readonly [
     "pt",
     "py",
     "qa",
+    "re",
     "ro",
     "rs",
     "ru",
@@ -594,12 +610,14 @@ declare const FLAG_NAMES: readonly [
     "tn",
     "tr",
     "tt",
+    "tw",
     "ua",
     "us",
     "uy",
     "uz",
     "ve",
     "vn",
+    "xx",
     "za"
 ];
 export type FlagName = typeof FLAG_NAMES[number];
@@ -611,6 +629,7 @@ declare const FORM_STATES: readonly [
 export type FormState = (typeof FORM_STATES)[number];
 declare const BUTTON_ARIA_ATTRIBUTES: readonly [
     "aria-label",
+    "aria-description",
     "aria-expanded",
     "aria-pressed",
     "aria-haspopup"
@@ -618,6 +637,7 @@ declare const BUTTON_ARIA_ATTRIBUTES: readonly [
 export type ButtonAriaAttribute = (typeof BUTTON_ARIA_ATTRIBUTES)[number];
 declare const LINK_ARIA_ATTRIBUTES: readonly [
     "aria-label",
+    "aria-description",
     "aria-current",
     "aria-haspopup"
 ];
@@ -716,12 +736,22 @@ export type MultiSelectUpdateEvent = {
     name: string;
     value: string[];
 };
+/** @deprecated */
 export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
+export type MultiSelectChangeEventDetail = MultiSelectUpdateEventDetail;
+export type MultiSelectToggleEventDetail = {
+    open: boolean;
+};
 export type SelectState = FormState;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
+/** @deprecated */
 export type SelectUpdateEventDetail = {
     name: string;
     value: string;
+};
+export type SelectChangeEventDetail = SelectUpdateEventDetail;
+export type SelectToggleEventDetail = {
+    open: boolean;
 };
 declare const SELECT_DROPDOWN_DIRECTIONS: readonly [
     "down",
@@ -843,6 +873,225 @@ export type AccordionUpdateEventDetail = AccordionUpdateEvent;
 /** @deprecated */
 export type AccordionTag = HeadingTag;
 export type AccordionHeadingTag = HeadingTag;
+declare const AI_TAG_VARIANTS: readonly [
+    "abbreviation",
+    "generated",
+    "modified"
+];
+export type AiTagVariant = (typeof AI_TAG_VARIANTS)[number];
+declare const AI_TAG_TRANSLATIONS: {
+    bg_BG: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    bs_BA: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    cs_CZ: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    da_DK: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    de_DE: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    el_GR: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    en_CY: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    en_GB: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    en_US: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    es_ES: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    et_EE: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    fi_FI: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    fr_FR: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    he_IL: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    hr_HR: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    hu_HU: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    is_IS: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    it_IT: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    lt_LT: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    lv_LV: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    me_ME: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    mk_MK: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    mt_MT: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    nb_NO: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    nl_NL: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    pl_PL: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    pt_PT: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    ro_RO: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    ru_RU: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    sk_SK: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    sl_SI: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    sr_RS: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    sv_SE: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    tr_TR: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+    uk_UA: {
+        short: string;
+        long: string;
+        generated: string;
+        modified: string;
+    };
+};
+export type AiTagLocale = keyof typeof AI_TAG_TRANSLATIONS;
 declare const INLINE_NOTIFICATION_STATES: readonly [
     "success",
     "info",
@@ -894,7 +1143,9 @@ export type CanvasSidebarStartUpdateEventDetail = {
 };
 declare const CAROUSEL_WIDTHS: readonly [
     "basic",
-    "extended"
+    "extended",
+    "wide",
+    "full"
 ];
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 declare const CAROUSEL_SLIDES_PER_PAGE: (string | number)[];
@@ -930,12 +1181,14 @@ declare const CAROUSEL_ALIGN_CONTROLS: readonly [
 ];
 export type CarouselAlignControls = (typeof CAROUSEL_ALIGN_CONTROLS)[number];
 export type CheckboxState = FormState;
+/** @deprecated */
 export type CheckboxUpdateEventDetail = {
     name: string;
     value?: string;
     checked: boolean;
 };
 export type CheckboxBlurEventDetail = Event;
+export type CheckboxChangeEventDetail = Event;
 export type CheckboxWrapperState = FormState;
 declare const CONTENT_WRAPPER_BACKGROUND_COLORS: readonly [
     "transparent",
@@ -1100,6 +1353,11 @@ declare const FLEX_ITEM_FLEXS: readonly [
     "equal"
 ];
 export type FlexItemFlex = (typeof FLEX_ITEM_FLEXS)[number];
+declare const BACKDROPS: readonly [
+    "blur",
+    "shading"
+];
+export type Backdrop = (typeof BACKDROPS)[number];
 declare const FLYOUT_POSITIONS: readonly [
     "start",
     "end",
@@ -1118,6 +1376,7 @@ declare const FLYOUT_ARIA_ATTRIBUTES: readonly [
 export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 export type FlyoutMotionVisibleEndEventDetail = TransitionEvent;
 export type FlyoutMotionHiddenEndEventDetail = TransitionEvent;
+export type FlyoutBackdrop = Backdrop;
 declare const GRID_DIRECTIONS: readonly [
     "row",
     "row-reverse",
@@ -1231,6 +1490,10 @@ export type InputEmailState = FormState;
 export type InputEmailChangeEventDetail = Event;
 export type InputEmailBlurEventDetail = Event;
 export type InputEmailInputEventDetail = InputEvent;
+export type InputMonthState = FormState;
+export type InputMonthChangeEventDetail = Event;
+export type InputMonthBlurEventDetail = Event;
+export type InputMonthInputEventDetail = InputEvent;
 export type InputNumberState = FormState;
 export type InputNumberChangeEventDetail = Event;
 export type InputNumberBlurEventDetail = Event;
@@ -1259,6 +1522,10 @@ export type InputUrlState = FormState;
 export type InputUrlChangeEventDetail = Event;
 export type InputUrlBlurEventDetail = Event;
 export type InputUrlInputEventDetail = InputEvent;
+export type InputWeekState = FormState;
+export type InputWeekChangeEventDetail = Event;
+export type InputWeekBlurEventDetail = Event;
+export type InputWeekInputEventDetail = InputEvent;
 export type LinkIcon = LinkButtonIconName;
 export type LinkPureIcon = LinkButtonIconName;
 export type LinkPureAriaAttribute = LinkAriaAttribute;
@@ -1286,6 +1553,9 @@ declare const LINK_TILE_MODEL_SIGNATURE_MODELS: readonly [
     "boxster",
     "cayenne",
     "cayman",
+    "gt3-rs",
+    "gt3",
+    "gts",
     "macan",
     "panamera",
     "taycan",
@@ -1341,6 +1611,21 @@ declare const MODEL_SIGNATURES_MANIFEST: {
         width: number;
         height: number;
     };
+    "gt3-rs": {
+        src: string;
+        width: number;
+        height: number;
+    };
+    gt3: {
+        src: string;
+        width: number;
+        height: number;
+    };
+    gts: {
+        src: string;
+        width: number;
+        height: number;
+    };
     macan: {
         src: string;
         width: number;
@@ -1380,11 +1665,6 @@ declare const MARQUE_SIZES: readonly [
     "medium"
 ];
 export type MarqueSize = (typeof MARQUE_SIZES)[number];
-declare const BACKDROPS: readonly [
-    "blur",
-    "shading"
-];
-export type Backdrop = (typeof BACKDROPS)[number];
 declare const MODAL_ARIA_ATTRIBUTES: readonly [
     "aria-label",
     "role"
@@ -1445,7 +1725,9 @@ export type PinCodeUpdateEvent = {
     value: string;
     isComplete: boolean;
 };
+/** @deprecated */
 export type PinCodeUpdateEventDetail = PinCodeUpdateEvent;
+export type PinCodeChangeEventDetail = PinCodeUpdateEventDetail;
 export type PinCodeState = FormState;
 declare const POPOVER_DIRECTIONS: readonly [
     "top",
@@ -1459,6 +1741,9 @@ declare const POPOVER_ARIA_ATTRIBUTES: readonly [
 ];
 export type PopoverAriaAttribute = (typeof POPOVER_ARIA_ATTRIBUTES)[number];
 export type RadioButtonWrapperState = FormState;
+export type RadioGroupState = FormState;
+export type RadioGroupDirection = GroupDirection;
+export type RadioGroupChangeEventDetail = Event;
 declare const SEGMENTED_CONTROL_BACKGROUND_COLORS: readonly [
     "background-surface",
     "background-default"
@@ -1468,9 +1753,12 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 export type SegmentedControlUpdateEvent = {
     value: string | number;
 };
+/** @deprecated */
 export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
+export type SegmentedControlChangeEventDetail = SegmentedControlUpdateEventDetail;
 declare const SEGMENTED_CONTROL_COLUMNS: (string | number)[];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
+export type SegmentedControlState = FormState;
 export type SegmentedControlItemIcon = LinkButtonIconName;
 declare const SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES: readonly [
     "aria-label"
@@ -1575,6 +1863,15 @@ declare const TAG_DISMISSIBLE_ARIA_ATTRIBUTES: readonly [
 ];
 export type TagDismissibleAriaAttribute = (typeof TAG_DISMISSIBLE_ARIA_ATTRIBUTES)[number];
 export type TagIcon = IconName;
+declare const TAG_VARIANTS: readonly [
+    "primary",
+    "secondary",
+    "info",
+    "warning",
+    "success",
+    "error"
+];
+export type TagVariant = (typeof TAG_VARIANTS)[number];
 declare const TAG_COLORS: readonly [
     "background-base",
     "background-surface",
@@ -1591,6 +1888,7 @@ declare const TAG_COLORS: readonly [
     "notification-success",
     "notification-error"
 ];
+/** @deprecated */
 export type TagColor = (typeof TAG_COLORS)[number];
 declare const TEXT_TAGS: readonly [
     "p",

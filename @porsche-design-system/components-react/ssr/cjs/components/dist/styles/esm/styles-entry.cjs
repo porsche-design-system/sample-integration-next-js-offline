@@ -1,5 +1,306 @@
 'use strict';
 
+const borderRadiusSmall = '4px';
+
+const borderRadiusMedium = '8px';
+
+const borderRadiusLarge = '12px';
+
+const borderWidthBase = '2px';
+
+const _dropShadowBackgroundColor = 'rgba(0, 0, 0, 0.16)';
+
+const dropShadowLowStyle = {
+    boxShadow: `0px 3px 8px ${_dropShadowBackgroundColor}`, // filter: drop-shadow() causes visual glitches in Firefox in combination with frostedGlassStyle
+};
+
+const dropShadowHighStyle = {
+    boxShadow: `0px 8px 40px ${_dropShadowBackgroundColor}`, // filter: drop-shadow() causes visual glitches in Firefox in combination with frostedGlassStyle
+};
+
+const fontFamily = "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif";
+
+const fontHyphenationStyle = {
+    overflowWrap: 'break-word',
+    // @ts-ignore
+    hyphens: 'var(--p-hyphens, auto)',
+};
+
+const fontLineHeight = 'calc(6px + 2.125ex)';
+
+const fontSizeTextXXSmall = '.75rem';
+
+const fontSizeTextXSmall = 'clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)';
+
+const fontSizeTextSmall = '1rem';
+
+const fontSizeTextMedium = 'clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)';
+
+const fontSizeTextLarge = 'clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)';
+
+const fontSizeTextXLarge = 'clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)';
+
+const fontSizeText = {
+    xxSmall: fontSizeTextXXSmall,
+    xSmall: fontSizeTextXSmall,
+    small: fontSizeTextSmall,
+    medium: fontSizeTextMedium,
+    large: fontSizeTextLarge,
+    xLarge: fontSizeTextXLarge,
+};
+
+const fontSizeHeadingSmall = fontSizeTextSmall;
+
+const fontSizeHeadingMedium = fontSizeTextMedium;
+
+const fontSizeHeadingLarge = fontSizeTextLarge;
+
+const fontSizeHeadingXLarge = fontSizeTextXLarge;
+
+const fontSizeHeadingXXLarge = 'clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)';
+
+const fontSizeDisplaySmall = 'clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)';
+
+const fontSizeDisplayMedium = 'clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)';
+
+const fontSizeDisplayLarge = 'clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)';
+
+const fontWeightRegular = 400;
+
+const fontWeightSemiBold = 600;
+
+const fontWeightBold = 700;
+
+const fontStyleNormal = 'normal';
+
+const fontVariant = 'normal';
+
+const backdropFilter = 'blur(32px)';
+const frostedGlassStyle = {
+    WebkitBackdropFilter: backdropFilter,
+    backdropFilter,
+};
+
+const _gradient = 'hsla(0, 0%, 0%, 0.80) 0%,' +
+    'hsla(0, 0%, 0%, 0.80) 8.1%,' +
+    'hsla(0, 0%, 0%, 0.80) 15.5%,' +
+    'hsla(0, 0%, 0%, 0.80) 22.5%,' +
+    'hsla(0, 0%, 0%, 0.78) 29%,' +
+    'hsla(0, 0%, 0%, 0.73) 35.3%,' +
+    'hsla(0, 0%, 0%, 0.67) 41.2%,' +
+    'hsla(0, 0%, 0%, 0.60) 47.1%,' +
+    'hsla(0, 0%, 0%, 0.52) 52.9%,' +
+    'hsla(0, 0%, 0%, 0.44) 58.8%,' +
+    'hsla(0, 0%, 0%, 0.33) 64.7%,' +
+    'hsla(0, 0%, 0%, 0.22) 71%,' +
+    'hsla(0, 0%, 0%, 0.12) 77.5%,' +
+    'hsla(0, 0%, 0%, 0.05) 84.5%,' +
+    'hsla(0, 0%, 0%, 0.011) 91.9%,' +
+    'hsla(0, 0%, 0%, 0)';
+
+const gradientToBottomStyle = {
+    background: `linear-gradient(to bottom, ${_gradient} 100%);`,
+};
+
+const gradientToTopStyle = {
+    background: `linear-gradient(to top, ${_gradient} 100%);`,
+};
+
+const breakpointBase = 0;
+
+const breakpointXS = 480;
+
+const breakpointS = 760;
+
+const breakpointM = 1000;
+
+const breakpointL = 1300;
+
+const breakpointXL = 1760;
+
+const breakpointXXL = 1920;
+
+const breakpoint = {
+    base: breakpointBase,
+    xs: breakpointXS,
+    s: breakpointS,
+    m: breakpointM,
+    l: breakpointL,
+    xl: breakpointXL,
+    xxl: breakpointXXL,
+};
+
+function getMediaQueryMin(min) {
+    return `@media(min-width:${breakpoint[min]}px)`;
+}
+
+const spacingFluidMedium = 'clamp(16px, 1.25vw + 12px, 36px)';
+
+const gridGap = spacingFluidMedium;
+
+const _gridWidthMax = '2560px';
+// fluid sizing calculated by https://fluidtypography.com/#app-get-started
+const _gridSafeZoneBase = 'max(22px, 10.625vw - 12px)'; // viewport-width range = 320 - 760px / size range = 22 - 68.75px
+const _gridSafeZoneS = 'calc(5vw - 16px)'; // viewport-width range = 760 - 1920px / size range = 22(22.75) - 80(79.71)px
+const _gridSafeZoneXXL = 'min(50vw - 880px, 400px)'; // viewport-width range = 1920 - 2560px / size range = 80(79.71)px - 400(399.71)px
+
+const columnMap = {
+    narrow: 4,
+    basic: 2,
+    extended: 1,
+};
+const gridColumnWidthS = `calc((100vw - ${_gridSafeZoneS} * 2 - ${gridGap} * 15) / 16)`;
+const gridColumnWidthXXL = `calc((min(100vw, ${_gridWidthMax}) - ${_gridSafeZoneXXL} * 2 - ${gridGap} * 15) / 16)`;
+const _gridPadding = `max(0px, 50vw - ${_gridWidthMax} / 2)`;
+const _getGridOffsetS = (width) => `calc(${_gridSafeZoneS} + (${gridGap} + ${gridColumnWidthS}) * ${columnMap[width]})`;
+const _getGridOffsetXXL = (width) => `calc(${_gridPadding} + ${_gridSafeZoneXXL} + (${gridGap} + ${gridColumnWidthXXL}) * ${columnMap[width]})`;
+
+const gridFullOffset = _gridPadding;
+
+const gridWideOffsetBase = _gridSafeZoneBase;
+
+const gridWideOffsetS = _gridSafeZoneS;
+
+const gridWideOffsetXXL = `calc(${_gridPadding} + ${_gridSafeZoneXXL})`;
+
+const gridWideOffset = {
+    base: gridWideOffsetBase,
+    s: gridWideOffsetS,
+    xxl: gridWideOffsetXXL,
+};
+
+const gridExtendedOffsetBase = _gridSafeZoneBase;
+
+const gridExtendedOffsetS = _getGridOffsetS('extended');
+
+const gridExtendedOffsetXXL = _getGridOffsetXXL('extended');
+
+const gridExtendedOffset = {
+    base: gridExtendedOffsetBase,
+    s: gridExtendedOffsetS,
+    xxl: gridExtendedOffsetXXL,
+};
+
+const gridBasicOffsetBase = _gridSafeZoneBase;
+
+const gridBasicOffsetS = _getGridOffsetS('basic');
+
+const gridBasicOffsetXXL = _getGridOffsetXXL('basic');
+
+const gridBasicOffset = {
+    base: gridBasicOffsetBase,
+    s: gridBasicOffsetS,
+    xxl: gridBasicOffsetXXL,
+};
+
+const gridNarrowOffsetBase = _gridSafeZoneBase;
+
+const gridNarrowOffsetS = _getGridOffsetS('narrow');
+
+const gridNarrowOffsetXXL = _getGridOffsetXXL('narrow');
+
+const gridNarrowOffset = {
+    base: gridNarrowOffsetBase,
+    s: gridNarrowOffsetS,
+    xxl: gridNarrowOffsetXXL,
+};
+
+const motionDurationShort = '0.25s';
+
+const motionEasingBase = 'cubic-bezier(0.25,0.1,0.25,1)';
+
+const breakpoints = ['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'];
+
+function getMediaQueryMax(max) {
+    return `@media(max-width:${breakpoint[max] - 1}px)`;
+}
+
+const motionDurationLong = '0.6s';
+
+const motionDurationModerate = '0.4s';
+
+const motionDurationVeryLong = '1.2s';
+
+const motionEasingIn = 'cubic-bezier(0,0,0.2,1)';
+
+const motionEasingOut = 'cubic-bezier(0.4,0,0.5,1)';
+
+const spacingStaticXSmall = '4px';
+
+const spacingStaticSmall = '8px';
+
+const spacingStaticMedium = '16px';
+
+const spacingStaticLarge = '32px';
+
+const spacingFluidXSmall = 'clamp(4px, 0.25vw + 3px, 8px)';
+
+const spacingFluidSmall = 'clamp(8px, 0.5vw + 6px, 16px)';
+
+const spacingFluidLarge = 'clamp(32px, 2.75vw + 23px, 76px)';
+
+const _displayFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
+const _displayFontPartB = `/${fontLineHeight} ${fontFamily}`;
+
+const displayMediumStyle = {
+    font: `${_displayFontPartA}${fontSizeDisplayMedium}${_displayFontPartB}`,
+};
+
+const displayLargeStyle = {
+    font: `${_displayFontPartA}${fontSizeDisplayLarge}${_displayFontPartB}`,
+};
+
+const _headingFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightSemiBold} `;
+const _headingFontPartB = `/${fontLineHeight} ${fontFamily}`;
+
+const headingSmallStyle = {
+    font: `${_headingFontPartA}${fontSizeHeadingSmall}${_headingFontPartB}`,
+};
+
+const headingMediumStyle = {
+    font: `${_headingFontPartA}${fontSizeHeadingMedium}${_headingFontPartB}`,
+};
+
+const headingLargeStyle = {
+    font: `${_headingFontPartA}${fontSizeHeadingLarge}${_headingFontPartB}`,
+};
+
+const headingXLargeStyle = {
+    font: `${_headingFontPartA}${fontSizeHeadingXLarge}${_headingFontPartB}`,
+};
+
+const headingXXLargeStyle = {
+    font: `${_headingFontPartA}${fontSizeHeadingXXLarge}${_headingFontPartB}`,
+};
+
+const _textFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
+const _textFontPartB = `/${fontLineHeight} ${fontFamily}`;
+
+const textXXSmallStyle = {
+    font: `${_textFontPartA}${fontSizeTextXXSmall}${_textFontPartB}`,
+    ...fontHyphenationStyle,
+};
+
+const textXSmallStyle = {
+    font: `${_textFontPartA}${fontSizeTextXSmall}${_textFontPartB}`,
+    ...fontHyphenationStyle,
+};
+
+const textSmallStyle = {
+    font: `${_textFontPartA}${fontSizeTextSmall}${_textFontPartB}`,
+    ...fontHyphenationStyle,
+};
+
+const textMediumStyle = {
+    font: `${_textFontPartA}${fontSizeTextMedium}${_textFontPartB}`,
+    ...fontHyphenationStyle,
+};
+
+const textLargeStyle = {
+    font: `${_textFontPartA}${fontSizeTextLarge}${_textFontPartB}`,
+    ...fontHyphenationStyle,
+};
+
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -2351,18 +2652,18 @@ function getDynamicStyles(styles) {
 var index = createJss();
 
 var jss_esm = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  RuleList: RuleList,
-  SheetsManager: SheetsManager,
-  SheetsRegistry: SheetsRegistry,
-  create: createJss,
-  createGenerateId: createGenerateId,
-  createRule: createRule,
-  default: index,
-  getDynamicStyles: getDynamicStyles,
-  hasCSSTOMSupport: hasCSSTOMSupport,
-  sheets: sheets,
-  toCssValue: toCssValue
+    __proto__: null,
+    RuleList: RuleList,
+    SheetsManager: SheetsManager,
+    SheetsRegistry: SheetsRegistry,
+    create: createJss,
+    createGenerateId: createGenerateId,
+    createRule: createRule,
+    default: index,
+    getDynamicStyles: getDynamicStyles,
+    hasCSSTOMSupport: hasCSSTOMSupport,
+    sheets: sheets,
+    toCssValue: toCssValue
 });
 
 var at = '@global';
@@ -3202,293 +3503,275 @@ const changeColor = (hsl, lightness) => {
     });
 };
 
-const borderRadiusSmall = '4px';
-
-const borderRadiusMedium = '8px';
-
-const borderRadiusLarge = '12px';
-
-const borderWidthBase = '2px';
-
-const _dropShadowBackgroundColor = 'rgba(0, 0, 0, 0.16)';
-
-const dropShadowLowStyle = {
-    boxShadow: `0px 3px 8px ${_dropShadowBackgroundColor}`, // filter: drop-shadow() causes visual glitches in Firefox in combination with frostedGlassStyle
+const parseJSON = (prop) => {
+    if (typeof prop === 'string') {
+        try {
+            // prop is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "false"
+            return JSON.parse(prop
+                .replace(/'/g, '"') // convert single quotes to double quotes
+                .replace(/[\s"]?([a-z]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
+            );
+        }
+        catch {
+            // prop is string, e.g. "block" or "inline"
+            return prop;
+        }
+    }
+    else {
+        // prop is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
+        return prop;
+    }
 };
 
-const dropShadowHighStyle = {
-    boxShadow: `0px 8px 40px ${_dropShadowBackgroundColor}`, // filter: drop-shadow() causes visual glitches in Firefox in combination with frostedGlassStyle
+// NOTE: handpicked selection of plugins from jss-preset-default
+const jss = createJss({
+    plugins: [
+        jssGlobal(),
+        jssNested(),
+        camelCase(),
+        jssPluginSortMediaQueries({ combineMediaQueries: true }),
+    ],
+});
+const getCss = (jssStyles) => jss
+    .createStyleSheet(jssStyles, {
+    generateId: (rule) => rule.key,
+})
+    .toString();
+const supportsConstructableStylesheets = () => {
+    try {
+        return typeof new CSSStyleSheet().replaceSync === 'function';
+    }
+    catch {
+        return false;
+    }
+};
+// determine it once
+supportsConstructableStylesheets();
+const buildResponsiveStyles = (rawValue, getJssStyle) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    const value = parseJSON(rawValue);
+    return typeof value === 'object'
+        ? Object.keys(value)
+            // base styles are applied on root object, responsive styles are nested within
+            // hence it is used as the initial object within reduce function
+            .filter((key) => key !== 'base')
+            .reduce((result, breakpointValue) => ({
+            ...result,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+            [getMediaQueryMin(breakpointValue)]: getJssStyle(value[breakpointValue]),
+        }), getJssStyle(value.base))
+        : getJssStyle(value);
+};
+const isObject = (obj) => typeof obj === 'object' && !Array.isArray(obj);
+// NOTE: taken from https://stackoverflow.com/a/48218209
+const mergeDeep = (...objects) => {
+    return objects.reduce((prev, obj) => {
+        Object.keys(obj).forEach((key) => {
+            const pVal = prev[key];
+            const oVal = obj[key];
+            if (isObject(pVal) && isObject(oVal)) {
+                prev[key] = mergeDeep(pVal, oVal);
+            }
+            else {
+                prev[key] = oVal;
+            }
+        });
+        return prev;
+    }, {});
 };
 
-const fontFamily = "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif";
+// TODO: Use function from ./jss (Causes bundling issues)
+(() => {
+    try {
+        return typeof new CSSStyleSheet().replaceSync === 'function';
+    }
+    catch {
+        return false;
+    }
+})(); // determine it once
 
-const fontHyphenationStyle = {
-    overflowWrap: 'break-word',
-    hyphens: 'auto',
+const attributeMutationMap = new Map();
+hasWindow &&
+    new MutationObserver((mutations) => {
+        for (const mutation of mutations
+            // reduce array to only entries that have really a changed value
+            .filter((mutation) => mutation.oldValue !== mutation.target.getAttribute(mutation.attributeName))
+            // remove duplicates so we execute callback only once per node
+            .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)) {
+            attributeMutationMap.get(mutation.target)?.();
+        }
+    });
+
+const mediaQueries = Object.values(breakpoint).map((v) => `(min-width:${v}px)`);
+hasWindow && window.matchMedia ? mediaQueries.map(window.matchMedia) : [];
+
+Object.entries(breakpoint).reduce((result, [key, val]) => ({ ...result, [`${val}px`]: key }), {});
+
+const hasVisibleIcon = (iconName, iconSource) => {
+    return iconName !== 'none' || !!iconSource;
 };
 
-const fontLineHeight = 'calc(6px + 2.125ex)';
+/**
+ * Map of observed nodes and their corresponding callback functions.
+ */
+const observedNodesMap = new Map();
+/**
+ * Mutation observer for observing changes in the children of observed nodes.
+ */
+hasWindow &&
+    new MutationObserver((mutations) => {
+        // there may be race conditions in jsdom-polyfill tests  where the map is already empty when a mutation happens
+        if (observedNodesMap.size > 0) {
+            const observedNodes = Array.from(observedNodesMap.keys());
+            // remove duplicates so we execute callback only once per node
+            for (const mutation of mutations.filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)) {
+                for (const node of observedNodes.filter((node) => node.contains(mutation.target))) {
+                    observedNodesMap.get(node)?.();
+                }
+            }
+        }
+    });
 
-const fontSizeTextXXSmall = '.75rem';
+const getCDNBaseURL = () => "./assets";
 
-const fontSizeTextXSmall = 'clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)';
+// index.ts
+var MODEL_SIGNATURES_MANIFEST = { "718": { "src": "718.493a9e3.svg", "width": 79, "height": 26 }, "911": { "src": "911.b68f913.svg", "width": 94, "height": 25 }, "boxster": { "src": "boxster.c321738.svg", "width": 239, "height": 26 }, "cayenne": { "src": "cayenne.2556201.svg", "width": 245, "height": 35 }, "cayman": { "src": "cayman.cc89196.svg", "width": 229, "height": 35 }, "gt3-rs": { "src": "gt3-rs.03ac3ee.svg", "width": 238, "height": 25 }, "gt3": { "src": "gt3.bd3186c.svg", "width": 151, "height": 25 }, "gts": { "src": "gts.99bd35e.svg", "width": 121, "height": 25 }, "macan": { "src": "macan.a1844f4.svg", "width": 196, "height": 26 }, "panamera": { "src": "panamera.6dae809.svg", "width": 260, "height": 25 }, "taycan": { "src": "taycan.df444c6.svg", "width": 167, "height": 36 }, "turbo-s": { "src": "turbo-s.73f1e10.svg", "width": 199, "height": 25 }, "turbo": { "src": "turbo.6a4084a.svg", "width": 143, "height": 25 } };
 
-const fontSizeTextSmall = '1rem';
+const hasDocument = typeof document !== 'undefined';
 
-const fontSizeTextMedium = 'clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)';
+const hasShowPickerSupport = () => (hasDocument &&
+    'showPicker' in HTMLInputElement.prototype &&
+    CSS.supports('selector(::-webkit-calendar-picker-indicator)'));
 
-const fontSizeTextLarge = 'clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)';
-
-const fontSizeTextXLarge = 'clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)';
-
-const fontSizeText = {
-    xxSmall: fontSizeTextXXSmall,
-    xSmall: fontSizeTextXSmall,
-    small: fontSizeTextSmall,
-    medium: fontSizeTextMedium,
-    large: fontSizeTextLarge,
-    xLarge: fontSizeTextXLarge,
+const prefix = `[Porsche Design System v${"3.35.0"}]` // this part isn't covered by unit tests
+    ;
+const consoleError = (...messages) => {
+    console.error(prefix, ...messages); // eslint-disable-line no-console
 };
 
-const fontSizeHeadingSmall = fontSizeTextSmall;
+/**
+ * Applies a style only on Chromium based browsers by using a media query which is only supported there.
+ * https://browserstack.com/guide/create-browser-specific-css
+ *
+ * @param {JssStyle} style - The style to be applied when the Chromium media query is supported.
+ * @returns {JssStyle} - The Chromium media query containing the style.
+ */
+const supportsChromiumMediaQuery = (style) => ({
+    '@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm)': style,
+});
 
-const fontSizeHeadingMedium = fontSizeTextMedium;
-
-const fontSizeHeadingLarge = fontSizeTextLarge;
-
-const fontSizeHeadingXLarge = fontSizeTextXLarge;
-
-const fontSizeHeadingXXLarge = 'clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)';
-
-const fontSizeDisplaySmall = 'clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)';
-
-const fontSizeDisplayMedium = 'clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)';
-
-const fontSizeDisplayLarge = 'clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)';
-
-const fontWeightRegular = 400;
-
-const fontWeightSemiBold = 600;
-
-const fontWeightBold = 700;
-
-const fontStyleNormal = 'normal';
-
-const fontVariant = 'normal';
-
-const backdropFilter = 'blur(32px)';
-const frostedGlassStyle = {
-    WebkitBackdropFilter: backdropFilter,
-    backdropFilter,
+const isThemeAuto = (theme) => {
+    return theme === 'auto';
 };
 
-const _gradient = 'hsla(0, 0%, 0%, 0.80) 0%,' +
-    'hsla(0, 0%, 0%, 0.80) 8.1%,' +
-    'hsla(0, 0%, 0%, 0.80) 15.5%,' +
-    'hsla(0, 0%, 0%, 0.80) 22.5%,' +
-    'hsla(0, 0%, 0%, 0.78) 29%,' +
-    'hsla(0, 0%, 0%, 0.73) 35.3%,' +
-    'hsla(0, 0%, 0%, 0.67) 41.2%,' +
-    'hsla(0, 0%, 0%, 0.60) 47.1%,' +
-    'hsla(0, 0%, 0%, 0.52) 52.9%,' +
-    'hsla(0, 0%, 0%, 0.44) 58.8%,' +
-    'hsla(0, 0%, 0%, 0.33) 64.7%,' +
-    'hsla(0, 0%, 0%, 0.22) 71%,' +
-    'hsla(0, 0%, 0%, 0.12) 77.5%,' +
-    'hsla(0, 0%, 0%, 0.05) 84.5%,' +
-    'hsla(0, 0%, 0%, 0.011) 91.9%,' +
-    'hsla(0, 0%, 0%, 0)';
-
-const gradientToBottomStyle = {
-    background: `linear-gradient(to bottom, ${_gradient} 100%);`,
+const isThemeDark = (theme) => {
+    return theme === 'dark';
 };
 
-const gradientToTopStyle = {
-    background: `linear-gradient(to top, ${_gradient} 100%);`,
+const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+
+const headerSlot = 'header';
+const anchorSlot = 'anchor';
+
+const formatObjectOutput = (value) => {
+    return JSON.stringify(value)
+        .replace(/"([a-zA-Z?]+)":/g, '$1:') // remove double quotes from keys
+        .replace(/([,:{])/g, '$1 ') // add space after following: ,:{
+        .replace(/(})/g, ' $1') // add space before following: }
+        .replace(/^"(.+)"$/, '$1'); // remove wrapping double quotes
 };
-
-const breakpointBase = 0;
-
-const breakpointXS = 480;
-
-const breakpointS = 760;
-
-const breakpointM = 1000;
-
-const breakpointL = 1300;
-
-const breakpointXL = 1760;
-
-const breakpointXXL = 1920;
-
-const breakpoint = {
-    base: breakpointBase,
-    xs: breakpointXS,
-    s: breakpointS,
-    m: breakpointM,
-    l: breakpointL,
-    xl: breakpointXL,
-    xxl: breakpointXXL,
+const formatArrayOutput = (value) => {
+    return (
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+    JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
+        .replace(/'/g, '') // remove single quotes
+        // eslint-disable-next-line @typescript-eslint/quotes
+        .replace(/"/g, "'") // replace double quotes with single quotes
+        .replace(/'(undefined)'/, '$1') // remove quotes around undefined
+        .replace(/,/g, ', ') // add space after comma
+    );
 };
-
-function getMediaQueryMin(min) {
-    return `@media(min-width:${breakpoint[min]}px)`;
-}
-
-const spacingFluidMedium = 'clamp(16px, 1.25vw + 12px, 36px)';
-
-const gridGap = spacingFluidMedium;
-
-const _gridWidthMax = '2560px';
-// fluid sizing calculated by https://fluidtypography.com/#app-get-started
-const _gridSafeZoneBase = 'max(22px, 10.625vw - 12px)'; // viewport-width range = 320 - 760px / size range = 22 - 68.75px
-const _gridSafeZoneS = 'calc(5vw - 16px)'; // viewport-width range = 760 - 1920px / size range = 22(22.75) - 80(79.71)px
-const _gridSafeZoneXXL = 'min(50vw - 880px, 400px)'; // viewport-width range = 1920 - 2560px / size range = 80(79.71)px - 400(399.71)px
-
-const columnMap = {
-    narrow: 4,
-    basic: 2,
-    extended: 1,
+const printErrorMessage = ({ propName, propValue, // TODO: might be nicer if this is always a string
+propType, componentName, }) => {
+    consoleError(`Invalid property '${propName}' with value '${internalValidateProps.formatObjectOutput(propValue)}' supplied to ${componentName}, expected one of: ${propType}`);
 };
-const gridColumnWidthS = `calc((100vw - ${_gridSafeZoneS} * 2 - ${gridGap} * 15) / 16)`;
-const gridColumnWidthXXL = `calc((min(100vw, ${_gridWidthMax}) - ${_gridSafeZoneXXL} * 2 - ${gridGap} * 15) / 16)`;
-const _gridPadding = `max(0px, 50vw - ${_gridWidthMax} / 2)`;
-const _getGridOffsetS = (width) => `calc(${_gridSafeZoneS} + (${gridGap} + ${gridColumnWidthS}) * ${columnMap[width]})`;
-const _getGridOffsetXXL = (width) => `calc(${_gridPadding} + ${_gridSafeZoneXXL} + (${gridGap} + ${gridColumnWidthXXL}) * ${columnMap[width]})`;
-
-const gridFullOffset = _gridPadding;
-
-const gridExtendedOffsetBase = _gridSafeZoneBase;
-
-const gridExtendedOffsetS = _getGridOffsetS('extended');
-
-const gridExtendedOffsetXXL = _getGridOffsetXXL('extended');
-
-const gridExtendedOffset = {
-    base: gridExtendedOffsetBase,
-    s: gridExtendedOffsetS,
-    xxl: gridExtendedOffsetXXL,
+const isValueNotOfType = (propValue, propType) => {
+    return propValue !== undefined && typeof propValue !== propType;
 };
-
-const gridBasicOffsetBase = _gridSafeZoneBase;
-
-const gridBasicOffsetS = _getGridOffsetS('basic');
-
-const gridBasicOffsetXXL = _getGridOffsetXXL('basic');
-
-const gridBasicOffset = {
-    base: gridBasicOffsetBase,
-    s: gridBasicOffsetS,
-    xxl: gridBasicOffsetXXL,
+const validateValueOfType = (propName, propValue, propType) => {
+    if (internalValidateProps.isValueNotOfType(propValue, propType)) {
+        return { propName, propValue, propType };
+    }
+    return undefined;
 };
-
-const gridNarrowOffsetBase = _gridSafeZoneBase;
-
-const gridNarrowOffsetS = _getGridOffsetS('narrow');
-
-const gridNarrowOffsetXXL = _getGridOffsetXXL('narrow');
-
-const gridNarrowOffset = {
-    base: gridNarrowOffsetBase,
-    s: gridNarrowOffsetS,
-    xxl: gridNarrowOffsetXXL,
+const getBreakpointCustomizableStructure = (allowedValues) => {
+    return breakpointCustomizableTemplate.replace(/value/g, allowedValues !== 'boolean' && allowedValues !== 'number'
+        ? internalValidateProps
+            .formatArrayOutput(allowedValues)
+            .replace(/\[/g, '(') // starting inline type literal array
+            .replace(/]/g, ')[]') // ending inline type literal array
+            .replace(/,/g, ' |') // replace commas with a pipe
+        : allowedValues);
 };
-
-const motionDurationShort = '0.25s';
-
-const motionEasingBase = 'cubic-bezier(0.25,0.1,0.25,1)';
-
-const breakpoints = ['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'];
-
-function getMediaQueryMax(max) {
-    return `@media(max-width:${breakpoint[max] - 1}px)`;
-}
-
-const motionDurationLong = '0.6s';
-
-const motionDurationModerate = '0.4s';
-
-const motionDurationVeryLong = '1.2s';
-
-const motionEasingIn = 'cubic-bezier(0,0,0.2,1)';
-
-const motionEasingOut = 'cubic-bezier(0.4,0,0.5,1)';
-
-const spacingStaticXSmall = '4px';
-
-const spacingStaticSmall = '8px';
-
-const spacingStaticMedium = '16px';
-
-const spacingStaticLarge = '32px';
-
-const spacingFluidXSmall = 'clamp(4px, 0.25vw + 3px, 8px)';
-
-const spacingFluidSmall = 'clamp(8px, 0.5vw + 6px, 16px)';
-
-const spacingFluidLarge = 'clamp(32px, 2.75vw + 23px, 76px)';
-
-const _displayFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
-const _displayFontPartB = `/${fontLineHeight} ${fontFamily}`;
-
-const displayMediumStyle = {
-    font: `${_displayFontPartA}${fontSizeDisplayMedium}${_displayFontPartB}`,
+const getAriaStructure = (allowedAriaAttributes) => {
+    return (internalValidateProps
+        .formatObjectOutput(allowedAriaAttributes.reduce((prev, key) => ({
+        ...prev,
+        [key]: 'value',
+    }), {}))
+        .replace(/":/g, '"?:') // add optional modifier on keys before colon
+        // eslint-disable-next-line @typescript-eslint/quotes
+        .replace(/"/g, "'") // replace double quotes with single quotes
+    );
 };
-
-const displayLargeStyle = {
-    font: `${_displayFontPartA}${fontSizeDisplayLarge}${_displayFontPartB}`,
+const getShapeStructure = (shapeStructure) => {
+    return internalValidateProps
+        .formatObjectOutput(Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name }), {}))
+        .replace(/"/g, ''); // remove double quotes
 };
-
-const _headingFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightSemiBold} `;
-const _headingFontPartB = `/${fontLineHeight} ${fontFamily}`;
-
-const headingSmallStyle = {
-    font: `${_headingFontPartA}${fontSizeHeadingSmall}${_headingFontPartB}`,
+const isBreakpointCustomizableValueInvalid = (value, allowedValues) => {
+    return allowedValues === 'boolean' || allowedValues === 'number'
+        ? internalValidateProps.isValueNotOfType(value, allowedValues)
+        : !allowedValues.includes(value);
 };
-
-const headingMediumStyle = {
-    font: `${_headingFontPartA}${fontSizeHeadingMedium}${_headingFontPartB}`,
+/**
+ * Validates an array using a provided validator function and returns the first encountered validation error.
+ *
+ * @param {string} propName - The name of the property being validated.
+ * @param {any} arr - The input to be validated.
+ * @param {ValidatorFunction} validator - The validator function that checks each array item.
+ * @returns {ValidationError | undefined} The first encountered validation error object, or undefined if the array is valid.
+ */
+const isValidArray = (propName, arr, validator) => {
+    const validationError = Array.isArray(arr)
+        ? validator(propName, arr.find((item) => validator(propName, item)))
+        : {
+            propName,
+            propValue: arr,
+            propType: validator(propName, null).propType, // Get propType by passing in null which will always result in error
+        };
+    if (validationError) {
+        return { ...validationError, propType: `${validationError.propType}[]` };
+    }
+    return undefined;
 };
-
-const headingLargeStyle = {
-    font: `${_headingFontPartA}${fontSizeHeadingLarge}${_headingFontPartB}`,
+const internalValidateProps = {
+    isValueNotOfType,
+    formatArrayOutput,
+    formatObjectOutput,
+    printErrorMessage,
+    validateValueOfType,
+    isValidArray,
+    isBreakpointCustomizableValueInvalid,
+    getBreakpointCustomizableStructure,
+    getAriaStructure,
+    getShapeStructure,
 };
+const breakpointCustomizableTemplate = `value, ${internalValidateProps
+    .formatObjectOutput(breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {}))
+    .replace(/"/g, '')}`;
 
-const headingXLargeStyle = {
-    font: `${_headingFontPartA}${fontSizeHeadingXLarge}${_headingFontPartB}`,
-};
-
-const headingXXLargeStyle = {
-    font: `${_headingFontPartA}${fontSizeHeadingXXLarge}${_headingFontPartB}`,
-};
-
-const _textFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
-const _textFontPartB = `/${fontLineHeight} ${fontFamily}`;
-
-const textXXSmallStyle = {
-    font: `${_textFontPartA}${fontSizeTextXXSmall}${_textFontPartB}`,
-    ...fontHyphenationStyle,
-};
-
-const textXSmallStyle = {
-    font: `${_textFontPartA}${fontSizeTextXSmall}${_textFontPartB}`,
-    ...fontHyphenationStyle,
-};
-
-const textSmallStyle = {
-    font: `${_textFontPartA}${fontSizeTextSmall}${_textFontPartB}`,
-    ...fontHyphenationStyle,
-};
-
-const textMediumStyle = {
-    font: `${_textFontPartA}${fontSizeTextMedium}${_textFontPartB}`,
-    ...fontHyphenationStyle,
-};
-
-const textLargeStyle = {
-    font: `${_textFontPartA}${fontSizeTextLarge}${_textFontPartB}`,
-    ...fontHyphenationStyle,
-};
+const OPTION_LIST_SAFE_ZONE = 6;
 
 /* Auto Generated Start */
 const themeLight = {
@@ -3752,182 +4035,11 @@ const forcedColorsMediaQuery = (style) => {
     return { '@media (forced-colors: active)': style };
 };
 
-const parseJSON = (prop) => {
-    if (typeof prop === 'string') {
-        try {
-            // prop is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "false"
-            return JSON.parse(prop
-                .replace(/'/g, '"') // convert single quotes to double quotes
-                .replace(/[\s"]?([a-z]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
-            );
-        }
-        catch {
-            // prop is string, e.g. "block" or "inline"
-            return prop;
-        }
-    }
-    else {
-        // prop is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
-        return prop;
-    }
-};
-
-// NOTE: handpicked selection of plugins from jss-preset-default
-const jss = createJss({
-    plugins: [
-        jssGlobal(),
-        jssNested(),
-        camelCase(),
-        jssPluginSortMediaQueries({ combineMediaQueries: true }),
-    ],
-});
-const getCss = (jssStyles) => jss
-    .createStyleSheet(jssStyles, {
-    generateId: (rule) => rule.key,
-})
-    .toString();
-const supportsConstructableStylesheets = () => {
-    try {
-        return typeof new CSSStyleSheet().replaceSync === 'function';
-    }
-    catch {
-        return false;
-    }
-};
-// determine it once
-supportsConstructableStylesheets();
-const buildResponsiveStyles = (rawValue, getJssStyle) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const value = parseJSON(rawValue);
-    return typeof value === 'object'
-        ? Object.keys(value)
-            // base styles are applied on root object, responsive styles are nested within
-            // hence it is used as the initial object within reduce function
-            .filter((key) => key !== 'base')
-            .reduce((result, breakpointValue) => ({
-            ...result,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-            [getMediaQueryMin(breakpointValue)]: getJssStyle(value[breakpointValue]),
-        }), getJssStyle(value.base))
-        : getJssStyle(value);
-};
-const isObject = (obj) => typeof obj === 'object' && !Array.isArray(obj);
-// NOTE: taken from https://stackoverflow.com/a/48218209
-const mergeDeep = (...objects) => {
-    return objects.reduce((prev, obj) => {
-        Object.keys(obj).forEach((key) => {
-            const pVal = prev[key];
-            const oVal = obj[key];
-            if (isObject(pVal) && isObject(oVal)) {
-                prev[key] = mergeDeep(pVal, oVal);
-            }
-            else {
-                prev[key] = oVal;
-            }
-        });
-        return prev;
-    }, {});
-};
-
-// TODO: Use function from ./jss (Causes bundling issues)
-(() => {
-    try {
-        return typeof new CSSStyleSheet().replaceSync === 'function';
-    }
-    catch {
-        return false;
-    }
-})(); // determine it once
-
-const attributeMutationMap = new Map();
-hasWindow &&
-    new MutationObserver((mutations) => {
-        for (const mutation of mutations
-            // reduce array to only entries that have really a changed value
-            .filter((mutation) => mutation.oldValue !== mutation.target.getAttribute(mutation.attributeName))
-            // remove duplicates so we execute callback only once per node
-            .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)) {
-            attributeMutationMap.get(mutation.target)?.();
-        }
-    });
-
-const mediaQueries = Object.values(breakpoint).map((v) => `(min-width:${v}px)`);
-hasWindow && window.matchMedia ? mediaQueries.map(window.matchMedia) : [];
-
-Object.entries(breakpoint).reduce((result, [key, val]) => ({ ...result, [`${val}px`]: key }), {});
-
-const hasVisibleIcon = (iconName, iconSource) => {
-    return iconName !== 'none' || !!iconSource;
-};
-
+// CSS Variable defined in fontHyphenationStyle
 /**
- * Map of observed nodes and their corresponding callback functions.
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
  */
-const observedNodesMap = new Map();
-/**
- * Mutation observer for observing changes in the children of observed nodes.
- */
-hasWindow &&
-    new MutationObserver((mutations) => {
-        // there may be race conditions in jsdom-polyfill tests  where the map is already empty when a mutation happens
-        if (observedNodesMap.size > 0) {
-            const observedNodes = Array.from(observedNodesMap.keys());
-            // remove duplicates so we execute callback only once per node
-            for (const mutation of mutations.filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)) {
-                for (const node of observedNodes.filter((node) => node.contains(mutation.target))) {
-                    observedNodesMap.get(node)?.();
-                }
-            }
-        }
-    });
-
-const getCDNBaseURL = () => "./assets";
-
-// index.ts
-var MODEL_SIGNATURES_MANIFEST = { "718": { "src": "718.493a9e3.svg", "width": 79, "height": 26 }, "911": { "src": "911.b68f913.svg", "width": 94, "height": 25 }, "boxster": { "src": "boxster.c321738.svg", "width": 239, "height": 26 }, "cayenne": { "src": "cayenne.2556201.svg", "width": 245, "height": 35 }, "cayman": { "src": "cayman.cc89196.svg", "width": 229, "height": 35 }, "macan": { "src": "macan.a1844f4.svg", "width": 196, "height": 26 }, "panamera": { "src": "panamera.6dae809.svg", "width": 260, "height": 25 }, "taycan": { "src": "taycan.df444c6.svg", "width": 167, "height": 36 }, "turbo-s": { "src": "turbo-s.73f1e10.svg", "width": 199, "height": 25 }, "turbo": { "src": "turbo.6a4084a.svg", "width": 143, "height": 25 } };
-
-const hasDocument = typeof document !== 'undefined';
-
-const hasShowPickerSupport = () => (hasDocument &&
-    'showPicker' in HTMLInputElement.prototype &&
-    CSS.supports('selector(::-webkit-calendar-picker-indicator)'));
-
-/**
- * Applies a style only on Chromium based browsers by using a media query which is only supported there.
- * https://browserstack.com/guide/create-browser-specific-css
- *
- * @param {JssStyle} style - The style to be applied when the Chromium media query is supported.
- * @returns {JssStyle} - The Chromium media query containing the style.
- */
-const supportsChromiumMediaQuery = (style) => ({
-    '@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm)': style,
-});
-
-const isThemeAuto = (theme) => {
-    return theme === 'auto';
-};
-
-const isThemeDark = (theme) => {
-    return theme === 'dark';
-};
-
-const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-
-const headerSlot = 'header';
-const anchorSlot = 'anchor';
-
-const formatObjectOutput = (value) => {
-    return JSON.stringify(value)
-        .replace(/"([a-zA-Z?]+)":/g, '$1:') // remove double quotes from keys
-        .replace(/([,:{])/g, '$1 ') // add space after following: ,:{
-        .replace(/(})/g, ' $1') // add space before following: }
-        .replace(/^"(.+)"$/, '$1'); // remove wrapping double quotes
-};
-`value, ${formatObjectOutput(breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})).replace(/"/g, '')}`;
-
-const OPTION_LIST_SAFE_ZONE = 6;
-
-const getComponentCss$1l = (size, compact, open, theme, sticky) => {
+const getComponentCss$1q = (size, compact, open, theme, sticky) => {
     const { primaryColor, hoverColor, contrastLowColor, backgroundColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, hoverColor: hoverColorDark, contrastLowColor: contrastLowColorDark, backgroundColor: backgroundColorDark, } = getThemedColors('dark');
     const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
@@ -4073,6 +4185,66 @@ const getComponentCss$1l = (size, compact, open, theme, sticky) => {
     });
 };
 
+const getInlineSVGBackgroundImage = (path) => {
+    return `url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${path}</svg>')`;
+};
+
+// SVG path data extracted from packages/assets/projects/icons/dist/icons/ai-spark-filled.svg (optimized)
+const AI_TAG_ICON_PATH = '<path d="M10.85 6.39c.54 2.84.8 4.26 1.65 5.1s2.27 1.12 5.11 1.66c.52.18.52.52 0 .7-2.82.53-4.24.8-5.09 1.63-.86.85-1.13 2.27-1.67 5.13-.18.52-.52.52-.7 0-.54-2.84-.8-4.26-1.65-5.1s-2.27-1.12-5.11-1.66c-.52-.18-.52-.52 0-.7 2.84-.54 4.26-.8 5.1-1.65s1.12-2.27 1.66-5.11c.18-.52.52-.52.7 0m6.81-3.2c.25 1.32.38 1.98.77 2.38s1.06.52 2.39.77c.24.08.24.24 0 .32-1.3.25-1.97.38-2.36.75-.41.4-.54 1.06-.8 2.4-.08.25-.24.25-.32 0-.24-1.25-.37-1.91-.72-2.31-.39-.45-1.05-.57-2.44-.84-.24-.08-.24-.24 0-.32 1.33-.25 1.99-.38 2.38-.77s.53-1.06.78-2.39c.08-.24.24-.24.32 0"/>';
+
+const getComponentCss$1p = (theme) => {
+    const { backgroundFrostedColor, contrastHighColor } = getThemedColors(theme);
+    const { backgroundFrostedColor: backgroundFrostedColorDark, contrastHighColor: contrastHighColorDark } = getThemedColors('dark');
+    const iconMask = `${getInlineSVGBackgroundImage(AI_TAG_ICON_PATH)} center/contain no-repeat`;
+    return getCss({
+        '@global': {
+            ':host': {
+                display: 'inline-flex',
+                verticalAlign: 'top',
+                whiteSpace: 'nowrap',
+                ...addImportantToEachRule({
+                    ...colorSchemeStyles,
+                    ...hostHiddenStyles,
+                }),
+            },
+            abbr: {
+                all: 'unset',
+            },
+            div: {
+                display: 'flex',
+                alignItems: 'center',
+                gap: '2px',
+                padding: '1px 6px 1px 4px',
+                borderRadius: borderRadiusSmall,
+                font: textXXSmallStyle.font,
+                color: contrastHighColor,
+                background: backgroundFrostedColor,
+                ...frostedGlassStyle,
+                ...(isHighContrastMode && {
+                    outline: '1px solid transparent',
+                }),
+                transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                    color: contrastHighColorDark,
+                    background: backgroundFrostedColorDark,
+                }),
+                '&::before': {
+                    content: '""',
+                    width: '1rem',
+                    height: '1rem',
+                    backgroundColor: contrastHighColor,
+                    mask: iconMask,
+                    WebkitMask: iconMask,
+                    ...prefersColorSchemeDarkMediaQuery(theme, {
+                        backgroundColor: contrastHighColorDark,
+                    }),
+                    ...(isHighContrastMode && { backgroundColor: 'CanvasText' }),
+                },
+            },
+        },
+    });
+};
+
 const TOAST_Z_INDEX = 999999;
 const BANNER_Z_INDEX = 99;
 
@@ -4099,7 +4271,7 @@ const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
 const cssVariableZIndex = '--p-internal-banner-z-index';
 const topBottomFallback = '56px';
-const getComponentCss$1k = (isOpen) => {
+const getComponentCss$1o = (isOpen) => {
     return getCss({
         '@global': {
             ':host': {
@@ -4171,7 +4343,7 @@ const getGroupDirectionJssStyles = (direction) => {
     return groupDirectionJssStyles[direction];
 };
 
-const getComponentCss$1j = (direction) => {
+const getComponentCss$1n = (direction) => {
     return getCss({
         '@global': {
             ':host': {
@@ -4324,7 +4496,11 @@ const getFunctionalComponentLoadingMessageStyles = () => {
     };
 };
 
-const getComponentCss$1i = (icon, iconSource, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, underline, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$1m = (icon, iconSource, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, underline, theme) => {
     const hasIcon = hasVisibleIcon(icon, iconSource);
     return getCss(mergeDeep(getLinkButtonPureStyles(icon, iconSource, active, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, underline, false, theme), {
         root: {
@@ -4362,12 +4538,21 @@ const getFontWeight = (weight) => {
     return fontWeightMap[weight];
 };
 
-const getComponentCss$1h = (isDisabledOrLoading, aspectRatio, size, weight, background, align, compact, hasGradient, isDisabled) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$1l = (isDisabledOrLoading, aspectRatio, size, weight, background, align, compact, hasGradient, hasFooterSlot, isDisabled) => {
     const isTopAligned = align === 'top';
     return getCss({
         '@global': {
             ':host': {
-                display: 'block', // `display: flex` would be more ideal, but doesn't work in Safari in all cases
+                display: 'flex',
+                alignItems: 'stretch',
+                // Safari workaround to scale the tile properly
+                '@supports (-webkit-hyphens: auto)': {
+                    alignItems: 'baseline',
+                },
                 hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
                 ...addImportantToEachRule({
                     ...colorSchemeStyles,
@@ -4384,6 +4569,10 @@ const getComponentCss$1h = (isDisabledOrLoading, aspectRatio, size, weight, back
                 },
                 '&[name="header"]': {
                     gridArea: `${isTopAligned ? 4 : 2}/2`,
+                    zIndex: 3,
+                },
+                '&[name="footer"]': {
+                    gridRow: 2,
                     zIndex: 3,
                 },
             },
@@ -4421,7 +4610,10 @@ const getComponentCss$1h = (isDisabledOrLoading, aspectRatio, size, weight, back
             })),
             cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
             width: '100%', // necessary in case tile content overflows in grid or flex context
-            height: '100%', // necessary in case tile content overflows in grid or flex context
+            // Safari workaround to scale the tile properly
+            '@supports (-webkit-hyphens: auto)': {
+                height: '100%',
+            },
             display: 'grid',
             gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
             ...(hasGradient &&
@@ -4465,21 +4657,23 @@ const getComponentCss$1h = (isDisabledOrLoading, aspectRatio, size, weight, back
         },
         footer: {
             gridArea: `${isTopAligned ? 2 : 4}/2`,
-            display: 'flex',
-            gap: spacingStaticMedium,
-            justifyContent: 'space-between',
             ...buildResponsiveStyles(compact, (compactValue) => compactValue
                 ? {
-                    alignItems: 'center',
-                    flexDirection: 'row',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto',
+                    columnGap: spacingStaticMedium,
                 }
                 : {
-                    alignItems: 'flex-start',
+                    display: 'flex',
                     flexDirection: 'column',
+                    alignItems: 'start',
                 }),
         },
         'link-or-button-pure': {
             zIndex: 5,
+            gridColumn: 2,
+            gridRow: hasFooterSlot && !isTopAligned ? 2 : 1,
+            alignSelf: 'center',
             ...buildResponsiveStyles(compact, (compactValue) => ({
                 display: compactValue ? 'inline-block' : 'none',
             })),
@@ -4487,6 +4681,7 @@ const getComponentCss$1h = (isDisabledOrLoading, aspectRatio, size, weight, back
         'link-or-button': {
             minHeight: '54px', // prevent content shift
             zIndex: 5,
+            marginTop: spacingStaticMedium,
             ...buildResponsiveStyles(compact, (compactValue) => ({
                 display: compactValue ? 'none' : 'inline-block',
             })),
@@ -4531,7 +4726,8 @@ const getLinkButtonStyles = (icon, iconSource, variant, hideLabel, isDisabledOrL
     const { focusColor } = getThemedColors(theme);
     const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
     const scalingVar = `var(${cssVariableInternalScaling}, var(--p-internal-scaling-factor))`;
-    const borderCompensation = variant === 'ghost' ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
+    const borderCompensation = variant === 'ghost' && !isHighContrastMode ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
+    const borderStyle = `${borderWidthBase} solid ${borderColor}`;
     const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} ${borderCompensation})`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
     const paddingInline = `max(calc(${scalingVar} * 1.625 * ${SCALING_BASE_VALUE} ${borderCompensation}), ${variant === 'ghost' ? '6px' : '4px'})`; // 1.625 * SCALING_BASE_VALUE corresponds to 26px
     const gap = `clamp(2px, calc(${scalingVar} * 0.5 * ${SCALING_BASE_VALUE}), 16px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 8px
@@ -4563,8 +4759,11 @@ const getLinkButtonStyles = (icon, iconSource, variant, hideLabel, isDisabledOrL
             textDecoration: 'none',
             ...textSmallStyle,
             ...(variant === 'ghost'
-                ? { ...frostedGlassStyle, border: 'none' } // We can't use a border in the ghost variant due to rendering issues with backdrop-filter in safari
-                : { border: `${borderWidthBase} solid ${borderColor}` }),
+                ? {
+                    ...frostedGlassStyle,
+                    border: isHighContrastMode ? borderStyle : 'none',
+                } // We can't use a border in the ghost variant due to rendering issues with backdrop-filter in safari
+                : { border: borderStyle }),
             borderRadius: borderRadiusSmall,
             transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
             backgroundColor,
@@ -4632,7 +4831,11 @@ const getDisabledColors = (variant, loading, theme) => {
     };
     return colors[variant === 'tertiary' ? 'secondary' : variant];
 };
-const getComponentCss$1g = (icon, iconSource, variant, hideLabel, disabled, loading, compact, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$1k = (icon, iconSource, variant, hideLabel, disabled, loading, compact, theme) => {
     const disabledOrLoading = isDisabledOrLoading(disabled, loading);
     const { textColor, borderColor, backgroundColor } = getDisabledColors(variant, loading, theme);
     const { textColor: textColorDark, borderColor: borderColorDark, backgroundColor: backgroundColorDark, } = getDisabledColors(variant, loading, 'dark');
@@ -4708,7 +4911,7 @@ const mediaQueryS$1 = getMediaQueryMin('s');
 const mediaQueryM = getMediaQueryMin('m');
 // others
 const spacingBase = gridGap.replace('36px', '24px');
-const getComponentCss$1f = (theme, isSidebarStartOpen, isSidebarEndOpen) => {
+const getComponentCss$1j = (theme, isSidebarStartOpen, isSidebarEndOpen) => {
     const { primaryColor, backgroundColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark, contrastLowColor: contrastLowColorDark, } = getThemedColors('dark');
     return getCss({
@@ -5034,6 +5237,18 @@ const getComponentCss$1f = (theme, isSidebarStartOpen, isSidebarEndOpen) => {
 };
 
 /**
+ * @css-variable {"name": "--p-carousel-px", "description": "Defines the logical inline start and end padding of the carousel, the extra space is used to show parts of the next/previous slide. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
+ */
+const cssVarPaddingInline = '--p-carousel-px';
+/**
+ * @css-variable {"name": "--p-carousel-ps", "description": "Defines the logical inline start padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with `--p-carousel-px` or `--p-carousel-pe`. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
+ */
+const cssVarPaddingInlineStart = '--p-carousel-ps';
+/**
+ * @css-variable {"name": "--p-carousel-pe", "description": "Defines the logical inline end padding of the carousel, the extra space is used to show parts of the next/previous slide. Needs to be used in combination with `--p-carousel-px` or `--p-carousel-ps`. When used then the prop `width` has no effect anymore.", "defaultValue": ""}
+ */
+const cssVarPaddingInlineEnd = '--p-carousel-pe';
+/**
  * @css-variable {"name": "--p-carousel-prev-next-filter", "description": "CSS Filter applied to the navigation (prev/next buttons)", "defaultValue": "none"}
  */
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
@@ -5060,6 +5275,12 @@ const mediaQueryPointerCoarse = '@media (pointer: coarse)';
 const spacingMap = {
     basic: gridBasicOffset,
     extended: gridExtendedOffset,
+    wide: gridWideOffset,
+    full: {
+        base: gridFullOffset,
+        s: gridFullOffset,
+        xxl: gridFullOffset
+    },
 };
 const backfaceVisibilityJssStyle = {
     backfaceVisibility: 'hidden',
@@ -5087,7 +5308,11 @@ const getGradient = (theme, gradientColorTheme) => {
         `rgba(${gradientColor},0.3) 68%,` +
         `rgba(${gradientColor},0)`);
 };
-const getComponentCss$1e = (gradientColor, hasHeading, hasDescription, hasControlsSlot, headingSize, width, hasPagination, isInfinitePagination, alignHeader, theme, hasNavigation, alignControls) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$1i = (gradientColor, hasHeading, hasDescription, hasControlsSlot, headingSize, width, hasPagination, isInfinitePagination, alignHeader, theme, hasNavigation, alignControls) => {
     const { primaryColor, contrastMediumColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
     const { canvasTextColor } = getHighContrastColors();
@@ -5171,14 +5396,17 @@ const getComponentCss$1e = (gradientColor, hasHeading, hasDescription, hasContro
         },
         header: {
             display: 'grid',
-            padding: `0 ${spacingMap[width].base}`,
+            paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
+            paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
             [mediaQueryS]: {
-                gridTemplateColumns: 'minmax(0px, 1fr) auto',
-                padding: `0 ${spacingMap[width].s}`,
+                gridTemplateColumns: 'minmax(0px,1fr) auto',
+                paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
+                paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
                 ...(hasNavigation && { columnGap: spacingStaticMedium }),
             },
             [mediaQueryXXL]: {
-                padding: `0 ${spacingMap[width].xxl}`,
+                paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
+                paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
             },
         },
         nav: {
@@ -5210,12 +5438,16 @@ const getComponentCss$1e = (gradientColor, hasHeading, hasDescription, hasContro
                 position: 'relative',
                 // !important is necessary to override inline styles set by splide library
                 ...addImportantToEachRule({
-                    padding: `0 ${spacingMap[width].base}`,
+                    paddingBlock: '0px',
+                    paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
+                    paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
                     [mediaQueryS]: {
-                        padding: `0 ${spacingMap[width].s}`,
+                        paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
+                        paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
                     },
                     [mediaQueryXXL]: {
-                        padding: `0 ${spacingMap[width].xxl}`,
+                        paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
+                        paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
                     },
                 }),
                 '&--draggable': {
@@ -5445,13 +5677,13 @@ const getSlottedCheckboxRadioButtonStyles = (state, isDisabled, isLoading, theme
             ...(!disabledOrLoading &&
                 !isHighContrastMode &&
                 hoverMediaQuery({
-                    '&(input:hover),label:hover~.wrapper &(input)': {
+                    '&(input:hover),.label-wrapper:hover~.wrapper &(input)': {
                         borderColor: uncheckedHoverColor,
                         ...prefersColorSchemeDarkMediaQuery(theme, {
                             borderColor: uncheckedHoverColorDark,
                         }),
                     },
-                    '&(input:checked:hover),label:hover~.wrapper &(input:checked)': {
+                    '&(input:checked:hover),.label-wrapper:hover~.wrapper &(input:checked)': {
                         borderColor: checkedHoverColor,
                         backgroundColor: checkedHoverColor,
                         ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -5459,7 +5691,7 @@ const getSlottedCheckboxRadioButtonStyles = (state, isDisabled, isLoading, theme
                             backgroundColor: checkedHoverColorDark,
                         }),
                     },
-                    'label:hover~.wrapper &(input)': supportsChromiumMediaQuery({
+                    '.label-wrapper:hover~.wrapper &(input)': supportsChromiumMediaQuery({
                         transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
                     }),
                 })),
@@ -5472,10 +5704,6 @@ const escapeHashCharacter = (colorString) => {
     return colorString.replace('#', '%23');
 };
 
-const getInlineSVGBackgroundImage = (path) => {
-    return `url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">${path}</svg>')`;
-};
-
 const getFunctionalComponentRequiredStyles = () => {
     return {
         required: {
@@ -5484,26 +5712,44 @@ const getFunctionalComponentRequiredStyles = () => {
     };
 };
 
-const getFunctionalComponentLabelStyles = (isDisabledOrLoading, hideLabel, theme, additionalDefaultJssStyle, additionalIsShownJssStyle) => {
+const getFunctionalComponentLabelAfterStyles = (isDisabledOrLoading, additionalIsDisabledJssStyle) => {
+    return {
+        'slot[name="label-after"]': {
+            display: 'inline-block',
+            verticalAlign: 'top',
+            ...(isDisabledOrLoading && {
+                pointerEvents: 'none',
+                opacity: '0.4', // workaround: must be opacity because color tokens would not affect e.g. slotted `popover`
+                ...additionalIsDisabledJssStyle,
+            }),
+        },
+    };
+};
+const getFunctionalComponentLabelStyles = (isDisabledOrLoading, hideLabel, theme, additionalDefaultJssStyle, additionalLabelWrapperJssStyle, additionalIsShownJssStyle) => {
     const { primaryColor, disabledColor, contrastHighColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, disabledColor: disabledColorDark, contrastHighColor: contrastHighColorDark, } = getThemedColors('dark');
     return {
+        'label-wrapper': {
+            ...buildResponsiveStyles(hideLabel, (isHidden) => ({
+                ...(!isHidden && { minWidth: 'fit-content' }), // ensures label contents don't shrink to zero in grid containers
+                ...getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle),
+            })),
+            ...additionalLabelWrapperJssStyle,
+        },
         label: {
             ...textSmallStyle,
             cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-            justifySelf: 'flex-start', // ensures label is not getting stretched by flex or grid context of its parent
             color: isDisabledOrLoading ? disabledColor : primaryColor,
             transition: getTransition('color'), // for smooth transitions between e.g. disabled state
-            ...buildResponsiveStyles(hideLabel, (isHidden) => getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle)),
             ...prefersColorSchemeDarkMediaQuery(theme, {
                 color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
             }),
+            display: 'inline',
             '&:empty': {
                 display: 'none', // prevents outer spacing caused by parents grid gap, in case no label value is defined (although it has to be set to be a11y compliant)
             },
-            '&+&': {
+            '&:is(span)': {
                 cursor: 'unset',
-                marginTop: `-${spacingStaticXSmall}`,
                 fontSize: fontSizeTextXSmall,
                 ...(!isDisabledOrLoading && {
                     color: contrastHighColor,
@@ -5511,6 +5757,8 @@ const getFunctionalComponentLabelStyles = (isDisabledOrLoading, hideLabel, theme
                         color: contrastHighColorDark,
                     }),
                 }),
+                ...buildResponsiveStyles(hideLabel, (isHidden) => getHiddenTextJssStyle(isHidden, { marginTop: `-${spacingStaticXSmall}` })),
+                marginTop: `-${spacingStaticXSmall}`,
             },
             ...additionalDefaultJssStyle,
         },
@@ -5539,13 +5787,17 @@ const getFunctionalComponentStateMessageStyles = (theme, state, additionalDefaul
     };
 };
 
-const getCheckedSVGBackgroundImage$2 = (fill) => {
+const getCheckedSVGBackgroundImage$3 = (fill) => {
     return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`);
 };
 const getIndeterminateSVGBackgroundImage$1 = (fill) => {
     return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
-const getComponentCss$1d = (hideLabel, state, isDisabled, isLoading, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$1h = (hideLabel, state, isDisabled, isLoading, theme) => {
     const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
     const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
     const indeterminateIconColor = escapeHashCharacter(getThemedColors(theme).primaryColor);
@@ -5570,16 +5822,16 @@ const getComponentCss$1d = (hideLabel, state, isDisabled, isLoading, theme) => {
                     // TODO: is it somehow useful possible to make following styles configurable by parameter?
                     ...(!isLoading && {
                         '&(input:checked)': {
-                            backgroundImage: getCheckedSVGBackgroundImage$2(checkedIconColor),
+                            backgroundImage: getCheckedSVGBackgroundImage$3(checkedIconColor),
                             ...prefersColorSchemeDarkMediaQuery(theme, {
-                                backgroundImage: getCheckedSVGBackgroundImage$2(checkedIconColorDark),
+                                backgroundImage: getCheckedSVGBackgroundImage$3(checkedIconColorDark),
                             }),
                             // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
                             ...(isHighContrastMode &&
                                 getSchemedHighContrastMediaQuery({
-                                    backgroundImage: getCheckedSVGBackgroundImage$2('white'),
+                                    backgroundImage: getCheckedSVGBackgroundImage$3('white'),
                                 }, {
-                                    backgroundImage: getCheckedSVGBackgroundImage$2('black'),
+                                    backgroundImage: getCheckedSVGBackgroundImage$3('black'),
                                 })),
                         },
                         '&(input:indeterminate)': {
@@ -5628,7 +5880,7 @@ const getComponentCss$1d = (hideLabel, state, isDisabled, isLoading, theme) => {
         // .label / .required
         ...getFunctionalComponentLabelStyles(isDisabled || isLoading, hideLabel, theme, {
             gridArea: '1/2',
-        }, {
+        }, null, {
             paddingTop: '2px', // compensate vertical alignment
             paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and input
         }),
@@ -5702,7 +5954,7 @@ const getCheckboxBaseStyles = (theme, isDisabled, isLoading, state, compact) => 
     };
 };
 
-const getCheckedSVGBackgroundImage$1 = (fill) => {
+const getCheckedSVGBackgroundImage$2 = (fill) => {
     return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`);
 };
 const getCheckboxCheckedBaseStyles = (theme, isDisabled, isLoading, state) => {
@@ -5728,18 +5980,18 @@ const getCheckboxCheckedBaseStyles = (theme, isDisabled, isLoading, state) => {
     return {
         borderColor: checkedColor,
         backgroundColor: checkedColor,
-        backgroundImage: getCheckedSVGBackgroundImage$1(checkedIconColor),
+        backgroundImage: getCheckedSVGBackgroundImage$2(checkedIconColor),
         ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundImage: getCheckedSVGBackgroundImage$1(checkedIconColorDark),
+            backgroundImage: getCheckedSVGBackgroundImage$2(checkedIconColorDark),
             borderColor: checkedColorDark,
             backgroundColor: checkedColorDark,
         }),
         // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
         ...(isHighContrastMode &&
             getSchemedHighContrastMediaQuery({
-                backgroundImage: getCheckedSVGBackgroundImage$1('white'),
+                backgroundImage: getCheckedSVGBackgroundImage$2('white'),
             }, {
-                backgroundImage: getCheckedSVGBackgroundImage$1('black'),
+                backgroundImage: getCheckedSVGBackgroundImage$2('black'),
             })),
     };
 };
@@ -5747,7 +5999,11 @@ const getCheckboxCheckedBaseStyles = (theme, isDisabled, isLoading, state) => {
 const getIndeterminateSVGBackgroundImage = (fill) => {
     return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
-const getComponentCss$1c = (hideLabel, state, isDisabled, isLoading, compact, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$1g = (hideLabel, state, isDisabled, isLoading, compact, theme) => {
     const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark, contrastHighColor: contrastHighColorDark, disabledColor: disabledColorDark, focusColor: focusColorDark, } = getThemedColors('dark');
     const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
@@ -5793,6 +6049,7 @@ const getComponentCss$1c = (hideLabel, state, isDisabled, isLoading, compact, th
                     ...hostHiddenStyles,
                 }),
             },
+            ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
             ...preventFoucOfNestedElementsStyles,
             input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
             ...(isLoading
@@ -5830,13 +6087,13 @@ const getComponentCss$1c = (hideLabel, state, isDisabled, isLoading, compact, th
             ...(!disabledOrLoading &&
                 !isHighContrastMode &&
                 hoverMediaQuery({
-                    'input:hover,label:hover~.wrapper input': {
+                    'input:hover,.wrapper:has(.label-wrapper:hover) input': {
                         borderColor: uncheckedHoverColor,
                         ...prefersColorSchemeDarkMediaQuery(theme, {
                             borderColor: uncheckedHoverColorDark,
                         }),
                     },
-                    'input:checked:hover,label:hover~.wrapper input:checked': {
+                    'input:checked:hover,.wrapper:has(.label-wrapper:hover) input:checked': {
                         borderColor: checkedHoverColor,
                         backgroundColor: checkedHoverColor,
                         ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -5844,7 +6101,7 @@ const getComponentCss$1c = (hideLabel, state, isDisabled, isLoading, compact, th
                             backgroundColor: checkedHoverColorDark,
                         }),
                     },
-                    'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
+                    'input:indeterminate:hover,.wrapper:has(.label-wrapper:hover) input:indeterminate': {
                         background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
                         borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
                         backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
@@ -5854,7 +6111,7 @@ const getComponentCss$1c = (hideLabel, state, isDisabled, isLoading, compact, th
                             backgroundColor: 'transparent',
                         }),
                     },
-                    'label:hover~.wrapper input': supportsChromiumMediaQuery({
+                    '.label-wrapper:hover~.wrapper input': supportsChromiumMediaQuery({
                         transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
                     }),
                 })),
@@ -5876,21 +6133,24 @@ const getComponentCss$1c = (hideLabel, state, isDisabled, isLoading, compact, th
         },
         root: {
             display: 'grid',
-            gridTemplateColumns: 'auto minmax(0, 1fr)',
             rowGap: spacingStaticXSmall,
             ...(disabledOrLoading && {
                 cursor: 'not-allowed',
             }),
         },
         wrapper: {
+            display: 'grid',
+            gridTemplateColumns: 'auto minmax(0, 1fr)',
+        },
+        'input-wrapper': {
             ...textSmallStyle,
             minWidth: minimumTouchTargetSize,
             minHeight: minimumTouchTargetSize,
             justifyContent: 'center',
             alignItems: 'center',
+            alignSelf: 'flex-start', // in case label becomes multiline
             display: 'grid',
             gridArea: '1/1',
-            alignSelf: 'flex-start', // in case label becomes multiline
             height,
         },
         ...(isLoading && {
@@ -5906,16 +6166,13 @@ const getComponentCss$1c = (hideLabel, state, isDisabled, isLoading, compact, th
         }),
         // .label / .required
         ...getFunctionalComponentLabelStyles(isDisabled || isLoading, hideLabel, theme, {
-            gridArea: '1/2',
             ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
-        }, {
+        }, null, {
             paddingTop,
             paddingInlineStart,
         }),
         // .message
-        ...getFunctionalComponentStateMessageStyles(theme, state, {
-            gridColumn: '1/3',
-        }),
+        ...getFunctionalComponentStateMessageStyles(theme, state, {}),
         // .loading
         ...getFunctionalComponentLoadingMessageStyles(),
     });
@@ -5957,7 +6214,7 @@ const getSlottedTextFieldTextareaSelectStyles = (child, state, isLoading, theme,
         ...(!isLoading &&
             hoverMediaQuery({
                 // with the media query the selector has higher priority and overrides disabled styles
-                [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))${child === 'select' ? ',label:hover~.wrapper ::part(select-wrapper-dropdown)' : ''}`]: {
+                [`::slotted(${child}:not(:disabled):not(:focus):not([readonly]):hover),.label-wrapper:hover~.wrapper ::slotted(${child}:not(:disabled):not(:focus):not([readonly]))${child === 'select' ? ',.label-wrapper:hover~.wrapper ::part(select-wrapper-dropdown)' : ''}`]: {
                     borderColor: formStateHoverColor || primaryColor,
                     ...prefersColorSchemeDarkMediaQuery(theme, {
                         borderColor: formStateHoverColorDark || primaryColorDark,
@@ -6039,7 +6296,7 @@ const getUnitCounterJssStyle = (isDisabled, isReadonly, theme) => {
 const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 // Determines the scaling factor for the input-number size. In "compact" mode, it uses 0.5 to achieve a 36px input-number (compact size).
 // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalInputBaseScaling`.
-const getScalingVar = (compact) => `var(${cssVarInternalInputBaseScaling}, ${compact ? 0.5 : 1})`;
+const getScalingVar$4 = (compact) => `var(${cssVarInternalInputBaseScaling}, ${compact ? 0.5 : 1})`;
 /**
  * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
  */
@@ -6048,8 +6305,8 @@ const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
 const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
-const getFunctionalComponentInputBaseStyles = (disabled, loading, hideLabel, state, compact, readOnly, theme, additionalInputJssStyle) => {
-    const scalingVar = getScalingVar(compact);
+const getFunctionalComponentInputBaseStyles = (disabled, loading, hideLabel, state, compact, readOnly, theme, additionalInputJssStyle, additionalHostJssStyle) => {
+    const scalingVar = getScalingVar$4(compact);
     const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
     const paddingInline = `max(2px, ${formElementPaddingHorizontal} * ${scalingVar})`;
     const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
@@ -6076,7 +6333,14 @@ const getFunctionalComponentInputBaseStyles = (disabled, loading, hideLabel, sta
                     [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
                     [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
                 }),
+                // Alignment and direction of placeholder is set always to the right in RTL mode, because it is expected to have rtl language as placeholder value
+                '&(:dir(rtl)) input::placeholder': {
+                    direction: 'rtl',
+                    textAlign: 'end',
+                },
+                ...additionalHostJssStyle,
             },
+            ...getFunctionalComponentLabelAfterStyles(disabled),
             ...preventFoucOfNestedElementsStyles,
             input: {
                 all: 'unset',
@@ -6153,7 +6417,7 @@ const getFunctionalComponentInputBaseStyles = (disabled, loading, hideLabel, sta
             },
         }),
         // .label / .required
-        ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, !disabled &&
+        ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, null, !disabled &&
             !readOnly &&
             hoverMediaQuery({
                 '&:hover~.wrapper': hoverStyles,
@@ -6362,6 +6626,13 @@ optionHeight, theme) => {
     };
 };
 
+const getSelectedSlotJssStyle = {
+    display: 'block',
+    height: '100%',
+    flexGrow: 1,
+    overflow: 'hidden',
+};
+
 const getFunctionalComponentNoResultsOptionStyles = (componentName, cssVarScaling, // "1" is needed for components not yet supporting compact mode
 theme) => {
     const { contrastMediumColor } = getThemedColors(theme);
@@ -6386,7 +6657,7 @@ const widthMap = {
     basic: gridBasicOffset,
     extended: gridExtendedOffset,
 };
-const getComponentCss$1b = (width) => {
+const getComponentCss$1f = (width) => {
     return getCss({
         '@global': {
             ':host': {
@@ -6428,7 +6699,7 @@ const getDimensionStyle = {
     width: 'inherit',
     height: 'inherit',
 };
-const getComponentCss$1a = () => {
+const getComponentCss$1e = () => {
     return getCss({
         '@global': {
             ':host': {
@@ -6527,7 +6798,7 @@ const sizeMap$5 = {
     medium: fontSizeDisplayMedium,
     large: fontSizeDisplayLarge,
 };
-const getComponentCss$19 = (size, align, color, ellipsis, theme) => {
+const getComponentCss$1d = (size, align, color, ellipsis, theme) => {
     return getCss({
         '@global': {
             ':host': {
@@ -6545,7 +6816,7 @@ const getComponentCss$19 = (size, align, color, ellipsis, theme) => {
     });
 };
 
-const getComponentCss$18 = (color, orientation, theme) => {
+const getComponentCss$1c = (color, orientation, theme) => {
     const { contrastLowColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
     const { contrastLowColor: contrastLowColorDark, contrastMediumColor: contrastMediumColorDark, contrastHighColor: contrastHighColorDark, } = getThemedColors('dark');
     const colorMap = {
@@ -6606,7 +6877,7 @@ const easingOpen = 'in';
 const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
-const getComponentCss$17 = (isOpen, isPrimary, isSecondaryScrollerVisible, theme) => {
+const getComponentCss$1b = (isOpen, isPrimary, isSecondaryScrollerVisible, theme) => {
     const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark, backgroundShadingColor: backgroundShadingColorDark, } = getThemedColors('dark');
     return getCss({
@@ -6853,7 +7124,7 @@ const getComponentCss$17 = (isOpen, isPrimary, isSecondaryScrollerVisible, theme
     });
 };
 
-const getComponentCss$16 = (isPrimary, isSecondary, isCascade) => {
+const getComponentCss$1a = (isPrimary, isSecondary, isCascade) => {
     return getCss({
         '@global': {
             '@keyframes slide-up-mobile': {
@@ -7084,7 +7355,7 @@ const getComponentCss$16 = (isPrimary, isSecondary, isCascade) => {
     });
 };
 
-const getComponentCss$15 = (hasSlottedAnchor, isActive) => {
+const getComponentCss$19 = (hasSlottedAnchor, isActive) => {
     const anchorJssStyle = {
         all: 'unset',
         padding: `calc(${spacingFluidSmall} + 2px) calc(${spacingFluidSmall} + 4px)`, // aligned with link-pure
@@ -7136,7 +7407,7 @@ const getComponentCss$15 = (hasSlottedAnchor, isActive) => {
     });
 };
 
-const getComponentCss$14 = (state, labelSize, hasLabel, theme) => {
+const getComponentCss$18 = (state, labelSize, hasLabel, theme) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7173,7 +7444,7 @@ const getComponentCss$14 = (state, labelSize, hasLabel, theme) => {
     });
 };
 
-const getComponentCss$13 = (state, labelSize, hasLabel, theme) => {
+const getComponentCss$17 = (state, labelSize, hasLabel, theme) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7218,7 +7489,7 @@ const sizeMap$4 = {
     large: fontSizeTextLarge,
     'x-large': fontSizeTextXLarge,
 };
-const getComponentCss$12 = (size) => {
+const getComponentCss$16 = (size) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7260,7 +7531,7 @@ const flexItemWidths = {
     full: 100,
     auto: 'auto',
 };
-const getComponentCss$11 = (width, offset, alignSelf, grow, shrink, flex) => {
+const getComponentCss$15 = (width, offset, alignSelf, grow, shrink, flex) => {
     return getCss({
         '@global': {
             ':host': addImportantToEachRule({
@@ -7282,7 +7553,7 @@ const getComponentCss$11 = (width, offset, alignSelf, grow, shrink, flex) => {
     });
 };
 
-const getComponentCss$10 = (inline, wrap, direction, justifyContent, alignItems, alignContent) => {
+const getComponentCss$14 = (inline, wrap, direction, justifyContent, alignItems, alignContent) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7479,7 +7750,7 @@ const cssVarRefPaddingTop = '--ref-p-flyout-pt';
 const cssVarRefPaddingInline = '--ref-p-flyout-px';
 // TODO: we shouldn't expose --p-flyout-max-width
 const cssVariableMaxWidth = '--p-flyout-max-width';
-const getComponentCss$$ = (isOpen, position, hasHeader, hasFooter, hasSubFooter, footerBehavior, theme) => {
+const getComponentCss$13 = (isOpen, backdrop, position, hasHeader, hasFooter, hasSubFooter, footerBehavior, theme) => {
     const isPositionStart = position === 'start' || position === 'left';
     const isFooterFixed = footerBehavior === 'fixed';
     return getCss({
@@ -7539,7 +7810,7 @@ const getComponentCss$$ = (isOpen, position, hasHeader, hasFooter, hasSubFooter,
                     },
                 }),
             },
-            dialog: getDialogJssStyle(isOpen, theme),
+            dialog: getDialogJssStyle(isOpen, theme, backdrop),
         },
         scroller: {
             ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
@@ -7591,7 +7862,7 @@ const gutter$1 = `calc(${gridGap} / 2)`;
 const gridItemWidths = [
     0, 8.333333, 16.666667, 25, 33.333333, 41.666667, 50, 58.333333, 66.666667, 75, 83.333333, 91.666667, 100,
 ];
-const getComponentCss$_ = (size, offset) => {
+const getComponentCss$12 = (size, offset) => {
     return getCss({
         '@global': {
             ':host': addImportantToEachRule({
@@ -7611,7 +7882,7 @@ const getComponentCss$_ = (size, offset) => {
 };
 
 const gutter = `calc(${gridGap} / -2)`;
-const getComponentCss$Z = (direction, wrap) => {
+const getComponentCss$11 = (direction, wrap) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7637,7 +7908,7 @@ const sizeMap$3 = {
     'x-large': fontSizeHeadingXLarge,
     'xx-large': fontSizeHeadingXXLarge,
 };
-const getComponentCss$Y = (size, align, color, ellipsis, theme) => {
+const getComponentCss$10 = (size, align, color, ellipsis, theme) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7697,7 +7968,7 @@ const getTextSizeJssStyle = (textSize) => {
         fontSize: textSize === 'inherit' ? textSize : textSizeMap[textSize],
     };
 };
-const getComponentCss$X = (variant, align, color, ellipsis, theme) => {
+const getComponentCss$$ = (variant, align, color, ellipsis, theme) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7808,7 +8079,7 @@ const isFlippableIcon = (name, source) => {
             name === 'return' ||
             name === 'send'));
 };
-const getComponentCss$W = (name, source, color, size, theme) => {
+const getComponentCss$_ = (name, source, color, size, theme) => {
     const isColorInherit = color === 'inherit';
     const isSizeInherit = size === 'inherit';
     const isDark = isThemeDark(theme);
@@ -7927,7 +8198,11 @@ const getHeadingJssStyle = (theme) => ({
     ...headingSmallStyle,
     ...getTextJssStyle(theme),
 });
-const getComponentCss$V = (state, hasAction, hasClose, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$Z = (state, hasAction, hasClose, theme) => {
     return getCss({
         '@global': {
             ':host': {
@@ -7974,7 +8249,11 @@ const getComponentCss$V = (state, hasAction, hasClose, theme) => {
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$U = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$Y = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
@@ -7997,13 +8276,25 @@ const getComponentCss$U = (disabled, loading, hideLabel, state, compact, readOnl
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$T = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$X = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
             MozAppearance: 'textfield',
             '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
                 WebkitAppearance: 'none',
+            },
+        }, 
+        // Overwrites direction to ltr for rtl languages to prevent issues with the email input, e.g. cursor jumping to the
+        // end of the input when typing in the middle of the text. This is necessary because email addresses are assumed
+        // to be always written in ltr direction and the input needs to accommodate that, even in rtl contexts.
+        {
+            '&(:dir(rtl)) .wrapper, &(:dir(rtl)) input:placeholder-shown': {
+                direction: 'ltr',
             },
         }),
         'sr-only': getHiddenTextJssStyle(),
@@ -8017,7 +8308,38 @@ const getComponentCss$T = (disabled, loading, hideLabel, state, compact, readOnl
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$S = (disabled, loading, hideLabel, state, compact, readOnly, theme, controls) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$W = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
+    return getCss({
+        ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
+            textOverflow: 'ellipsis',
+            MozAppearance: 'textfield',
+            '&::-webkit-calendar-picker-indicator': {
+                display: 'none',
+            },
+        }),
+        button: {
+            padding: `var(${cssVarButtonPurePadding})`,
+            margin: `var(${cssVarButtonPureMargin})`,
+        },
+    });
+};
+
+// CSS Variables defined in base input
+/**
+ * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
+ */
+/**
+ * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
+ */
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$V = (disabled, loading, hideLabel, state, compact, readOnly, theme, controls) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
@@ -8042,7 +8364,11 @@ const getComponentCss$S = (disabled, loading, hideLabel, state, compact, readOnl
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$R = (disabled, loading, hideLabel, state, toggle, compact, readOnly, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$U = (disabled, loading, hideLabel, state, toggle, compact, readOnly, theme) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             '&[type="text"]': {
@@ -8065,7 +8391,11 @@ const getComponentCss$R = (disabled, loading, hideLabel, state, toggle, compact,
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$Q = (disabled, loading, hideLabel, state, compact, readOnly, theme, clear) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$T = (disabled, loading, hideLabel, state, compact, readOnly, theme, clear) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
@@ -8089,13 +8419,25 @@ const getComponentCss$Q = (disabled, loading, hideLabel, state, compact, readOnl
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$P = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$S = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
             MozAppearance: 'textfield',
             '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
                 WebkitAppearance: 'none',
+            },
+        }, 
+        // Overwrites direction to ltr for rtl languages to prevent issues with the tel input, e.g. cursor jumping to the
+        // end of the input when typing in the middle of the text. This is necessary because tel values are assumed
+        // to be always written in ltr direction and the input needs to accommodate that, even in rtl contexts.
+        {
+            '&(:dir(rtl)) .wrapper, &(:dir(rtl)) input:placeholder-shown': {
+                direction: 'ltr',
             },
         }),
         'sr-only': getHiddenTextJssStyle(),
@@ -8109,7 +8451,11 @@ const getComponentCss$P = (disabled, loading, hideLabel, state, compact, readOnl
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$O = (disabled, loading, hideLabel, state, compact, readOnly, theme, counter) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$R = (disabled, loading, hideLabel, state, compact, readOnly, theme, counter) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
@@ -8135,7 +8481,11 @@ const getComponentCss$O = (disabled, loading, hideLabel, state, compact, readOnl
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$N = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$Q = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
@@ -8158,7 +8508,11 @@ const getComponentCss$N = (disabled, loading, hideLabel, state, compact, readOnl
 /**
  * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
-const getComponentCss$M = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$P = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
     return getCss({
         ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
             textOverflow: 'ellipsis',
@@ -8166,12 +8520,51 @@ const getComponentCss$M = (disabled, loading, hideLabel, state, compact, readOnl
             '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
                 WebkitAppearance: 'none',
             },
+        }, 
+        // Overwrites direction to ltr for rtl languages to prevent issues with the url input, e.g. cursor jumping to the
+        // end of the input when typing in the middle of the text. This is necessary because url addresses are assumed
+        // to be always written in ltr direction and the input needs to accommodate that, even in rtl contexts.
+        {
+            '&(:dir(rtl)) .wrapper, &(:dir(rtl)) input:placeholder-shown': {
+                direction: 'ltr',
+            },
         }),
         'sr-only': getHiddenTextJssStyle(),
     });
 };
 
-const getComponentCss$L = (icon, iconSource, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme) => {
+// CSS Variables defined in base input
+/**
+ * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
+ */
+/**
+ * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
+ */
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$O = (disabled, loading, hideLabel, state, compact, readOnly, theme) => {
+    return getCss({
+        ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
+            textOverflow: 'ellipsis',
+            MozAppearance: 'textfield',
+            '&::-webkit-calendar-picker-indicator': {
+                display: 'none',
+            },
+        }),
+        button: {
+            padding: `var(${cssVarButtonPurePadding})`,
+            margin: `var(${cssVarButtonPureMargin})`,
+        },
+    });
+};
+
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$N = (icon, iconSource, active, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme) => {
     return getCss(mergeDeep(getLinkButtonPureStyles(icon, iconSource, active, false, stretch, size, hideLabel, alignLabel, underline, hasSlottedAnchor, theme), hasSlottedAnchor && {
         '@global': addImportantToEachRule({
             '::slotted': {
@@ -8200,7 +8593,11 @@ const getComponentCss$L = (icon, iconSource, active, stretch, size, hideLabel, a
 };
 
 const cssVariableInternalLinkScaling = '--p-internal-link-scaling';
-const getComponentCss$K = (icon, iconSource, variant, hideLabel, hasSlottedAnchor, compact, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$M = (icon, iconSource, variant, hideLabel, hasSlottedAnchor, compact, theme) => {
     const { linkColor } = getHighContrastColors();
     const isPrimary = variant === 'primary';
     return getCss(mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, compact, cssVariableInternalLinkScaling, theme), {
@@ -8242,12 +8639,21 @@ const getComponentCss$K = (icon, iconSource, variant, hideLabel, hasSlottedAncho
     }));
 };
 
-const getComponentCss$J = (aspectRatio, weight, // to get deprecated semibold typed
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$L = (aspectRatio, weight, // to get deprecated semibold typed
 direction, hasDescription) => {
     return getCss({
         '@global': {
             ':host': {
-                display: 'block', // `display: flex` would be more ideal, but doesn't work in Safari in all cases
+                display: 'flex',
+                alignItems: 'stretch',
+                // Safari workaround to scale the tile properly
+                '@supports (-webkit-hyphens: auto)': {
+                    alignItems: 'baseline',
+                },
                 hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
                 ...addImportantToEachRule({
                     ...colorSchemeStyles,
@@ -8307,7 +8713,10 @@ direction, hasDescription) => {
                 aspectRatio: aspectRatioValue.replace(':', '/'), // mapping of the deprecated aspect-ratio with ':'
             })),
             width: '100%', // necessary in case tile content overflows in grid or flex context
-            height: '100%', // necessary in case tile content overflows in grid or flex context
+            // Safari workaround to scale the tile properly
+            '@supports (-webkit-hyphens: auto)': {
+                height: '100%',
+            },
             display: 'grid',
             gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
             '&::after': {
@@ -8376,7 +8785,11 @@ const getMultilineEllipsis = (lineClamp) => {
         overflow: 'hidden',
     };
 };
-const getComponentCss$I = (hasLikeButton, hasSlottedAnchor, hasPriceOriginal, hasDescription, aspectRatio, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$K = (hasLikeButton, hasSlottedAnchor, hasPriceOriginal, hasDescription, aspectRatio, theme) => {
     const { primaryColor, contrastHighColor, contrastMediumColor, backgroundSurfaceColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, contrastHighColor: contrastHighColorDark, contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark, } = getThemedColors('dark');
     return getCss({
@@ -8515,13 +8928,22 @@ const getComponentCss$I = (hasLikeButton, hasSlottedAnchor, hasPriceOriginal, ha
     });
 };
 
-const getComponentCss$H = (aspectRatio, size, weight, // to get deprecated semibold typed
-background, align, compact, hasGradient, isDisabled) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$J = (aspectRatio, size, weight, // to get deprecated semibold typed
+background, align, compact, hasGradient, hasFooterSlot, isDisabled) => {
     const isTopAligned = align === 'top';
     return getCss({
         '@global': {
             ':host': {
-                display: 'block', // `display: flex` would be more ideal, but doesn't work in Safari in all cases
+                display: 'flex',
+                alignItems: 'stretch',
+                // Safari workaround to scale the tile properly
+                '@supports (-webkit-hyphens: auto)': {
+                    alignItems: 'baseline',
+                },
                 hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
                 ...addImportantToEachRule({
                     ...colorSchemeStyles,
@@ -8538,6 +8960,10 @@ background, align, compact, hasGradient, isDisabled) => {
                 },
                 '&[name="header"]': {
                     gridArea: `${isTopAligned ? 4 : 2}/2`,
+                    zIndex: 3,
+                },
+                '&[name="footer"]': {
+                    gridRow: 2,
                     zIndex: 3,
                 },
             },
@@ -8574,7 +9000,10 @@ background, align, compact, hasGradient, isDisabled) => {
                 aspectRatio: aspectRatioValue.replace(':', '/'), // mapping of the deprecated aspect-ratio with ':'
             })),
             width: '100%', // necessary in case tile content overflows in grid or flex context
-            height: '100%', // necessary in case tile content overflows in grid or flex context
+            // Safari workaround to scale the tile properly
+            '@supports (-webkit-hyphens: auto)': {
+                height: '100%',
+            },
             display: 'grid',
             gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
             ...(hasGradient &&
@@ -8617,21 +9046,23 @@ background, align, compact, hasGradient, isDisabled) => {
         },
         footer: {
             gridArea: `${isTopAligned ? 2 : 4}/2`,
-            display: 'flex',
-            gap: spacingStaticMedium,
-            justifyContent: 'space-between',
             ...buildResponsiveStyles(compact, (compactValue) => compactValue
                 ? {
-                    alignItems: 'center',
-                    flexDirection: 'row',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto',
+                    columnGap: spacingStaticMedium,
                 }
                 : {
-                    alignItems: 'flex-start',
+                    display: 'flex',
                     flexDirection: 'column',
+                    alignItems: 'start',
                 }),
         },
         'link-or-button-pure': {
             zIndex: 5,
+            gridColumn: 2,
+            gridRow: hasFooterSlot && !isTopAligned ? 2 : 1,
+            alignSelf: 'center',
             ...buildResponsiveStyles(compact, (compactValue) => ({
                 display: compactValue ? 'inline-block' : 'none',
             })),
@@ -8639,6 +9070,7 @@ background, align, compact, hasGradient, isDisabled) => {
         'link-or-button': {
             minHeight: '54px', // prevent content shift
             zIndex: 5,
+            marginTop: spacingStaticMedium,
             ...buildResponsiveStyles(compact, (compactValue) => ({
                 display: compactValue ? 'none' : 'inline-block',
             })),
@@ -8656,7 +9088,7 @@ const baseSizes = {
         height: '72px',
     },
 };
-const getComponentCss$G = (size) => {
+const getComponentCss$I = (size) => {
     return getCss({
         '@global': {
             ':host': {
@@ -8711,7 +9143,7 @@ const cssVariableSpacingBottom = '--p-modal-spacing-bottom'; // TODO: maybe --p-
 const safeZoneVertical = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
 const safeZoneHorizontal = `${spacingFluidLarge}`;
 const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
-const getComponentCss$F = (isOpen, backdrop, fullscreen, hasDismissButton, hasHeader, hasFooter, theme) => {
+const getComponentCss$H = (isOpen, backdrop, fullscreen, hasDismissButton, hasHeader, hasFooter, theme) => {
     return getCss({
         '@global': {
             ':host': {
@@ -8849,7 +9281,7 @@ const getThemedColor = (color, themedColors) => {
     };
     return colorMap[color];
 };
-const getComponentCss$E = (model, safeZone, size, color, theme) => {
+const getComponentCss$G = (model, safeZone, size, color, theme) => {
     const { width, height } = MODEL_SIGNATURES_MANIFEST[model];
     const isSizeInherit = size === 'inherit';
     return getCss({
@@ -8894,7 +9326,11 @@ const getComponentCss$E = (model, safeZone, size, color, theme) => {
 };
 
 const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
-const getComponentCss$D = (theme, isDisabled, selected) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$F = (theme, isDisabled, selected) => {
     return getCss({
         '@global': {
             ':host': {
@@ -8905,9 +9341,6 @@ const getComponentCss$D = (theme, isDisabled, selected) => {
                     ...hostHiddenStyles,
                     [`${cssVarInternalCheckboxScaling}`]: `var(${cssVarInternalMultiSelectOptionScaling})`,
                 }),
-            },
-            slot: {
-                display: 'block',
             },
         },
         option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`, theme),
@@ -8928,7 +9361,7 @@ const getComponentCss$D = (theme, isDisabled, selected) => {
 
 const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
 const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
-const getComponentCss$C = (isDisabled, theme) => {
+const getComponentCss$E = (isDisabled, theme) => {
     const { primaryColor, disabledColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
     const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
@@ -8967,7 +9400,11 @@ const getComponentCss$C = (isDisabled, theme) => {
 };
 
 const cssVarInternalMultiSelectScaling = '--p-internal-multi-select-scaling';
-const getComponentCss$B = (isOpen, isDisabled, hideLabel, state, compact, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$D = (isOpen, isDisabled, hideLabel, state, compact, theme) => {
     const scalingVar = `var(${cssVarInternalMultiSelectScaling}, ${compact ? 0.5 : 1})`;
     return getCss({
         '@global': {
@@ -8982,12 +9419,15 @@ const getComponentCss$B = (isOpen, isDisabled, hideLabel, state, compact, theme)
                     [`${cssVarInternalOptgroupScaling}`]: scalingVar,
                 }),
             },
+            ...getFunctionalComponentLabelAfterStyles(isDisabled),
             ...preventFoucOfNestedElementsStyles,
             button: {
                 ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, scalingVar, theme),
                 '& span': getButtonLabelJssStyle,
             },
             '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44, theme),
+            '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
+            'slot[name="selected"]': getSelectedSlotJssStyle,
         },
         root: {
             display: 'grid',
@@ -9017,7 +9457,7 @@ const disabledCursorStyle = {
     pointerEvents: 'none', // prevents :hover (has no effect when forced), maybe we can remove it since CSS selectors already cover desired behavior
 };
 const hiddenStyle = { display: 'none' };
-const getComponentCss$A = (activePage, pageTotal, showLastPage, theme) => {
+const getComponentCss$C = (activePage, pageTotal, showLastPage, theme) => {
     const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, disabledColor: disabledColorDark, hoverColor: hoverColorDark, } = getThemedColors('dark');
     return getCss({
@@ -9153,41 +9593,33 @@ const removeStyles = (selector, styles) => Object.fromEntries(Object.entries(sty
     return [key, value];
 }));
 
-const getComponentCss$z = (hideLabel, state, isDisabled, isLoading, length, theme) => {
-    const inputSize = `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`; // equivalent to calculation of input height within form-styles
+const cssVarInternalPinCodeScaling = '--p-internal-pin-code-scaling';
+const getScalingVar$3 = (compact) => `var(${cssVarInternalPinCodeScaling}, ${compact ? 0.5 : 1})`;
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$B = (hideLabel, state, isDisabled, isLoading, length, compact, theme) => {
+    const scalingVar = getScalingVar$3(compact);
+    const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
+    const gap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
+    const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+    // Min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least.
+    const minWidth = `max(1rem, calc(${dimension} - ${borderWidthBase}*2 - ${paddingBlock}*2))`;
     const inputStyles = removeStyles('input[readonly]', removeSlottedSelector(getSlottedTextFieldTextareaSelectStyles('input', state, isLoading, theme, {
-        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
-        padding: `${formElementPaddingVertical} ${spacingStaticXSmall}`,
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. textAlign=center|start
         textAlign: 'center',
-        // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. size=max|min
-        maxWidth: inputSize,
-        // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least.
-        minWidth: `calc(1rem + ${borderWidthBase}*2 + ${spacingStaticSmall}*2)`,
-        ...(length > 4 && {
-            [getMediaQueryMax('xs')]: {
-                // TODO: instead of having dedicated css rules depending on length we should try to implement a fluid one fits all solution
-                maxWidth: 'auto',
-                width: `calc((276px - (${spacingStaticSmall} * ${length - 1})) / ${length})`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
-            },
-        }),
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. isLoading
         ...(isLoading && {
             opacity: 0.2, // TODO: not in sync with e.g. checkbox/radio-button loading style
             cursor: 'not-allowed',
         }),
-        // since @playwright/test@1.40.1 this does not work anymore in Webkit browser engine for unknown reasons
-        /* ...Object.fromEntries(
-          Array.from(Array(length)).map((_, i) => {
-            return [`&:nth-of-type(${i + 1})`, { gridArea: `1/${i + 1}` }];
-          })
-        ),*/
-        '&:nth-of-type(1)': { gridArea: '1/1' },
-        '&:nth-of-type(2)': { gridArea: '1/2' },
-        '&:nth-of-type(3)': { gridArea: '1/3' },
-        '&:nth-of-type(4)': { gridArea: '1/4' },
-        '&:nth-of-type(5)': { gridArea: '1/5' },
-        '&:nth-of-type(6)': { gridArea: '1/6' },
+        height: dimension,
+        minWidth,
+        maxWidth: dimension,
+        width: 'auto',
+        padding: paddingBlock,
+        boxSizing: 'content-box',
     })));
     return getCss({
         '@global': {
@@ -9198,6 +9630,7 @@ const getComponentCss$z = (hideLabel, state, isDisabled, isLoading, length, them
                     ...hostHiddenStyles,
                 }),
             },
+            ...getFunctionalComponentLabelAfterStyles(isDisabled),
             ...preventFoucOfNestedElementsStyles,
             // input
             ...inputStyles,
@@ -9207,17 +9640,20 @@ const getComponentCss$z = (hideLabel, state, isDisabled, isLoading, length, them
             gap: spacingStaticXSmall,
         },
         wrapper: {
+            position: 'relative',
             display: 'grid',
-            gridTemplateColumns: `repeat(${length}, minmax(auto, 1fr))`,
+            gridTemplateColumns: `repeat(${length}, 1fr)`,
             justifySelf: 'flex-start',
-            gap: spacingStaticSmall,
+            gap,
         },
         ...(isLoading && {
             spinner: {
-                gridArea: '1/1/1/-1',
-                placeSelf: 'center',
-                width: inputSize,
-                height: inputSize,
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: dimension,
+                height: dimension,
                 pointerEvents: 'none',
             },
         }),
@@ -9233,7 +9669,11 @@ const getComponentCss$z = (hideLabel, state, isDisabled, isLoading, length, them
 const POPOVER_SAFE_ZONE = 8;
 
 const { canvasTextColor } = getHighContrastColors();
-const getComponentCss$y = (theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$A = (theme) => {
     const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
     const { hoverColor: hoverColorDark, primaryColor: primaryColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark, } = getThemedColors('dark');
     const shadowColor = 'rgba(0,0,0,0.3)';
@@ -9337,10 +9777,14 @@ const getComponentCss$y = (theme) => {
     });
 };
 
-const getCheckedSVGBackgroundImage = (fill) => {
+const getCheckedSVGBackgroundImage$1 = (fill) => {
     return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
 };
-const getComponentCss$x = (hideLabel, state, isDisabled, isLoading, theme) => {
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$z = (hideLabel, state, isDisabled, isLoading, theme) => {
     const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
     const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
     return getCss({
@@ -9363,16 +9807,16 @@ const getComponentCss$x = (hideLabel, state, isDisabled, isLoading, theme) => {
                     // TODO: is it somehow useful possible to make following styles configurable by paramter?
                     ...(!isLoading && {
                         '&(input:checked)': {
-                            backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
+                            backgroundImage: getCheckedSVGBackgroundImage$1(checkedIconColor),
                             ...prefersColorSchemeDarkMediaQuery(theme, {
-                                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+                                backgroundImage: getCheckedSVGBackgroundImage$1(checkedIconColorDark),
                             }),
                             // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
                             ...(isHighContrastMode &&
                                 getSchemedHighContrastMediaQuery({
-                                    backgroundImage: getCheckedSVGBackgroundImage('white'),
+                                    backgroundImage: getCheckedSVGBackgroundImage$1('white'),
                                 }, {
-                                    backgroundImage: getCheckedSVGBackgroundImage('black'),
+                                    backgroundImage: getCheckedSVGBackgroundImage$1('black'),
                                 })),
                         },
                     }),
@@ -9408,7 +9852,7 @@ const getComponentCss$x = (hideLabel, state, isDisabled, isLoading, theme) => {
         // .label / .required
         ...getFunctionalComponentLabelStyles(isDisabled || isLoading, hideLabel, theme, {
             gridArea: '1/2',
-        }, {
+        }, null, {
             paddingTop: '2px', // compensate vertical alignment
             paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and input
         }),
@@ -9418,6 +9862,262 @@ const getComponentCss$x = (hideLabel, state, isDisabled, isLoading, theme) => {
         }),
         // .loading
         ...getFunctionalComponentLoadingMessageStyles(),
+    });
+};
+
+const cssVarInternalRadioGroupOptionScaling = '--p-internal-radio-group-option-scaling';
+const getCheckedSVGBackgroundImage = (fill) => {
+    return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
+};
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$y = (disabled, loading, state, theme) => {
+    const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
+    const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark, contrastHighColor: contrastHighColorDark, disabledColor: disabledColorDark, focusColor: focusColorDark, } = getThemedColors('dark');
+    const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+    const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors('dark', state);
+    const { canvasTextColor } = getHighContrastColors();
+    const disabledOrLoading = isDisabledOrLoading(disabled, loading);
+    // TODO: needs to be extracted into a color function
+    const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
+    const uncheckedColorDark = disabledOrLoading ? disabledColorDark : formStateColorDark || contrastMediumColorDark;
+    const uncheckedHoverColor = formStateHoverColor || primaryColor;
+    const uncheckedHoverColorDark = formStateHoverColorDark || primaryColorDark;
+    const checkedColor = isHighContrastMode
+        ? canvasTextColor
+        : disabledOrLoading
+            ? disabledColor
+            : formStateColor || primaryColor;
+    const checkedColorDark = isHighContrastMode
+        ? canvasTextColor
+        : disabledOrLoading
+            ? disabledColorDark
+            : formStateColorDark || primaryColorDark;
+    const checkedHoverColor = formStateHoverColor || contrastHighColor;
+    const checkedHoverColorDark = formStateHoverColorDark || contrastHighColorDark;
+    const minDimension = `calc(${SCALING_BASE_VALUE} * 0.75)`;
+    const scalingVar = `var(${cssVarInternalRadioGroupOptionScaling}, 1)`;
+    const dimension = `max(${minDimension}, ${scalingVar} * (${fontLineHeight}))`;
+    const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
+    const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
+    const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the radio button full size.
+    const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the radio button '::before' pseudo-element with a negative offset to align it with the touch target.
+    const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+    const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
+    const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
+    const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the radio button label relative to the radio button size.
+    const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the radio-group, whichever is larger.
+    return getCss({
+        '@global': {
+            ':host': {
+                ...addImportantToEachRule({
+                    ...colorSchemeStyles,
+                    ...hostHiddenStyles,
+                }),
+                display: 'block',
+            },
+            ...getFunctionalComponentLabelAfterStyles(disabledOrLoading),
+            input: {
+                gridArea: '1/1',
+                borderRadius: '50%',
+                position: 'relative',
+                width: dimension,
+                height: dimension,
+                font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+                display: 'block',
+                margin: 0,
+                padding: 0,
+                WebkitAppearance: 'none', // iOS safari
+                appearance: 'none',
+                boxSizing: 'content-box',
+                background: `transparent 0% 0% / ${fontLineHeight}`,
+                transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
+                border: `${borderWidthBase} solid ${uncheckedColor}`,
+                outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
+                ...(disabledOrLoading
+                    ? {
+                        pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
+                    }
+                    : {
+                        cursor: 'pointer',
+                    }),
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                    borderColor: uncheckedColorDark,
+                }),
+                '&::before': {
+                    // Ensures the touch target is at least '24px', even if the radio button is smaller than the minimum touch target size.
+                    // This pseudo-element expands the clickable area without affecting the visual size of the radio button itself.
+                    content: '""',
+                    position: 'absolute',
+                    inset,
+                },
+            },
+            'input:checked': {
+                borderColor: checkedColor,
+                backgroundColor: checkedColor,
+                backgroundSize: dimension,
+                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                    borderColor: checkedColorDark,
+                    backgroundColor: checkedColorDark,
+                    backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+                }),
+                // This is a workaround for Blink-based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+                ...(isHighContrastMode &&
+                    getSchemedHighContrastMediaQuery({
+                        backgroundImage: getCheckedSVGBackgroundImage('white'),
+                    }, {
+                        backgroundImage: getCheckedSVGBackgroundImage('black'),
+                    })),
+            },
+            ...(!disabledOrLoading &&
+                !isHighContrastMode &&
+                hoverMediaQuery({
+                    'input:hover,.wrapper:has(~.label-wrapper:hover) input': {
+                        borderColor: uncheckedHoverColor,
+                        ...prefersColorSchemeDarkMediaQuery(theme, {
+                            borderColor: uncheckedHoverColorDark,
+                        }),
+                    },
+                    'input:checked:hover,.wrapper:has(~.label-wrapper:hover) input:checked': {
+                        borderColor: checkedHoverColor,
+                        backgroundColor: checkedHoverColor,
+                        ...prefersColorSchemeDarkMediaQuery(theme, {
+                            borderColor: checkedHoverColorDark,
+                            backgroundColor: checkedHoverColorDark,
+                        }),
+                    },
+                    '.wrapper:has(~.label-wrapper:hover) input': supportsChromiumMediaQuery({
+                        transition: 'unset', // Fixes a chrome bug where transition properties are stuck on hover
+                    }),
+                })),
+            ...(!disabled && {
+                'input::-moz-focus-inner': {
+                    border: 0, // reset ua-style (for FF)
+                },
+                'input:focus': {
+                    outline: 0, // reset ua-style (for older browsers)
+                },
+                'input:focus-visible': {
+                    outline: `${borderWidthBase} solid ${focusColor}`,
+                    outlineOffset: '2px',
+                    ...prefersColorSchemeDarkMediaQuery(theme, {
+                        outlineColor: focusColorDark,
+                    }),
+                },
+            }),
+            ...preventFoucOfNestedElementsStyles,
+        },
+        root: {
+            display: 'grid',
+            gridTemplateColumns: 'auto minmax(0, 1fr)',
+            rowGap: spacingStaticXSmall,
+        },
+        wrapper: {
+            ...textSmallStyle,
+            display: 'grid',
+            minWidth: minimumTouchTargetSize,
+            minHeight: minimumTouchTargetSize,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'flex-start', // in case label becomes multiline
+            ...(isDisabledOrLoading(disabled, loading) && {
+                cursor: 'not-allowed',
+            }),
+            height,
+        },
+        ...(loading && {
+            spinner: {
+                position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
+                gridArea: '1/1',
+                placeSelf: 'center',
+                width: dimension,
+                height: dimension,
+                font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+                pointerEvents: 'none',
+            },
+        }),
+        // .label / .required
+        ...getFunctionalComponentLabelStyles(disabled || loading, false, theme, null, null, {
+            paddingTop,
+            paddingInlineStart,
+        }),
+        // .loading
+        ...getFunctionalComponentLoadingMessageStyles(),
+    });
+};
+
+const cssVarInternalRadioGroupScaling = '--p-internal-radio-group-scaling';
+const groupRadioGroupDirectionJssStyles = {
+    column: {
+        flexFlow: 'column nowrap',
+        alignItems: 'start',
+    },
+    row: {
+        flexFlow: 'row wrap',
+        alignItems: 'start',
+    },
+};
+const getRadioGroupDirectionJssStyles = (direction) => {
+    return groupRadioGroupDirectionJssStyles[direction];
+};
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$x = (disabled, loading, hideLabel, state, compact, direction, theme) => {
+    const scalingVar = `var(${cssVarInternalRadioGroupScaling}, ${compact ? 0.6668 : 1})`;
+    const dimension = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
+    const columnGap = `max(${spacingStaticSmall}, ${scalingVar} * ${spacingStaticMedium})`;
+    const rowGap = `max(${spacingStaticXSmall}, ${scalingVar} * ${spacingStaticSmall})`;
+    return getCss({
+        '@global': {
+            ':host': {
+                ...addImportantToEachRule({
+                    ...colorSchemeStyles,
+                    ...hostHiddenStyles,
+                }),
+                [`${cssVarInternalRadioGroupOptionScaling}`]: scalingVar,
+            },
+            ...getFunctionalComponentLabelAfterStyles(disabled),
+            ...preventFoucOfNestedElementsStyles,
+        },
+        root: {
+            all: 'unset',
+            display: 'grid',
+            justifySelf: 'flex-start',
+            rowGap: spacingStaticXSmall,
+        },
+        wrapper: {
+            alignItems: 'start',
+            position: 'relative',
+            display: 'flex',
+            ...buildResponsiveStyles(direction, getRadioGroupDirectionJssStyles),
+            columnGap,
+            rowGap,
+        },
+        ...(loading && {
+            spinner: {
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: dimension,
+                height: dimension,
+                pointerEvents: 'none',
+            },
+        }),
+        // .label / .required
+        ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+            cursor: 'inherit',
+        }),
+        // .message
+        ...getFunctionalComponentStateMessageStyles(theme, state),
+        // .loading
+        ...getFunctionalComponentLoadingMessageStyles(),
+        'sr-only': getHiddenTextJssStyle(),
     });
 };
 
@@ -9534,13 +10234,16 @@ const getComponentCss$w = (isNextHidden, isPrevHidden, alignScrollIndicator, has
     });
 };
 
-const ITEM_PADDING = '17px';
+const cssVarInternalSegmentedControlScaling = '--p-internal-segmented-control-scaling';
+const getScalingVar$2 = (compact) => `var(${cssVarInternalSegmentedControlScaling}, ${compact ? 0.5 : 1})`;
+const ICON_OFFSET = '4px';
 const { font: BUTTON_FONT } = textSmallStyle;
 const ICON_SIZE = '1.5rem';
 const ICON_MARGIN = '.25rem';
-const getColors$2 = (isDisabled, isSelected, theme) => {
+const getColors$2 = (isDisabled, isSelected, state, theme) => {
     const { primaryColor, contrastMediumColor, disabledColor, contrastLowColor } = getThemedColors(theme);
     const { highlightColor } = getHighContrastColors();
+    const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
     return {
         buttonColor: isDisabled ? disabledColor : primaryColor,
         labelColor: isDisabled ? disabledColor : contrastMediumColor,
@@ -9549,15 +10252,33 @@ const getColors$2 = (isDisabled, isSelected, theme) => {
                 ? disabledColor
                 : isHighContrastMode
                     ? highlightColor
-                    : primaryColor
-            : contrastLowColor,
-        hoverBorderColor: primaryColor,
+                    : state === 'success'
+                        ? formStateColor
+                        : primaryColor
+            : state === 'error'
+                ? formStateColor
+                : contrastLowColor,
+        hoverBorderColor: state === 'error' ? formStateHoverColor : primaryColor,
     };
 };
-const getItemPadding = (hasIconAndSlottedContent) => hasIconAndSlottedContent ? `13px ${ITEM_PADDING} 13px 13px` : `13px ${ITEM_PADDING}`;
-const getComponentCss$v = (isDisabled, isSelected, hasIcon, hasSlottedContent, theme) => {
-    const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors$2(isDisabled, isSelected, theme);
-    const { buttonColor: buttonColorDark, labelColor: labelColorDark, borderColor: borderColorDark, hoverBorderColor: hoverBorderColorDark, } = getColors$2(isDisabled, isSelected, 'dark');
+const getScalableItemStyles = (hasIconAndSlottedContent, compact) => {
+    const scalingVar = getScalingVar$2(compact);
+    const verticalPadding = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+    const horizontalPadding = `calc(${verticalPadding} + ${ICON_OFFSET})`;
+    const padding = hasIconAndSlottedContent
+        ? `${verticalPadding} ${horizontalPadding} ${verticalPadding} ${verticalPadding}`
+        : `${verticalPadding} ${horizontalPadding}`;
+    const dimension = `calc(max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px)) + (${verticalPadding} + ${borderWidthBase}) * 2)`;
+    return { padding, dimension };
+};
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$v = (compact, isDisabled, isSelected, state, hasIcon, hasSlottedContent, theme) => {
+    const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors$2(isDisabled, isSelected, state, theme);
+    const { buttonColor: buttonColorDark, labelColor: labelColorDark, borderColor: borderColorDark, hoverBorderColor: hoverBorderColorDark, } = getColors$2(isDisabled, isSelected, state, 'dark');
+    const { dimension, padding } = getScalableItemStyles(hasIcon && hasSlottedContent, compact);
     return getCss({
         '@global': {
             ':host': {
@@ -9574,7 +10295,9 @@ const getComponentCss$v = (isDisabled, isSelected, hasIcon, hasSlottedContent, t
                 display: 'block',
                 height: '100%',
                 width: '100%',
-                padding: getItemPadding(hasIcon && hasSlottedContent),
+                minHeight: dimension,
+                minWidth: dimension,
+                padding: padding,
                 margin: 0, // Removes default button margin on safari 15
                 border: `${borderWidthBase} solid ${borderColor}`,
                 borderRadius: borderRadiusSmall,
@@ -9626,24 +10349,53 @@ const getComponentCss$v = (isDisabled, isSelected, hasIcon, hasSlottedContent, t
         }),
     });
 };
-const getComponentCss$u = (maxWidth, columns) => {
+
+const MIN_ITEM_WIDTH = 46;
+const MAX_ITEM_WIDTH = 220;
+const getComponentCss$u = (minWidth, maxWidth, columns, disabled, hideLabel, state, theme, noWrap) => {
     return getCss({
         '@global': {
             ':host': {
-                display: 'grid',
                 ...addImportantToEachRule({
-                    gridAutoRows: '1fr', // for equal height
-                    ...buildResponsiveStyles(columns, (col) => ({
-                        gridTemplateColumns: col === 'auto'
-                            ? `repeat(auto-fit, ${maxWidth}px)`
-                            : `repeat(${col}, minmax(0, 1fr))`,
-                    })),
-                    gap: '6px',
+                    ...(disabled && { cursor: 'not-allowed' }),
                     ...colorSchemeStyles,
                     ...hostHiddenStyles,
                 }),
             },
+            ...getFunctionalComponentLabelAfterStyles(disabled),
+            ...preventFoucOfNestedElementsStyles,
+            'slot:not([name])': {
+                display: 'grid',
+                gridAutoRows: '1fr', // for equal height
+                ...(noWrap
+                    ? { gridAutoFlow: 'column', gridAutoColumns: 'max-content' }
+                    : buildResponsiveStyles(columns, (col) => ({
+                        gridTemplateColumns: col === 'auto'
+                            ? `repeat(auto-fit, ${(maxWidth > MAX_ITEM_WIDTH && MAX_ITEM_WIDTH) || (maxWidth < MIN_ITEM_WIDTH && minWidth) || maxWidth}px)`
+                            : `repeat(${col}, minmax(0, 1fr))`,
+                    }))),
+                gap: '6px',
+            },
         },
+        root: {
+            all: 'unset',
+            display: 'grid',
+            gap: spacingStaticXSmall,
+        },
+        // .label / .required
+        ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+            cursor: 'inherit',
+            '&:is(legend)': {
+                marginBottom: spacingStaticXSmall, // this fixes a known layout bug of the legend element (in all browsers) when the parent fieldset is a flex or grid container
+            },
+        }),
+        // .message
+        ...getFunctionalComponentStateMessageStyles(theme, state),
+        ...(noWrap && {
+            scroller: {
+                margin: `-${spacingStaticXSmall} 0`,
+            },
+        }),
     });
 };
 
@@ -9663,7 +10415,7 @@ const getButtonStyles = (isOpen, state, theme) => {
                 margin: 0,
                 padding: 0,
                 background: 'transparent',
-                border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for label:hover selector
+                border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`, // using border of styled select below for .label-wrapper:hover selector
                 borderRadius: borderRadiusSmall,
                 outline: '0',
                 cursor: 'pointer',
@@ -9867,6 +10619,10 @@ const getComponentCss$t = (isOpen, state, disabled, filter, theme) => {
     }, filter ? getFilterStyles(isOpen, state, disabled, theme) : getButtonStyles(isOpen, state, theme), getListStyles(isOpen, theme)));
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$s = (isDisabled, hasCustomDropdown, hideLabel, state, theme) => {
     return getCss({
         '@global': {
@@ -9926,6 +10682,10 @@ const getComponentCss$s = (isDisabled, hasCustomDropdown, hideLabel, state, them
 };
 
 const cssVarInternalSelectOptionScaling = '--p-internal-select-option-scaling';
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$r = (theme) => {
     return getCss({
         '@global': {
@@ -9950,6 +10710,10 @@ const getComponentCss$r = (theme) => {
 };
 
 const cssVarInternalSelectScaling = '--p-internal-select-scaling';
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$q = (isOpen, isDisabled, hideLabel, state, compact, theme) => {
     const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
     return getCss({
@@ -9965,6 +10729,7 @@ const getComponentCss$q = (isOpen, isDisabled, hideLabel, state, compact, theme)
                     [`${cssVarInternalOptgroupScaling}`]: scalingVar,
                 }),
             },
+            ...getFunctionalComponentLabelAfterStyles(isDisabled),
             ...preventFoucOfNestedElementsStyles,
             button: {
                 ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar, theme),
@@ -9972,6 +10737,8 @@ const getComponentCss$q = (isOpen, isDisabled, hideLabel, state, compact, theme)
                 '& span': getButtonLabelJssStyle,
             },
             '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40, theme),
+            '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(scalingVar, theme)),
+            'slot[name="selected"]': getSelectedSlotJssStyle,
         },
         root: {
             display: 'grid',
@@ -10142,6 +10909,10 @@ const getSVGPath = (stepCount, numberedCircleColors, isStateCurrent) => {
     ];
     return svgNumberedCirclePaths[stepCount];
 };
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$n = (state, disabled, theme) => {
     const { primaryColor, hoverColor, disabledColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, hoverColor: hoverColorDark, disabledColor: disabledColorDark, } = getThemedColors('dark');
@@ -10284,6 +11055,10 @@ const getColors$1 = (checked, disabled, loading, theme) => {
         textColor: disabledOrLoadingColor || primaryColor,
     };
 };
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$l = (alignLabel, hideLabel, stretch, checked, disabled, loading, compact, theme) => {
     const { buttonBorderColor, buttonBorderColorHover, buttonBackgroundColor, buttonBackgroundColorHover, toggleBackgroundColor, toggleBackgroundColorHover, textColor, } = getColors$1(checked, disabled, loading, theme);
     const { buttonBorderColor: buttonBorderColorDark, buttonBorderColorHover: buttonBorderColorHoverDark, buttonBackgroundColor: buttonBackgroundColorDark, buttonBackgroundColorHover: buttonBackgroundColorHoverDark, toggleBackgroundColor: toggleBackgroundColorDark, toggleBackgroundColorHover: toggleBackgroundColorHoverDark, textColor: textColorDark, } = getColors$1(checked, disabled, loading, 'dark');
@@ -10830,7 +11605,18 @@ const getThemedBackgroundColor = (tagColor, themedColors) => {
     return colorMap[tagColor];
 };
 
-const getComponentCss$a = (color, hasLabel, theme) => {
+const cssVarInternalTagDismissibleScaling = '--p-internal-tag-dismissible-scaling';
+const getScalingVar$1 = (compact) => `var(${cssVarInternalTagDismissibleScaling}, ${compact ? 'calc(4 / 13)' : 1})`;
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
+const getComponentCss$a = (color, hasLabel, compact, theme) => {
+    const scalingVar = getScalingVar$1(compact);
+    const iconPadding = '4px';
+    const paddingBlock = `calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - ${iconPadding}/2)`; // 0.8125 * SCALING_BASE_VALUE corresponds to 13px
+    const paddingInline = `max(calc(${scalingVar} * 0.8125 * ${SCALING_BASE_VALUE} - 1px), 4px)`;
+    const gap = `max(calc(${scalingVar} * 0.75 * ${SCALING_BASE_VALUE}), 2px)`; // 0.5 * SCALING_BASE_VALUE corresponds to 12px
     const themedColors = getThemedColors(theme);
     const themedColorsDark = getThemedColors('dark');
     const { primaryColor, hoverColor, contrastHighColor } = themedColors;
@@ -10853,9 +11639,8 @@ const getComponentCss$a = (color, hasLabel, theme) => {
                 display: 'flex',
                 position: 'relative',
                 alignItems: 'center',
-                gap: '12px',
-                minHeight: '54px',
-                padding: '4px 12px',
+                gap,
+                padding: `${hasLabel ? `calc(${paddingBlock} - 6px)` : paddingBlock} ${paddingInline}`,
                 margin: 0, // Removes default button margin on safari 15
                 borderRadius: borderRadiusSmall,
                 border: 0,
@@ -10895,7 +11680,7 @@ const getComponentCss$a = (color, hasLabel, theme) => {
             },
         }),
         icon: {
-            padding: '4px',
+            padding: iconPadding,
             marginInlineEnd: '-2px', // compensate white space of svg icon and optimize visual alignment
             transition: getTransition('background-color'),
             borderRadius: borderRadiusSmall,
@@ -11016,6 +11801,10 @@ const showCustomCalendarOrTimeIndicator = (isCalendar, isTime) => {
 const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
 const cssVarInternalTextFieldScaling = '--p-internal-text-field-scaling';
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$8 = (isDisabled, isReadonly, hideLabel, state, hasUnitOrVisibleCounter, unitPosition, inputType, showPasswordToggle, isWithinForm, hasSubmitButton, theme, unitLength) => {
     const isSearch = isType(inputType, 'search');
     const isPassword = isType(inputType, 'password');
@@ -11236,6 +12025,10 @@ const sizeMap = {
     large: fontSizeTextLarge,
     'x-large': fontSizeTextXLarge,
 };
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$5 = (size, weight, align, color, ellipsis, theme) => {
     return getCss({
         '@global': {
@@ -11255,6 +12048,10 @@ const getComponentCss$5 = (size, weight, align, color, ellipsis, theme) => {
     });
 };
 
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$4 = (isDisabled, isReadonly, hideLabel, state, hasCounter, theme) => {
     return getCss({
         '@global': {
@@ -11310,7 +12107,27 @@ const getComponentCss$4 = (isDisabled, isReadonly, hideLabel, state, hasCounter,
     });
 };
 
-const getComponentCss$3 = (isDisabled, isReadonly, hideLabel, state, counter, resize, theme) => {
+const cssVarInternalTextareaScaling = '--p-internal-textarea-scaling';
+const getScalingVar = (compact) => `var(${cssVarInternalTextareaScaling}, ${compact ? 0.5 : 1})`;
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ * @css-variable {"name":"--p-textarea-field-sizing","description":"Controls CSS `field-sizing` for textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-min-width","description":"Minimum width of the textarea.","defaultValue":"52px"}
+ * @css-variable {"name":"--p-textarea-max-width","description":"Maximum width of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-min-height","description":"Minimum height of the textarea.","defaultValue":"unset"}
+ * @css-variable {"name":"--p-textarea-max-height","description":"Maximum height of the textarea.","defaultValue":"unset"}
+ */
+const getComponentCss$3 = (isDisabled, isReadonly, hideLabel, state, compact, counter, resize, theme) => {
+    const scalingVar = getScalingVar(compact);
+    const minPadding = '2px';
+    const minCounterPadding = '12px';
+    const basePaddingInline = `max(${minPadding}, calc(${formElementPaddingHorizontal} * ${scalingVar}))`;
+    const basePaddingBlock = `max(${minPadding}, calc(12px * ${scalingVar}))`;
+    const counterPaddingInline = `max(${minCounterPadding}, calc((${formElementPaddingHorizontal} + ${borderWidthBase}) * ${scalingVar}))`;
+    const counterPaddingBlock = `max(${minPadding}, calc(6px * ${scalingVar}))`;
+    const paddingBottom = `calc(${fontLineHeight} + ${counterPaddingBlock} * 2 - 4px)`;
+    // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
+    const minWidth = `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`;
     const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
     const { primaryColor: primaryColorDark, contrastLowColor: contrastLowColorDark, contrastMediumColor: contrastMediumColorDark, disabledColor: disabledColorDark, } = getThemedColors('dark');
     const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
@@ -11324,9 +12141,15 @@ const getComponentCss$3 = (isDisabled, isReadonly, hideLabel, state, counter, re
                     ...hostHiddenStyles,
                 }),
             },
+            ...getFunctionalComponentLabelAfterStyles(isDisabled),
             ...preventFoucOfNestedElementsStyles,
             textarea: {
                 resize,
+                fieldSizing: 'var(--p-textarea-field-sizing, unset)',
+                minWidth: `var(--p-textarea-min-width, ${minWidth})`,
+                maxWidth: 'var(--p-textarea-max-width, unset)',
+                minHeight: 'var(--p-textarea-min-height, unset)',
+                maxHeight: 'var(--p-textarea-max-height, unset)',
                 display: 'block',
                 width: '100%',
                 height: 'auto',
@@ -11340,8 +12163,6 @@ const getComponentCss$3 = (isDisabled, isReadonly, hideLabel, state, counter, re
                 background: 'transparent',
                 textIndent: 0,
                 color: primaryColor,
-                // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-                minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
                 transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                     borderColor: formStateColorDark || contrastMediumColorDark,
@@ -11350,8 +12171,8 @@ const getComponentCss$3 = (isDisabled, isReadonly, hideLabel, state, counter, re
                 gridArea: '1/1',
                 font: textSmallStyle.font, // to override line-height
                 padding: counter
-                    ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
-                    : `12px ${formElementPaddingHorizontal}`,
+                    ? `${basePaddingBlock} ${basePaddingInline} ${paddingBottom}`
+                    : `${basePaddingBlock} ${basePaddingInline}`,
                 // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
                 '&:focus': {
                     borderColor: primaryColor,
@@ -11381,7 +12202,7 @@ const getComponentCss$3 = (isDisabled, isReadonly, hideLabel, state, counter, re
             },
             ...hoverMediaQuery({
                 // with the media query the selector has higher priority and overrides disabled styles
-                'textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])': {
+                'textarea:not(:disabled):not(:focus):not([readonly]):hover,.label-wrapper:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])': {
                     borderColor: formStateHoverColor || primaryColor,
                     ...prefersColorSchemeDarkMediaQuery(theme, {
                         borderColor: formStateHoverColorDark || primaryColorDark,
@@ -11401,7 +12222,7 @@ const getComponentCss$3 = (isDisabled, isReadonly, hideLabel, state, counter, re
                 ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
                 gridArea: '1/1',
                 placeSelf: 'flex-end',
-                padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
+                padding: `${counterPaddingBlock} ${counterPaddingInline}`,
             },
             // TODO: maybe we should extract it as functional component too
             'sr-only': getHiddenTextJssStyle(),
@@ -11437,6 +12258,10 @@ const getKeyframesMobile = (direction, bottomVar) => getKeyframes(direction, {
     transform: `translate3d(0,calc(var(${bottomVar}) + 100%),0)`, // space before and after "+" is crucial
 });
 const toastCloseClassName = 'close';
+// CSS Variable defined in fontHyphenationStyle
+/**
+ * @css-variable {"name": "--p-hyphens", "description": "Sets the CSS `hyphens` property for text elements, controlling whether words can break and hyphenate automatically.", "defaultValue": "auto"}
+ */
 const getComponentCss$1 = () => {
     return getCss({
         '@global': {
@@ -11527,67 +12352,73 @@ const getComponentCss = (size, theme) => {
 exports.cssVarButtonPureMargin = cssVarButtonPureMargin;
 exports.cssVarButtonPurePadding = cssVarButtonPurePadding;
 exports.cssVarInternalInputBaseScaling = cssVarInternalInputBaseScaling;
-exports.getAccordionCss = getComponentCss$1l;
-exports.getBannerCss = getComponentCss$1k;
-exports.getButtonCss = getComponentCss$1g;
-exports.getButtonGroupCss = getComponentCss$1j;
-exports.getButtonPureCss = getComponentCss$1i;
-exports.getButtonTileCss = getComponentCss$1h;
-exports.getCanvasCss = getComponentCss$1f;
-exports.getCarouselCss = getComponentCss$1e;
-exports.getCheckboxCss = getComponentCss$1c;
-exports.getCheckboxWrapperCss = getComponentCss$1d;
-exports.getContentWrapperCss = getComponentCss$1b;
-exports.getCrestCss = getComponentCss$1a;
-exports.getDisplayCss = getComponentCss$19;
-exports.getDividerCss = getComponentCss$18;
-exports.getDrilldownCss = getComponentCss$17;
-exports.getDrilldownItemCss = getComponentCss$16;
-exports.getDrilldownLinkCss = getComponentCss$15;
-exports.getFieldsetCss = getComponentCss$13;
-exports.getFieldsetWrapperCss = getComponentCss$14;
-exports.getFlagCss = getComponentCss$12;
-exports.getFlexCss = getComponentCss$10;
-exports.getFlexItemCss = getComponentCss$11;
-exports.getFlyoutCss = getComponentCss$$;
+exports.getAccordionCss = getComponentCss$1q;
+exports.getAiTagCss = getComponentCss$1p;
+exports.getBannerCss = getComponentCss$1o;
+exports.getButtonCss = getComponentCss$1k;
+exports.getButtonGroupCss = getComponentCss$1n;
+exports.getButtonPureCss = getComponentCss$1m;
+exports.getButtonTileCss = getComponentCss$1l;
+exports.getCanvasCss = getComponentCss$1j;
+exports.getCarouselCss = getComponentCss$1i;
+exports.getCheckboxCss = getComponentCss$1g;
+exports.getCheckboxWrapperCss = getComponentCss$1h;
+exports.getContentWrapperCss = getComponentCss$1f;
+exports.getCrestCss = getComponentCss$1e;
+exports.getDisplayCss = getComponentCss$1d;
+exports.getDividerCss = getComponentCss$1c;
+exports.getDrilldownCss = getComponentCss$1b;
+exports.getDrilldownItemCss = getComponentCss$1a;
+exports.getDrilldownLinkCss = getComponentCss$19;
+exports.getFieldsetCss = getComponentCss$17;
+exports.getFieldsetWrapperCss = getComponentCss$18;
+exports.getFlagCss = getComponentCss$16;
+exports.getFlexCss = getComponentCss$14;
+exports.getFlexItemCss = getComponentCss$15;
+exports.getFlyoutCss = getComponentCss$13;
 exports.getFunctionalComponentInputBaseStyles = getFunctionalComponentInputBaseStyles;
+exports.getFunctionalComponentLabelAfterStyles = getFunctionalComponentLabelAfterStyles;
 exports.getFunctionalComponentLabelStyles = getFunctionalComponentLabelStyles;
 exports.getFunctionalComponentLoadingMessageStyles = getFunctionalComponentLoadingMessageStyles;
 exports.getFunctionalComponentNoResultsOptionStyles = getFunctionalComponentNoResultsOptionStyles;
 exports.getFunctionalComponentRequiredStyles = getFunctionalComponentRequiredStyles;
 exports.getFunctionalComponentStateMessageStyles = getFunctionalComponentStateMessageStyles;
-exports.getGridCss = getComponentCss$Z;
-exports.getGridItemCss = getComponentCss$_;
-exports.getHeadingCss = getComponentCss$Y;
-exports.getHeadlineCss = getComponentCss$X;
-exports.getIconCss = getComponentCss$W;
-exports.getInlineNotificationCss = getComponentCss$V;
-exports.getInputDateCss = getComponentCss$U;
-exports.getInputEmailCss = getComponentCss$T;
-exports.getInputNumberCss = getComponentCss$S;
-exports.getInputPasswordCss = getComponentCss$R;
-exports.getInputSearchCss = getComponentCss$Q;
-exports.getInputTelCss = getComponentCss$P;
-exports.getInputTextCss = getComponentCss$O;
-exports.getInputTimeCss = getComponentCss$N;
-exports.getInputUrlCss = getComponentCss$M;
-exports.getLinkCss = getComponentCss$K;
-exports.getLinkPureCss = getComponentCss$L;
-exports.getLinkSocialCss = getComponentCss$K;
-exports.getLinkTileCss = getComponentCss$H;
-exports.getLinkTileModelSignatureCss = getComponentCss$J;
-exports.getLinkTileProductCss = getComponentCss$I;
-exports.getMarqueCss = getComponentCss$G;
-exports.getModalCss = getComponentCss$F;
-exports.getModelSignatureCss = getComponentCss$E;
-exports.getMultiSelectCss = getComponentCss$B;
-exports.getMultiSelectOptionCss = getComponentCss$D;
-exports.getOptgroupCss = getComponentCss$C;
-exports.getPaginationCss = getComponentCss$A;
-exports.getPinCodeCss = getComponentCss$z;
-exports.getPopoverCss = getComponentCss$y;
-exports.getRadioButtonWrapperCss = getComponentCss$x;
-exports.getScalingVar = getScalingVar;
+exports.getGridCss = getComponentCss$11;
+exports.getGridItemCss = getComponentCss$12;
+exports.getHeadingCss = getComponentCss$10;
+exports.getHeadlineCss = getComponentCss$$;
+exports.getIconCss = getComponentCss$_;
+exports.getInlineNotificationCss = getComponentCss$Z;
+exports.getInputDateCss = getComponentCss$Y;
+exports.getInputEmailCss = getComponentCss$X;
+exports.getInputMonthCss = getComponentCss$W;
+exports.getInputNumberCss = getComponentCss$V;
+exports.getInputPasswordCss = getComponentCss$U;
+exports.getInputSearchCss = getComponentCss$T;
+exports.getInputTelCss = getComponentCss$S;
+exports.getInputTextCss = getComponentCss$R;
+exports.getInputTimeCss = getComponentCss$Q;
+exports.getInputUrlCss = getComponentCss$P;
+exports.getInputWeekCss = getComponentCss$O;
+exports.getLinkCss = getComponentCss$M;
+exports.getLinkPureCss = getComponentCss$N;
+exports.getLinkSocialCss = getComponentCss$M;
+exports.getLinkTileCss = getComponentCss$J;
+exports.getLinkTileModelSignatureCss = getComponentCss$L;
+exports.getLinkTileProductCss = getComponentCss$K;
+exports.getMarqueCss = getComponentCss$I;
+exports.getModalCss = getComponentCss$H;
+exports.getModelSignatureCss = getComponentCss$G;
+exports.getMultiSelectCss = getComponentCss$D;
+exports.getMultiSelectOptionCss = getComponentCss$F;
+exports.getOptgroupCss = getComponentCss$E;
+exports.getPaginationCss = getComponentCss$C;
+exports.getPinCodeCss = getComponentCss$B;
+exports.getPopoverCss = getComponentCss$A;
+exports.getRadioButtonWrapperCss = getComponentCss$z;
+exports.getRadioGroupCss = getComponentCss$x;
+exports.getRadioGroupOptionCss = getComponentCss$y;
+exports.getScalingVar = getScalingVar$4;
 exports.getScrollerCss = getComponentCss$w;
 exports.getSegmentedControlCss = getComponentCss$u;
 exports.getSegmentedControlItemCss = getComponentCss$v;

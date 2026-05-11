@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getFlyoutCss as getComponentCss$$ } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getFlyoutCss as getComponentCss$13 } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { parseAndGetAriaAttributes } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
 import { PButton } from '../components/button.wrapper.mjs';
 
@@ -33,7 +33,7 @@ class DSRFlyout extends Component {
         const hasHeader = namedSlotChildren.filter(({ props: { slot } }) => slot === 'header').length > 0;
         const hasFooter = namedSlotChildren.filter(({ props: { slot } }) => slot === 'footer').length > 0;
         const hasSubFooter = namedSlotChildren.filter(({ props: { slot } }) => slot === 'sub-footer').length > 0;
-        const style = minifyCss(getComponentCss$$(this.props.open, (positionDeprecationMap[this.props.position] || this.props.position), hasHeader, hasFooter, hasSubFooter, this.props.footerBehavior, this.props.theme));
+        const style = minifyCss(getComponentCss$13(this.props.open, this.props.backdrop, (positionDeprecationMap[this.props.position] || this.props.position), hasHeader, hasFooter, hasSubFooter, this.props.footerBehavior, this.props.theme));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsx("dialog", { tabIndex: -1, ...parseAndGetAriaAttributes({
                                 'aria-modal': true,
                                 ...{ 'aria-label': hasHeader ? namedSlotChildren.find(({ props: { slot } }) => slot === 'header')?.props.children : 'Flyout' },

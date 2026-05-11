@@ -2,7 +2,8 @@
 
 const fontHyphenationStyle = {
     overflowWrap: 'break-word',
-    hyphens: 'auto',
+    // @ts-ignore
+    hyphens: 'var(--p-hyphens, auto)',
 };
 
 exports.fontHyphenationStyle = fontHyphenationStyle;

@@ -1,7 +1,7 @@
 import { jsxs, jsx, Fragment } from 'react/jsx-runtime';
 import { Component } from 'react';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getMarqueCss as getComponentCss$G } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getMarqueCss as getComponentCss$I } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { getInnerManifest, buildSrcSet, buildImgSrc, parseAndGetAriaAttributes } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
 
 /** @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead. */
@@ -21,7 +21,7 @@ class DSRMarque extends Component {
                         jsx("source", { srcSet: buildSrcSet(innerManifest, this.props.size, 'webp'), type: "image/webp" }, "webp"),
                         jsx("source", { srcSet: buildSrcSet(innerManifest, this.props.size, 'png'), type: "image/png" }, "png"),
                     ], jsx("img", { src: buildImgSrc(innerManifest), alt: "Porsche" })] }));
-        const style = minifyCss(getComponentCss$G(this.props.size));
+        const style = minifyCss(getComponentCss$I(this.props.size));
         return (jsx(Fragment, { children: jsxs("template", { shadowroot: "open", shadowrootmode: "open", shadowrootdelegatesfocus: "true", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsx(Fragment, { children: this.props.href === undefined ? (picture) : (jsx("a", { href: this.props.href, target: this.props.target, ...parseAndGetAriaAttributes(this.props.aria), children: picture })) })] }) }));
     }
 }

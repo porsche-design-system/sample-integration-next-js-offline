@@ -6,6 +6,7 @@ var react = require('react');
 var hooks = require('../../hooks.cjs');
 var utils = require('../../utils.cjs');
 
+/** @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead. */
 const PRadioButtonWrapper = /*#__PURE__*/ react.forwardRef(({ hideLabel = false, label = '', loading = false, message = '', state = 'none', theme, className, ...rest }, ref) => {
     const elementRef = react.useRef(undefined);
     const WebComponentTag = hooks.usePrefix('p-radio-button-wrapper');

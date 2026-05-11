@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getModalCss as getComponentCss$F } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getModalCss as getComponentCss$H } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { parseAndGetAriaAttributes } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
 import { PButton } from '../components/button.wrapper.mjs';
 
@@ -32,7 +32,7 @@ class DSRModal extends Component {
         const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;
         // TODO: why do we validate only when opened?
         if (this.props.open) ;
-        const style = minifyCss(getComponentCss$F(this.props.open, this.props.backdrop, this.props.fullscreen, hasDismissButton, hasHeader, hasFooter, this.props.theme));
+        const style = minifyCss(getComponentCss$H(this.props.open, this.props.backdrop, this.props.fullscreen, hasDismissButton, hasHeader, hasFooter, this.props.theme));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsx("dialog", { inert: !this.props.open, tabIndex: -1, ...parseAndGetAriaAttributes({
                                 'aria-modal': true,
                                 ...(hasHeader && { 'aria-label': this.props.ariaLabel }),

@@ -1,12 +1,12 @@
 import type { BaseProps } from '../../BaseProps';
-import type { BreakpointCustomizable, CheckboxBlurEventDetail, CheckboxUpdateEventDetail, CheckboxState, Theme } from '../types';
+import type { BreakpointCustomizable, CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxUpdateEventDetail, CheckboxState, Theme } from '../types';
 export type PCheckboxProps = BaseProps & {
     /**
      * Reflects the checkbox current checked state and allows setting the initial checked state.
      */
     checked?: boolean;
     /**
-     * Displays as compact version.
+     * Displays as a compact version.
      */
     compact?: boolean;
     /**
@@ -18,7 +18,7 @@ export type PCheckboxProps = BaseProps & {
      */
     form?: string;
     /**
-     * Show or hide label. For better accessibility it's recommended to show the label.
+     * Show or hide label. For better accessibility, it's recommended to show the label.
      */
     hideLabel?: BreakpointCustomizable<boolean>;
     /**
@@ -47,6 +47,11 @@ export type PCheckboxProps = BaseProps & {
     onBlur?: (event: CustomEvent<CheckboxBlurEventDetail>) => void;
     /**
      * Emitted when checkbox checked property is changed.
+     */
+    onChange?: (event: CustomEvent<CheckboxChangeEventDetail>) => void;
+    /**
+     * Emitted when checkbox checked property is changed.
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
      */
     onUpdate?: (event: CustomEvent<CheckboxUpdateEventDetail>) => void;
     /**
@@ -66,13 +71,13 @@ export type PCheckboxProps = BaseProps & {
      */
     value?: string;
 };
-export declare const PCheckbox: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PCheckbox: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Reflects the checkbox current checked state and allows setting the initial checked state.
      */
     checked?: boolean;
     /**
-     * Displays as compact version.
+     * Displays as a compact version.
      */
     compact?: boolean;
     /**
@@ -84,7 +89,7 @@ export declare const PCheckbox: import("react").ForwardRefExoticComponent<import
      */
     form?: string;
     /**
-     * Show or hide label. For better accessibility it's recommended to show the label.
+     * Show or hide label. For better accessibility, it's recommended to show the label.
      */
     hideLabel?: BreakpointCustomizable<boolean>;
     /**
@@ -113,6 +118,11 @@ export declare const PCheckbox: import("react").ForwardRefExoticComponent<import
     onBlur?: (event: CustomEvent<CheckboxBlurEventDetail>) => void;
     /**
      * Emitted when checkbox checked property is changed.
+     */
+    onChange?: (event: CustomEvent<CheckboxChangeEventDetail>) => void;
+    /**
+     * Emitted when checkbox checked property is changed.
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead.
      */
     onUpdate?: (event: CustomEvent<CheckboxUpdateEventDetail>) => void;
     /**

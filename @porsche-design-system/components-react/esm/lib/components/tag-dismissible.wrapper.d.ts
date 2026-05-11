@@ -10,6 +10,10 @@ export type PTagDismissibleProps = BaseProps & {
      */
     color?: TagDismissibleColor;
     /**
+     * A boolean value that, if present, renders the tag dismissible as a compact version.
+     */
+    compact?: boolean;
+    /**
      * The label text.
      */
     label?: string;
@@ -18,7 +22,7 @@ export type PTagDismissibleProps = BaseProps & {
      */
     theme?: Theme;
 };
-export declare const PTagDismissible: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PTagDismissible: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Add ARIA attributes.
      */
@@ -27,6 +31,10 @@ export declare const PTagDismissible: import("react").ForwardRefExoticComponent<
      * Background color variations
      */
     color?: TagDismissibleColor;
+    /**
+     * A boolean value that, if present, renders the tag dismissible as a compact version.
+     */
+    compact?: boolean;
     /**
      * The label text.
      */

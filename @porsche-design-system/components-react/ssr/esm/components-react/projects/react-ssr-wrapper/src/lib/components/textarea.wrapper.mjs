@@ -5,23 +5,23 @@ import { useEventCallback, usePrefix, useTheme, useBrowserLayoutEffect, useMerge
 import { syncRef } from '../../utils.mjs';
 import { DSRTextarea } from '../dsr-components/textarea.mjs';
 
-const PTextarea = /*#__PURE__*/ forwardRef(({ autoComplete, counter = false, description = '', disabled = false, form, hideLabel = false, label = '', maxLength, message = '', minLength, name, onBlur, onChange, onInput, placeholder = '', readOnly = false, required = false, resize = 'vertical', rows = 7, spellCheck, state = 'none', theme, value = '', wrap = 'soft', className, children, ...rest }, ref) => {
+const PTextarea = /*#__PURE__*/ forwardRef(({ autoComplete, compact = false, counter = false, description = '', disabled = false, form, hideLabel = false, label = '', maxLength, message = '', minLength, name, onBlur, onChange, onInput, placeholder = '', readOnly = false, required = false, resize = 'vertical', rows = 7, spellCheck, state = 'none', theme, value = '', wrap = 'soft', className, children, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     useEventCallback(elementRef, 'blur', onBlur);
     useEventCallback(elementRef, 'change', onChange);
     useEventCallback(elementRef, 'input', onInput);
     const WebComponentTag = usePrefix('p-textarea');
-    const propsToSync = [autoComplete, counter, description, disabled, form, hideLabel, label, maxLength, message, minLength, name, placeholder, readOnly, required, resize, rows, spellCheck, state, theme || useTheme(), value, wrap];
+    const propsToSync = [autoComplete, compact, counter, description, disabled, form, hideLabel, label, maxLength, message, minLength, name, placeholder, readOnly, required, resize, rows, spellCheck, state, theme || useTheme(), value, wrap];
     useBrowserLayoutEffect(() => {
         const { current } = elementRef;
-        ['autoComplete', 'counter', 'description', 'disabled', 'form', 'hideLabel', 'label', 'maxLength', 'message', 'minLength', 'name', 'placeholder', 'readOnly', 'required', 'resize', 'rows', 'spellCheck', 'state', 'theme', 'value', 'wrap'].forEach((propName, i) => (current[propName] = propsToSync[i]));
+        ['autoComplete', 'compact', 'counter', 'description', 'disabled', 'form', 'hideLabel', 'label', 'maxLength', 'message', 'minLength', 'name', 'placeholder', 'readOnly', 'required', 'resize', 'rows', 'spellCheck', 'state', 'theme', 'value', 'wrap'].forEach((propName, i) => (current[propName] = propsToSync[i]));
     }, propsToSync);
     const props = {
         ...rest,
         // @ts-ignore
         ...(!process.browser
             ? {
-                children: (jsx(DSRTextarea, { autoComplete, counter, description, disabled, form, hideLabel, label, maxLength, message, minLength, name, placeholder, readOnly, required, resize, rows, spellCheck, state, theme: theme || useTheme(), value, wrap, children })),
+                children: (jsx(DSRTextarea, { autoComplete, compact, counter, description, disabled, form, hideLabel, label, maxLength, message, minLength, name, placeholder, readOnly, required, resize, rows, spellCheck, state, theme: theme || useTheme(), value, wrap, children })),
             }
             : {
                 children,

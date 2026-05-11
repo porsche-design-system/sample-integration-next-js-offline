@@ -23,7 +23,7 @@ class DSRMultiSelectOption extends react.Component {
                                     'option--selected': isSelected,
                                     'option--highlighted': highlighted,
                                     'option--disabled': isDisabled,
-                                }).map(([key, value]) => value && key).filter(Boolean).join(' '), children: [jsxRuntime.jsx("span", { className: "checkbox-wrapper", children: jsxRuntime.jsx("span", { className: "checkbox", "aria-hidden": "true" }) }), jsxRuntime.jsx("slot", { slot: "label" })] }) })] }), this.props.children] }));
+                                }).map(([key, value]) => value && key).filter(Boolean).join(' '), children: [jsxRuntime.jsx("span", { className: "checkbox-wrapper", children: jsxRuntime.jsx("span", { className: "checkbox", "aria-hidden": "true" }) }), jsxRuntime.jsx("slot", {})] }) })] }), this.props.children] }));
     }
 }
 

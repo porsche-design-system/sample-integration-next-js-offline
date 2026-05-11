@@ -60,7 +60,7 @@ const useMergedClass = (ref, className) => {
 };
 const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 const useToastManager = () => {
-    const tagName = usePrefix('p-toast');
+    const tagName = internalHooks.usePrefix('p-toast');
     return {
         addMessage: (message) => {
             const toast = document.body.querySelector(tagName);
@@ -68,5 +68,8 @@ const useToastManager = () => {
         },
     };
 };
+const internalHooks = {
+    usePrefix,
+};
 
-export { skipCheckForPorscheDesignSystemProviderDuringTests, useBrowserLayoutEffect, useEventCallback, useMergedClass, usePrefix, useTheme, useToastManager };
+export { internalHooks, skipCheckForPorscheDesignSystemProviderDuringTests, useBrowserLayoutEffect, useEventCallback, useMergedClass, usePrefix, useTheme, useToastManager };

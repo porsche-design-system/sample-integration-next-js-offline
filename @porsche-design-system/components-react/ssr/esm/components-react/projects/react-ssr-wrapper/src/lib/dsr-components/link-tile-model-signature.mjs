@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getLinkTileModelSignatureCss as getComponentCss$J } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getLinkTileModelSignatureCss as getComponentCss$L } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { PModelSignature } from '../components/model-signature.wrapper.mjs';
 
 /**
@@ -34,7 +34,7 @@ class DSRLinkTileModelSignature extends Component {
             tabIndex: -1,
             'aria-hidden': 'true',
         };
-        const style = minifyCss(getComponentCss$J(this.props.aspectRatio, this.props.weight, this.props.linkDirection, !!this.props.description));
+        const style = minifyCss(getComponentCss$L(this.props.aspectRatio, this.props.weight, this.props.linkDirection, !!this.props.description));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsxs("div", { className: "root", children: [jsx("a", { ...overlayLinkProps }), jsxs("div", { className: "header", children: [jsx(PModelSignature, { theme: "dark", model: this.props.model }), jsx("slot", { name: "header" })] }), jsx("div", { className: "media", children: jsx("slot", {}) }), jsxs("div", { className: "footer", children: [jsx(this.props.headingTag, { children: this.props.heading }), this.props.description && jsx("p", { children: this.props.description }), jsxs("div", { className: "link-group", role: "group", children: [jsx("slot", { name: "primary" }), jsx("slot", { name: "secondary" })] })] })] })] }), manipulatedChildren] }));
     }
 }

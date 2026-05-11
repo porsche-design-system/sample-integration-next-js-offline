@@ -4,6 +4,7 @@ import { forwardRef, useRef } from 'react';
 import { usePrefix, useTheme, useBrowserLayoutEffect, useMergedClass } from '../../hooks.mjs';
 import { syncRef } from '../../utils.mjs';
 
+/** @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead. */
 const PRadioButtonWrapper = /*#__PURE__*/ forwardRef(({ hideLabel = false, label = '', loading = false, message = '', state = 'none', theme, className, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     const WebComponentTag = usePrefix('p-radio-button-wrapper');

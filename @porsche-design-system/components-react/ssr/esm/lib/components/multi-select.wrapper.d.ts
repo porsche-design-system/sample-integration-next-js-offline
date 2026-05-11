@@ -1,5 +1,5 @@
 import type { BaseProps } from '../../BaseProps';
-import type { MultiSelectDropdownDirection, BreakpointCustomizable, MultiSelectUpdateEventDetail, MultiSelectState, Theme } from '../types';
+import type { MultiSelectDropdownDirection, BreakpointCustomizable, MultiSelectChangeEventDetail, MultiSelectToggleEventDetail, MultiSelectUpdateEventDetail, MultiSelectState, Theme } from '../types';
 export type PMultiSelectProps = BaseProps & {
     /**
      * Displays as compact version.
@@ -38,7 +38,19 @@ export type PMultiSelectProps = BaseProps & {
      */
     name: string;
     /**
+     * Emitted when the multi-select has lost focus.
+     */
+    onBlur?: (event: CustomEvent<void>) => void;
+    /**
      * Emitted when the selection is changed.
+     */
+    onChange?: (event: CustomEvent<MultiSelectChangeEventDetail>) => void;
+    /**
+     * Emitted when the dropdown is toggled.
+     */
+    onToggle?: (event: CustomEvent<MultiSelectToggleEventDetail>) => void;
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
      */
     onUpdate?: (event: CustomEvent<MultiSelectUpdateEventDetail>) => void;
     /**
@@ -58,7 +70,7 @@ export type PMultiSelectProps = BaseProps & {
      */
     value?: string[];
 };
-export declare const PMultiSelect: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PMultiSelect: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Displays as compact version.
      */
@@ -96,7 +108,19 @@ export declare const PMultiSelect: import("react").ForwardRefExoticComponent<imp
      */
     name: string;
     /**
+     * Emitted when the multi-select has lost focus.
+     */
+    onBlur?: (event: CustomEvent<void>) => void;
+    /**
      * Emitted when the selection is changed.
+     */
+    onChange?: (event: CustomEvent<MultiSelectChangeEventDetail>) => void;
+    /**
+     * Emitted when the dropdown is toggled.
+     */
+    onToggle?: (event: CustomEvent<MultiSelectToggleEventDetail>) => void;
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
      */
     onUpdate?: (event: CustomEvent<MultiSelectUpdateEventDetail>) => void;
     /**

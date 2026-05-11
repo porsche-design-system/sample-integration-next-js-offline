@@ -7,6 +7,7 @@ var hooks = require('../../hooks.cjs');
 var utils = require('../../utils.cjs');
 var buttonGroup = require('../dsr-components/button-group.cjs');
 
+/** @deprecated since v3.32.0, will be removed with next major release. Use simple styles instead. */
 const PButtonGroup = /*#__PURE__*/ react.forwardRef(({ direction = { base: 'column', xs: 'row' }, className, children, ...rest }, ref) => {
     const elementRef = react.useRef(undefined);
     const WebComponentTag = hooks.usePrefix('p-button-group');

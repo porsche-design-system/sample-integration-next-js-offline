@@ -5,20 +5,20 @@ import { usePrefix, useTheme, useBrowserLayoutEffect, useMergedClass } from '../
 import { syncRef } from '../../utils.mjs';
 import { DSRTag } from '../dsr-components/tag.mjs';
 
-const PTag = /*#__PURE__*/ forwardRef(({ color = 'background-surface', compact = false, icon, iconSource, theme, className, children, ...rest }, ref) => {
+const PTag = /*#__PURE__*/ forwardRef(({ color = 'background-surface', compact = false, icon, iconSource, theme, variant, className, children, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     const WebComponentTag = usePrefix('p-tag');
-    const propsToSync = [color, compact, icon, iconSource, theme || useTheme()];
+    const propsToSync = [color, compact, icon, iconSource, theme || useTheme(), variant];
     useBrowserLayoutEffect(() => {
         const { current } = elementRef;
-        ['color', 'compact', 'icon', 'iconSource', 'theme'].forEach((propName, i) => (current[propName] = propsToSync[i]));
+        ['color', 'compact', 'icon', 'iconSource', 'theme', 'variant'].forEach((propName, i) => (current[propName] = propsToSync[i]));
     }, propsToSync);
     const props = {
         ...rest,
         // @ts-ignore
         ...(!process.browser
             ? {
-                children: (jsx(DSRTag, { color, compact, icon, iconSource, theme: theme || useTheme(), children })),
+                children: (jsx(DSRTag, { color, compact, icon, iconSource, theme: theme || useTheme(), variant, children })),
             }
             : {
                 children,

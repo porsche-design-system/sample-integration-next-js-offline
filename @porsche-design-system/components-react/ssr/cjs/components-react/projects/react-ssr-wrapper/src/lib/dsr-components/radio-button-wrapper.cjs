@@ -15,6 +15,8 @@ var spinner_wrapper = require('../components/spinner.wrapper.cjs');
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "", "description": "Default slot for the input." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ *
+ * @deprecated since v3.30.0, will be removed with next major release. Please use `p-radio-group` instead.
  */
 class DSRRadioButtonWrapper extends react.Component {
     host;

@@ -3282,7 +3282,8 @@ const fontFamily = "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-s
 
 const fontHyphenationStyle = {
     overflowWrap: 'break-word',
-    hyphens: 'auto',
+    // @ts-ignore
+    hyphens: 'var(--p-hyphens, auto)',
 };
 
 const fontLineHeight = 'calc(6px + 2.125ex)';
@@ -3426,22 +3427,28 @@ const getCDNBaseURL = () => "./assets";
 var CRESTS_MANIFEST = { "porscheCrest": { "1x": { "png": "porsche-crest.d76137c@1x.png", "webp": "porsche-crest.0d0cc89@1x.webp" }, "2x": { "png": "porsche-crest.8a292fb@2x.png", "webp": "porsche-crest.2245c45@2x.webp" }, "3x": { "png": "porsche-crest.18d6f02@3x.png", "webp": "porsche-crest.19b4292@3x.webp" } } };
 
 // index.ts
-var FLAGS_MANIFEST = { "ae": "ae.070e003.svg", "am": "am.b228450.svg", "ar": "ar.d3ecad6.svg", "at": "at.19b8f3c.svg", "au": "au.9ccee18.svg", "az": "az.463b388.svg", "ba": "ba.57e215c.svg", "be": "be.6601715.svg", "bg": "bg.2a1ef06.svg", "bh": "bh.f6ce1b1.svg", "bn": "bn.5bb9faf.svg", "bo": "bo.2a95304.svg", "br": "br.071ef4a.svg", "by": "by.bbe68ec.svg", "ca": "ca.3524ab1.svg", "ch": "ch.1cc9a58.svg", "cl": "cl.7226017.svg", "cn": "cn.3e2e196.svg", "co": "co.40bd283.svg", "cr": "cr.d275fe4.svg", "cw": "cw.2a2e69b.svg", "cy": "cy.eecbae2.svg", "cz": "cz.84fcee1.svg", "de": "de.b575e11.svg", "dk": "dk.8faad28.svg", "do": "do.8cbff53.svg", "dz": "dz.92ac4dd.svg", "ec": "ec.8b790aa.svg", "ee": "ee.0d69319.svg", "eg": "eg.3d6e702.svg", "es": "es.8259527.svg", "fi": "fi.abcdec4.svg", "fr": "fr.e6f575e.svg", "gb": "gb.c8be57d.svg", "ge": "ge.1828ada.svg", "gh": "gh.dcc9966.svg", "gr": "gr.8d404a0.svg", "gt": "gt.d28dda2.svg", "hk": "hk.a791020.svg", "hn": "hn.61767b1.svg", "hr": "hr.09fd51c.svg", "ht": "ht.a0f15d3.svg", "hu": "hu.1e61356.svg", "id": "id.01c0ab3.svg", "ie": "ie.cec77fa.svg", "il": "il.add57d7.svg", "in": "in.15aa313.svg", "is": "is.2d193b5.svg", "it": "it.d26868c.svg", "jm": "jm.6266f91.svg", "jo": "jo.6759235.svg", "jp": "jp.32c39a2.svg", "ke": "ke.96a51ec.svg", "kh": "kh.ac03e8a.svg", "kr": "kr.f9b3228.svg", "kw": "kw.ecb70e0.svg", "kz": "kz.5f31a4b.svg", "lb": "lb.eed52fa.svg", "lk": "lk.1b44ee9.svg", "lt": "lt.5448f1b.svg", "lu": "lu.11992af.svg", "lv": "lv.c45d630.svg", "ma": "ma.37960b7.svg", "md": "md.7ed7b6b.svg", "mk": "mk.08eaad6.svg", "mn": "mn.fd0cde6.svg", "mo": "mo.a7e3c7c.svg", "mq": "mq.f55f7ca.svg", "mt": "mt.1ee108a.svg", "mu": "mu.f901db6.svg", "mx": "mx.c39bf62.svg", "my": "my.b7366cd.svg", "ng": "ng.d1ac1ea.svg", "nl": "nl.0569e12.svg", "no": "no.b4f2c38.svg", "nz": "nz.a70a24d.svg", "om": "om.d63d939.svg", "pa": "pa.f33ec1a.svg", "pe": "pe.2cacc5f.svg", "pf": "pf.50807f4.svg", "ph": "ph.1df49d2.svg", "pk": "pk.86b11da.svg", "pl": "pl.e0ef0ec.svg", "pr": "pr.79d60a1.svg", "pt": "pt.c903b10.svg", "py": "py.e39a820.svg", "qa": "qa.47e5e31.svg", "ro": "ro.9d14812.svg", "rs": "rs.7c7c211.svg", "ru": "ru.eb87254.svg", "sa": "sa.1a8f5b9.svg", "se": "se.f2705e2.svg", "sg": "sg.bca7a48.svg", "si": "si.c018e71.svg", "sk": "sk.d3177a9.svg", "sv": "sv.26aaba9.svg", "th": "th.1c48f08.svg", "tn": "tn.e119e22.svg", "tr": "tr.b4170f9.svg", "tt": "tt.7f3e1df.svg", "ua": "ua.73e5a3e.svg", "us": "us.10d7b02.svg", "uy": "uy.666b0bc.svg", "uz": "uz.8fa8ad3.svg", "ve": "ve.6cd1ec7.svg", "vn": "vn.3e0128f.svg", "za": "za.1bb0840.svg" };
+var FLAGS_MANIFEST = { "ad": "ad.da62168.svg", "ae": "ae.070e003.svg", "al": "al.6499c8e.svg", "am": "am.b228450.svg", "ar": "ar.d3ecad6.svg", "at": "at.19b8f3c.svg", "au": "au.9ccee18.svg", "az": "az.463b388.svg", "ba": "ba.57e215c.svg", "bd": "bd.647f155.svg", "be": "be.6601715.svg", "bg": "bg.2a1ef06.svg", "bh": "bh.f6ce1b1.svg", "bn": "bn.5bb9faf.svg", "bo": "bo.2a95304.svg", "br": "br.071ef4a.svg", "by": "by.bbe68ec.svg", "ca": "ca.3524ab1.svg", "ch": "ch.1cc9a58.svg", "cl": "cl.7226017.svg", "cn": "cn.3e2e196.svg", "co": "co.40bd283.svg", "cr": "cr.d275fe4.svg", "cw": "cw.2a2e69b.svg", "cy": "cy.eecbae2.svg", "cz": "cz.84fcee1.svg", "de": "de.b575e11.svg", "dk": "dk.8faad28.svg", "do": "do.8cbff53.svg", "dz": "dz.92ac4dd.svg", "ec": "ec.8b790aa.svg", "ee": "ee.0d69319.svg", "eg": "eg.3d6e702.svg", "es": "es.8259527.svg", "fi": "fi.abcdec4.svg", "fr": "fr.e6f575e.svg", "gb": "gb.c8be57d.svg", "ge": "ge.1828ada.svg", "gh": "gh.dcc9966.svg", "gi": "gi.931c4f3.svg", "gr": "gr.8d404a0.svg", "gt": "gt.d28dda2.svg", "hk": "hk.a791020.svg", "hn": "hn.61767b1.svg", "hr": "hr.09fd51c.svg", "ht": "ht.a0f15d3.svg", "hu": "hu.1e61356.svg", "id": "id.01c0ab3.svg", "ie": "ie.cec77fa.svg", "il": "il.add57d7.svg", "in": "in.15aa313.svg", "is": "is.2d193b5.svg", "it": "it.d26868c.svg", "jm": "jm.6266f91.svg", "jo": "jo.6759235.svg", "jp": "jp.32c39a2.svg", "ke": "ke.96a51ec.svg", "kh": "kh.ac03e8a.svg", "kr": "kr.f9b3228.svg", "kw": "kw.ecb70e0.svg", "kz": "kz.5f31a4b.svg", "lb": "lb.eed52fa.svg", "li": "li.30156a7.svg", "lk": "lk.1b44ee9.svg", "lt": "lt.5448f1b.svg", "lu": "lu.11992af.svg", "lv": "lv.c45d630.svg", "ma": "ma.37960b7.svg", "mc": "mc.bc42fcb.svg", "md": "md.7ed7b6b.svg", "me": "me.73d5280.svg", "mk": "mk.08eaad6.svg", "mn": "mn.fd0cde6.svg", "mo": "mo.a7e3c7c.svg", "mq": "mq.f55f7ca.svg", "mt": "mt.1ee108a.svg", "mu": "mu.f901db6.svg", "mx": "mx.c39bf62.svg", "my": "my.b7366cd.svg", "ng": "ng.d1ac1ea.svg", "nl": "nl.0569e12.svg", "no": "no.b4f2c38.svg", "nz": "nz.a70a24d.svg", "om": "om.d63d939.svg", "pa": "pa.f33ec1a.svg", "pe": "pe.2cacc5f.svg", "pf": "pf.50807f4.svg", "ph": "ph.1df49d2.svg", "pk": "pk.86b11da.svg", "pl": "pl.e0ef0ec.svg", "pr": "pr.79d60a1.svg", "pt": "pt.c903b10.svg", "py": "py.e39a820.svg", "qa": "qa.47e5e31.svg", "re": "re.e6f575e.svg", "ro": "ro.9d14812.svg", "rs": "rs.7c7c211.svg", "ru": "ru.eb87254.svg", "sa": "sa.1a8f5b9.svg", "se": "se.f2705e2.svg", "sg": "sg.bca7a48.svg", "si": "si.c018e71.svg", "sk": "sk.d3177a9.svg", "sv": "sv.26aaba9.svg", "th": "th.1c48f08.svg", "tn": "tn.e119e22.svg", "tr": "tr.b4170f9.svg", "tt": "tt.7f3e1df.svg", "tw": "tw.df76c19.svg", "ua": "ua.73e5a3e.svg", "us": "us.10d7b02.svg", "uy": "uy.666b0bc.svg", "uz": "uz.8fa8ad3.svg", "ve": "ve.6cd1ec7.svg", "vn": "vn.3e0128f.svg", "xx": "xx.acc7ae8.svg", "za": "za.1bb0840.svg" };
 
 // index.ts
-var ICONS_MANIFEST = { "360": "360.0600731.svg", "4-wheel-drive": "4-wheel-drive.9c218bf.svg", "accessibility": "accessibility.087d747.svg", "active-cabin-ventilation": "active-cabin-ventilation.b081399.svg", "add": "add.fac861a.svg", "adjust": "adjust.ca46bd4.svg", "aggregation": "aggregation.96f06e5.svg", "ai-spark": "ai-spark.a134e18.svg", "ai-spark-filled": "ai-spark-filled.2d5d971.svg", "arrow-compact-down": "arrow-compact-down.9b37afe.svg", "arrow-compact-left": "arrow-compact-left.7169de6.svg", "arrow-compact-right": "arrow-compact-right.cc2d1d2.svg", "arrow-compact-up": "arrow-compact-up.36724bb.svg", "arrow-double-down": "arrow-double-down.61ae4d7.svg", "arrow-double-left": "arrow-double-left.1b576eb.svg", "arrow-double-right": "arrow-double-right.dcfabff.svg", "arrow-double-up": "arrow-double-up.fb73db5.svg", "arrow-down": "arrow-down.49c6983.svg", "arrow-first": "arrow-first.beb7d9f.svg", "arrow-head-down": "arrow-head-down.1e3cbb8.svg", "arrow-head-left": "arrow-head-left.cf1395d.svg", "arrow-head-right": "arrow-head-right.304b330.svg", "arrow-head-up": "arrow-head-up.6d3fd23.svg", "arrow-last": "arrow-last.cc24903.svg", "arrow-left": "arrow-left.e03c25b.svg", "arrow-right": "arrow-right.872716b.svg", "arrow-up": "arrow-up.9d294d1.svg", "arrows": "arrows.de040f9.svg", "attachment": "attachment.8f3dd0a.svg", "augmented-reality": "augmented-reality.8b6ce95.svg", "battery-empty": "battery-empty.38b4b15.svg", "battery-empty-co2": "battery-empty-co2.c4cabef.svg", "battery-empty-fuel": "battery-empty-fuel.e833e13.svg", "battery-full": "battery-full.03de75d.svg", "battery-half": "battery-half.11f1ef8.svg", "battery-one-quarter": "battery-one-quarter.91235a0.svg", "battery-three-quarters": "battery-three-quarters.dcf768f.svg", "bell": "bell.1eab3a2.svg", "bookmark": "bookmark.9d6982f.svg", "bookmark-filled": "bookmark-filled.327ac78.svg", "brain": "brain.838387a.svg", "broadcast": "broadcast.0ad5a15.svg", "cabriolet": "cabriolet.ab33aab.svg", "calculator": "calculator.a323a2d.svg", "calendar": "calendar.70a6a12.svg", "camera": "camera.e5e95b9.svg", "car": "car.35229c9.svg", "car-battery": "car-battery.895510f.svg", "card": "card.f284448.svg", "charging-active": "charging-active.c3aa214.svg", "charging-network": "charging-network.a40072f.svg", "charging-state": "charging-state.f56d8df.svg", "charging-station": "charging-station.5ff1ed4.svg", "chart": "chart.c8c32d2.svg", "chat": "chat.7945544.svg", "check": "check.8ba06be.svg", "city": "city.5ae672c.svg", "climate": "climate.a9d5818.svg", "climate-control": "climate-control.ce31939.svg", "clock": "clock.c88a1ef.svg", "close": "close.eec3c5d.svg", "closed-caption": "closed-caption.ceaf6cb.svg", "cloud": "cloud.2c3959e.svg", "co2-class": "co2-class.fc49211.svg", "co2-emission": "co2-emission.c42e7f8.svg", "color-picker": "color-picker.598f402.svg", "compare": "compare.6578829.svg", "compass": "compass.f90f319.svg", "configurate": "configurate.5311c8d.svg", "copy": "copy.0fcd086.svg", "country-road": "country-road.d2bbc5a.svg", "coupe": "coupe.7549e3e.svg", "cubic-capacity": "cubic-capacity.7b0b8c8.svg", "cut": "cut.851e5c2.svg", "delete": "delete.5a8c8ca.svg", "disable": "disable.5918c32.svg", "dislike": "dislike.51614b0.svg", "dislike-filled": "dislike-filled.e1a8c4d.svg", "document": "document.df36b6c.svg", "door": "door.61c32d6.svg", "download": "download.c06f455.svg", "drag": "drag.9e893fd.svg", "duration": "duration.94e5252.svg", "ear": "ear.27a802f.svg", "edit": "edit.330f321.svg", "email": "email.f2530de.svg", "error": "error.b8ae9ad.svg", "error-filled": "error-filled.a4d06ed.svg", "exclamation": "exclamation.46cd17b.svg", "exclamation-filled": "exclamation-filled.9d09ed1.svg", "external": "external.fb677b9.svg", "fast-backward": "fast-backward.a71faae.svg", "fast-forward": "fast-forward.1e6fa9f.svg", "file-csv": "file-csv.4140e24.svg", "file-excel": "file-excel.56d577d.svg", "filter": "filter.610f808.svg", "fingerprint": "fingerprint.6a85170.svg", "flag": "flag.7af5baf.svg", "flash": "flash.88a2ada.svg", "fuel-station": "fuel-station.f7bdf51.svg", "garage": "garage.5014e8d.svg", "genuine-parts": "genuine-parts.6bfddde.svg", "geo-localization": "geo-localization.516d603.svg", "gift": "gift.7beb1eb.svg", "globe": "globe.56cc8fc.svg", "grid": "grid.06bc31a.svg", "grip": "grip.5ec4289.svg", "group": "group.051436a.svg", "hand": "hand.4e85714.svg", "heart": "heart.9a5962e.svg", "heart-filled": "heart-filled.dd7decf.svg", "highway": "highway.bf0eb24.svg", "highway-filled": "highway-filled.38e93fb.svg", "history": "history.f09645c.svg", "home": "home.7b1d1da.svg", "horn": "horn.bf47b1a.svg", "image": "image.b2614f0.svg", "increase": "increase.700012f.svg", "information": "information.da41162.svg", "information-filled": "information-filled.8f08911.svg", "key": "key.ee5d89b.svg", "laptop": "laptop.c422480.svg", "leaf": "leaf.92ca6a6.svg", "leather": "leather.1d2769a.svg", "light": "light.f0eb8e4.svg", "like": "like.a7468cd.svg", "like-filled": "like-filled.a0126c1.svg", "limousine": "limousine.87799d5.svg", "linked": "linked.8f30cb5.svg", "list": "list.411dd00.svg", "locate": "locate.6554f9e.svg", "lock": "lock.243281a.svg", "lock-open": "lock-open.95803d2.svg", "logo-apple-carplay": "logo-apple-carplay.c872af9.svg", "logo-apple-music": "logo-apple-music.1395f37.svg", "logo-apple-podcast": "logo-apple-podcast.09be038.svg", "logo-baidu": "logo-baidu.9e89c7d.svg", "logo-delicious": "logo-delicious.e83f574.svg", "logo-digg": "logo-digg.f096670.svg", "logo-facebook": "logo-facebook.74abe88.svg", "logo-foursquare": "logo-foursquare.d638fd8.svg", "logo-gmail": "logo-gmail.5f96ee2.svg", "logo-google": "logo-google.1dee423.svg", "logo-hatena": "logo-hatena.da509f0.svg", "logo-instagram": "logo-instagram.b916daa.svg", "logo-kaixin": "logo-kaixin.b1211a2.svg", "logo-kakaotalk": "logo-kakaotalk.38f5396.svg", "logo-kununu": "logo-kununu.79344ff.svg", "logo-linkedin": "logo-linkedin.b72559f.svg", "logo-naver": "logo-naver.75588fe.svg", "logo-pinterest": "logo-pinterest.e8f6963.svg", "logo-qq": "logo-qq.6d9b6d9.svg", "logo-qq-share": "logo-qq-share.ee864d9.svg", "logo-reddit": "logo-reddit.da13e44.svg", "logo-skyrock": "logo-skyrock.eb2f28d.svg", "logo-snapchat": "logo-snapchat.ef706a2.svg", "logo-sohu": "logo-sohu.a30c66b.svg", "logo-spotify": "logo-spotify.2ec4b2d.svg", "logo-tecent": "logo-tecent.d119e85.svg", "logo-telegram": "logo-telegram.d151481.svg", "logo-tiktok": "logo-tiktok.2f3a465.svg", "logo-tumblr": "logo-tumblr.c689f44.svg", "logo-twitter": "logo-twitter.5f2490a.svg", "logo-viber": "logo-viber.198bd43.svg", "logo-vk": "logo-vk.37b94e0.svg", "logo-wechat": "logo-wechat.83b2b98.svg", "logo-weibo": "logo-weibo.c8dacee.svg", "logo-whatsapp": "logo-whatsapp.add9a6d.svg", "logo-x": "logo-x.5f2490a.svg", "logo-xing": "logo-xing.3a8df0f.svg", "logo-yahoo": "logo-yahoo.8cbd0ba.svg", "logo-youku": "logo-youku.fe988d0.svg", "logo-youtube": "logo-youtube.da3798f.svg", "logout": "logout.7ec7451.svg", "map": "map.c16f618.svg", "menu-dots-horizontal": "menu-dots-horizontal.788f7fa.svg", "menu-dots-vertical": "menu-dots-vertical.4970a65.svg", "menu-lines": "menu-lines.e332216.svg", "microphone": "microphone.8ecdce6.svg", "minus": "minus.f6d964c.svg", "mobile": "mobile.7f35446.svg", "moon": "moon.5b73246.svg", "new-chat": "new-chat.95ffd2e.svg", "news": "news.5b604b0.svg", "north-arrow": "north-arrow.2da1dbe.svg", "oil-can": "oil-can.cb58fc7.svg", "online-search": "online-search.90e9ab1.svg", "parking-brake": "parking-brake.45704bd.svg", "parking-light": "parking-light.c49a231.svg", "paste": "paste.dd60261.svg", "pause": "pause.e41b935.svg", "phone": "phone.f4f774b.svg", "pin": "pin.3417cec.svg", "pin-filled": "pin-filled.7b8e9ba.svg", "pivot": "pivot.3ae18b8.svg", "play": "play.24226d4.svg", "plug": "plug.c159935.svg", "plus": "plus.319993e.svg", "preheating": "preheating.e2a796f.svg", "price-tag": "price-tag.f0d3917.svg", "printer": "printer.f59b0ee.svg", "purchase": "purchase.9cd6d65.svg", "push-pin": "push-pin.89e4ead.svg", "push-pin-off": "push-pin-off.ba99213.svg", "qr": "qr.87a49a3.svg", "qr-off": "qr-off.64e21b9.svg", "question": "question.3402a63.svg", "question-filled": "question-filled.cf25dd5.svg", "racing-flag": "racing-flag.b7ddcc8.svg", "radar": "radar.de5a6c1.svg", "radio": "radio.2b48e53.svg", "refresh": "refresh.41fd868.svg", "replay": "replay.55a99f2.svg", "reset": "reset.e53d52f.svg", "return": "return.46d30de.svg", "road": "road.bd3d4bc.svg", "roof-closed": "roof-closed.018d021.svg", "roof-open": "roof-open.51c8ee6.svg", "route": "route.f4fbbb4.svg", "rss": "rss.0e77baf.svg", "save": "save.6171ff5.svg", "screen": "screen.420be15.svg", "search": "search.3f0f1ce.svg", "seat": "seat.a3ebc40.svg", "send": "send.b32099c.svg", "service-technician": "service-technician.8749028.svg", "share": "share.a0b30da.svg", "shopping-bag": "shopping-bag.3f91a9b.svg", "shopping-bag-filled": "shopping-bag-filled.abf6c98.svg", "shopping-cart": "shopping-cart.370e224.svg", "shopping-cart-filled": "shopping-cart-filled.e0c3a65.svg", "sidebar": "sidebar.8e43896.svg", "sidelights": "sidelights.65c9dd9.svg", "skip-backward": "skip-backward.cd25ac5.svg", "skip-forward": "skip-forward.001e97f.svg", "snowflake": "snowflake.83907b3.svg", "sort": "sort.92b50bd.svg", "stack": "stack.804af93.svg", "star": "star.4c5bb15.svg", "star-filled": "star-filled.84ef2f6.svg", "steering-wheel": "steering-wheel.4dea19e.svg", "stop": "stop.173b6ac.svg", "stopwatch": "stopwatch.0e048a4.svg", "subtract": "subtract.57eed1d.svg", "success": "success.b16d4c1.svg", "success-filled": "success-filled.1832d98.svg", "sun": "sun.4301cbd.svg", "suv": "suv.33ac4aa.svg", "switch": "switch.66f74c4.svg", "tablet": "tablet.07341ac.svg", "tachometer": "tachometer.3a2fc3c.svg", "theme": "theme.08f6508.svg", "tire": "tire.e5c9372.svg", "trigger-finger": "trigger-finger.65aa6e2.svg", "truck": "truck.2c26c04.svg", "turismo": "turismo.a066b9f.svg", "unlinked": "unlinked.e9afe39.svg", "upload": "upload.d1f5a2a.svg", "user": "user.c18dabe.svg", "user-filled": "user-filled.2ea646d.svg", "user-group": "user-group.79cdf86.svg", "user-manual": "user-manual.470e243.svg", "video": "video.7590689.svg", "view": "view.5b4d7f6.svg", "view-off": "view-off.a4ede54.svg", "volume-off": "volume-off.bcd49e7.svg", "volume-up": "volume-up.2084f60.svg", "warning": "warning.59927e6.svg", "warning-filled": "warning-filled.1f6fe21.svg", "weather": "weather.9c96bd7.svg", "weight": "weight.b57a60d.svg", "wifi": "wifi.e2a8d9c.svg", "work": "work.9dd71a4.svg", "wrench": "wrench.09a2a67.svg", "wrenches": "wrenches.d2ed45d.svg", "zoom-in": "zoom-in.ff299b8.svg", "zoom-out": "zoom-out.ebb6246.svg" };
+var ICONS_MANIFEST = { "360": "360.0600731.svg", "4-wheel-drive": "4-wheel-drive.9c218bf.svg", "accessibility": "accessibility.087d747.svg", "active-cabin-ventilation": "active-cabin-ventilation.b081399.svg", "add": "add.fac861a.svg", "adjust": "adjust.ca46bd4.svg", "aggregation": "aggregation.96f06e5.svg", "ai-3d-object": "ai-3d-object.7a85dd7.svg", "ai-code": "ai-code.9afafb7.svg", "ai-edit": "ai-edit.75a4765.svg", "ai-image": "ai-image.c786d48.svg", "ai-scale": "ai-scale.846fde0.svg", "ai-sound": "ai-sound.727ea7a.svg", "ai-spark": "ai-spark.a134e18.svg", "ai-spark-filled": "ai-spark-filled.2d5d971.svg", "ai-text": "ai-text.fc84e09.svg", "ai-video": "ai-video.759a7f2.svg", "arrow-compact-down": "arrow-compact-down.9b37afe.svg", "arrow-compact-left": "arrow-compact-left.7169de6.svg", "arrow-compact-right": "arrow-compact-right.cc2d1d2.svg", "arrow-compact-up": "arrow-compact-up.36724bb.svg", "arrow-double-down": "arrow-double-down.61ae4d7.svg", "arrow-double-left": "arrow-double-left.1b576eb.svg", "arrow-double-right": "arrow-double-right.dcfabff.svg", "arrow-double-up": "arrow-double-up.fb73db5.svg", "arrow-down": "arrow-down.49c6983.svg", "arrow-first": "arrow-first.beb7d9f.svg", "arrow-head-down": "arrow-head-down.1e3cbb8.svg", "arrow-head-left": "arrow-head-left.cf1395d.svg", "arrow-head-right": "arrow-head-right.304b330.svg", "arrow-head-up": "arrow-head-up.6d3fd23.svg", "arrow-last": "arrow-last.cc24903.svg", "arrow-left": "arrow-left.e03c25b.svg", "arrow-right": "arrow-right.872716b.svg", "arrow-up": "arrow-up.9d294d1.svg", "arrows": "arrows.de040f9.svg", "attachment": "attachment.8f3dd0a.svg", "augmented-reality": "augmented-reality.8b6ce95.svg", "battery-empty": "battery-empty.38b4b15.svg", "battery-empty-co2": "battery-empty-co2.c4cabef.svg", "battery-empty-fuel": "battery-empty-fuel.e833e13.svg", "battery-full": "battery-full.03de75d.svg", "battery-half": "battery-half.11f1ef8.svg", "battery-one-quarter": "battery-one-quarter.91235a0.svg", "battery-three-quarters": "battery-three-quarters.dcf768f.svg", "bell": "bell.1eab3a2.svg", "bookmark": "bookmark.9d6982f.svg", "bookmark-filled": "bookmark-filled.327ac78.svg", "brain": "brain.838387a.svg", "broadcast": "broadcast.0ad5a15.svg", "cabriolet": "cabriolet.ab33aab.svg", "calculator": "calculator.a323a2d.svg", "calendar": "calendar.70a6a12.svg", "camera": "camera.e5e95b9.svg", "car": "car.35229c9.svg", "car-battery": "car-battery.895510f.svg", "card": "card.f284448.svg", "charging-active": "charging-active.c3aa214.svg", "charging-network": "charging-network.a40072f.svg", "charging-state": "charging-state.f56d8df.svg", "charging-station": "charging-station.5ff1ed4.svg", "chart": "chart.c8c32d2.svg", "chat": "chat.7945544.svg", "check": "check.8ba06be.svg", "city": "city.5ae672c.svg", "climate": "climate.a9d5818.svg", "climate-control": "climate-control.ce31939.svg", "clock": "clock.c88a1ef.svg", "close": "close.eec3c5d.svg", "closed-caption": "closed-caption.ceaf6cb.svg", "cloud": "cloud.2c3959e.svg", "co2-class": "co2-class.fc49211.svg", "co2-emission": "co2-emission.c42e7f8.svg", "color-picker": "color-picker.598f402.svg", "compare": "compare.6578829.svg", "compass": "compass.f90f319.svg", "configurate": "configurate.5311c8d.svg", "copy": "copy.0fcd086.svg", "country-road": "country-road.d2bbc5a.svg", "coupe": "coupe.7549e3e.svg", "cubic-capacity": "cubic-capacity.7b0b8c8.svg", "cut": "cut.851e5c2.svg", "delete": "delete.5a8c8ca.svg", "disable": "disable.5918c32.svg", "dislike": "dislike.51614b0.svg", "dislike-filled": "dislike-filled.e1a8c4d.svg", "document": "document.df36b6c.svg", "door": "door.61c32d6.svg", "download": "download.c06f455.svg", "drag": "drag.9e893fd.svg", "duration": "duration.94e5252.svg", "ear": "ear.27a802f.svg", "edit": "edit.330f321.svg", "email": "email.f2530de.svg", "error": "error.b8ae9ad.svg", "error-filled": "error-filled.a4d06ed.svg", "exclamation": "exclamation.46cd17b.svg", "exclamation-filled": "exclamation-filled.9d09ed1.svg", "external": "external.fb677b9.svg", "fast-backward": "fast-backward.a71faae.svg", "fast-forward": "fast-forward.1e6fa9f.svg", "file-csv": "file-csv.4140e24.svg", "file-excel": "file-excel.56d577d.svg", "filter": "filter.610f808.svg", "fingerprint": "fingerprint.6a85170.svg", "flag": "flag.7af5baf.svg", "flash": "flash.88a2ada.svg", "fuel-station": "fuel-station.f7bdf51.svg", "garage": "garage.5014e8d.svg", "genuine-parts": "genuine-parts.6bfddde.svg", "geo-localization": "geo-localization.516d603.svg", "gift": "gift.7beb1eb.svg", "globe": "globe.56cc8fc.svg", "grid": "grid.06bc31a.svg", "grip": "grip.5ec4289.svg", "group": "group.051436a.svg", "hand": "hand.4e85714.svg", "heart": "heart.9a5962e.svg", "heart-filled": "heart-filled.dd7decf.svg", "highway": "highway.bf0eb24.svg", "highway-filled": "highway-filled.38e93fb.svg", "history": "history.f09645c.svg", "home": "home.7b1d1da.svg", "horn": "horn.bf47b1a.svg", "image": "image.b2614f0.svg", "increase": "increase.700012f.svg", "information": "information.da41162.svg", "information-filled": "information-filled.8f08911.svg", "key": "key.ee5d89b.svg", "laptop": "laptop.c422480.svg", "leaf": "leaf.92ca6a6.svg", "leather": "leather.1d2769a.svg", "light": "light.f0eb8e4.svg", "like": "like.a7468cd.svg", "like-filled": "like-filled.a0126c1.svg", "limousine": "limousine.87799d5.svg", "linked": "linked.8f30cb5.svg", "list": "list.411dd00.svg", "locate": "locate.6554f9e.svg", "lock": "lock.243281a.svg", "lock-open": "lock-open.95803d2.svg", "logo-apple-carplay": "logo-apple-carplay.c872af9.svg", "logo-apple-music": "logo-apple-music.1395f37.svg", "logo-apple-podcast": "logo-apple-podcast.09be038.svg", "logo-baidu": "logo-baidu.9e89c7d.svg", "logo-delicious": "logo-delicious.e83f574.svg", "logo-digg": "logo-digg.f096670.svg", "logo-facebook": "logo-facebook.74abe88.svg", "logo-foursquare": "logo-foursquare.d638fd8.svg", "logo-gmail": "logo-gmail.5f96ee2.svg", "logo-google": "logo-google.1dee423.svg", "logo-hatena": "logo-hatena.da509f0.svg", "logo-instagram": "logo-instagram.b916daa.svg", "logo-kaixin": "logo-kaixin.b1211a2.svg", "logo-kakaotalk": "logo-kakaotalk.38f5396.svg", "logo-kununu": "logo-kununu.79344ff.svg", "logo-linkedin": "logo-linkedin.b72559f.svg", "logo-naver": "logo-naver.75588fe.svg", "logo-pinterest": "logo-pinterest.e8f6963.svg", "logo-qq": "logo-qq.6d9b6d9.svg", "logo-qq-share": "logo-qq-share.ee864d9.svg", "logo-reddit": "logo-reddit.da13e44.svg", "logo-skyrock": "logo-skyrock.eb2f28d.svg", "logo-snapchat": "logo-snapchat.ef706a2.svg", "logo-sohu": "logo-sohu.a30c66b.svg", "logo-spotify": "logo-spotify.2ec4b2d.svg", "logo-tecent": "logo-tecent.d119e85.svg", "logo-telegram": "logo-telegram.d151481.svg", "logo-tiktok": "logo-tiktok.2f3a465.svg", "logo-tumblr": "logo-tumblr.c689f44.svg", "logo-twitter": "logo-twitter.5f2490a.svg", "logo-viber": "logo-viber.198bd43.svg", "logo-vk": "logo-vk.37b94e0.svg", "logo-wechat": "logo-wechat.83b2b98.svg", "logo-weibo": "logo-weibo.c8dacee.svg", "logo-whatsapp": "logo-whatsapp.add9a6d.svg", "logo-x": "logo-x.5f2490a.svg", "logo-xing": "logo-xing.3a8df0f.svg", "logo-yahoo": "logo-yahoo.8cbd0ba.svg", "logo-youku": "logo-youku.fe988d0.svg", "logo-youtube": "logo-youtube.da3798f.svg", "logout": "logout.7ec7451.svg", "map": "map.c16f618.svg", "menu-dots-horizontal": "menu-dots-horizontal.788f7fa.svg", "menu-dots-vertical": "menu-dots-vertical.4970a65.svg", "menu-lines": "menu-lines.e332216.svg", "microphone": "microphone.8ecdce6.svg", "minus": "minus.f6d964c.svg", "mobile": "mobile.7f35446.svg", "moon": "moon.5b73246.svg", "new-chat": "new-chat.95ffd2e.svg", "news": "news.5b604b0.svg", "north-arrow": "north-arrow.2da1dbe.svg", "oil-can": "oil-can.cb58fc7.svg", "online-search": "online-search.90e9ab1.svg", "parking-brake": "parking-brake.45704bd.svg", "parking-light": "parking-light.c49a231.svg", "paste": "paste.dd60261.svg", "pause": "pause.e41b935.svg", "phone": "phone.f4f774b.svg", "pin": "pin.3417cec.svg", "pin-filled": "pin-filled.7b8e9ba.svg", "pivot": "pivot.3ae18b8.svg", "play": "play.24226d4.svg", "plug": "plug.c159935.svg", "plus": "plus.319993e.svg", "preheating": "preheating.e2a796f.svg", "price-tag": "price-tag.f0d3917.svg", "printer": "printer.f59b0ee.svg", "purchase": "purchase.9cd6d65.svg", "push-pin": "push-pin.89e4ead.svg", "push-pin-off": "push-pin-off.ba99213.svg", "qr": "qr.87a49a3.svg", "qr-off": "qr-off.64e21b9.svg", "question": "question.3402a63.svg", "question-filled": "question-filled.cf25dd5.svg", "racing-flag": "racing-flag.b7ddcc8.svg", "radar": "radar.de5a6c1.svg", "radio": "radio.2b48e53.svg", "refresh": "refresh.41fd868.svg", "replay": "replay.55a99f2.svg", "reset": "reset.e53d52f.svg", "return": "return.46d30de.svg", "road": "road.bd3d4bc.svg", "roof-closed": "roof-closed.018d021.svg", "roof-open": "roof-open.51c8ee6.svg", "route": "route.f4fbbb4.svg", "rss": "rss.0e77baf.svg", "save": "save.6171ff5.svg", "screen": "screen.420be15.svg", "search": "search.3f0f1ce.svg", "seat": "seat.a3ebc40.svg", "send": "send.b32099c.svg", "service-technician": "service-technician.8749028.svg", "share": "share.a0b30da.svg", "shopping-bag": "shopping-bag.3f91a9b.svg", "shopping-bag-filled": "shopping-bag-filled.abf6c98.svg", "shopping-cart": "shopping-cart.370e224.svg", "shopping-cart-filled": "shopping-cart-filled.e0c3a65.svg", "sidebar": "sidebar.8e43896.svg", "sidelights": "sidelights.65c9dd9.svg", "skip-backward": "skip-backward.cd25ac5.svg", "skip-forward": "skip-forward.001e97f.svg", "snowflake": "snowflake.83907b3.svg", "sort": "sort.92b50bd.svg", "stack": "stack.804af93.svg", "star": "star.4c5bb15.svg", "star-filled": "star-filled.84ef2f6.svg", "steering-wheel": "steering-wheel.4dea19e.svg", "stop": "stop.173b6ac.svg", "stopwatch": "stopwatch.0e048a4.svg", "subtract": "subtract.57eed1d.svg", "success": "success.b16d4c1.svg", "success-filled": "success-filled.1832d98.svg", "sun": "sun.4301cbd.svg", "suv": "suv.33ac4aa.svg", "switch": "switch.66f74c4.svg", "tablet": "tablet.07341ac.svg", "tachometer": "tachometer.3a2fc3c.svg", "theme": "theme.08f6508.svg", "tire": "tire.e5c9372.svg", "trigger-finger": "trigger-finger.65aa6e2.svg", "truck": "truck.2c26c04.svg", "turismo": "turismo.a066b9f.svg", "unlinked": "unlinked.e9afe39.svg", "upload": "upload.d1f5a2a.svg", "user": "user.c18dabe.svg", "user-filled": "user-filled.2ea646d.svg", "user-group": "user-group.79cdf86.svg", "user-manual": "user-manual.470e243.svg", "video": "video.7590689.svg", "view": "view.5b4d7f6.svg", "view-off": "view-off.a4ede54.svg", "volume-off": "volume-off.bcd49e7.svg", "volume-up": "volume-up.2084f60.svg", "warning": "warning.59927e6.svg", "warning-filled": "warning-filled.1f6fe21.svg", "weather": "weather.9c96bd7.svg", "weight": "weight.b57a60d.svg", "wifi": "wifi.e2a8d9c.svg", "work": "work.9dd71a4.svg", "wrench": "wrench.09a2a67.svg", "wrenches": "wrenches.d2ed45d.svg", "zoom-in": "zoom-in.ff299b8.svg", "zoom-out": "zoom-out.ebb6246.svg" };
 
 // index.ts
 var MARQUES_MANIFEST = { "porscheMarqueTrademark": { "medium": { "1x": { "png": "porsche-marque-trademark.medium.da07531@1x.png", "webp": "porsche-marque-trademark.medium.5c6af9a@1x.webp" }, "2x": { "png": "porsche-marque-trademark.medium.aa801f4@2x.png", "webp": "porsche-marque-trademark.medium.fff6e9b@2x.webp" }, "3x": { "png": "porsche-marque-trademark.medium.824818d@3x.png", "webp": "porsche-marque-trademark.medium.f67092f@3x.webp" } }, "small": { "1x": { "png": "porsche-marque-trademark.small.020244b@1x.png", "webp": "porsche-marque-trademark.small.7836397@1x.webp" }, "2x": { "png": "porsche-marque-trademark.small.92184fa@2x.png", "webp": "porsche-marque-trademark.small.760a57e@2x.webp" }, "3x": { "png": "porsche-marque-trademark.small.fd545ce@3x.png", "webp": "porsche-marque-trademark.small.1726036@3x.webp" } } }, "porscheMarque": { "medium": { "1x": { "png": "porsche-marque.medium.a986274@1x.png", "webp": "porsche-marque.medium.fa908e4@1x.webp" }, "2x": { "png": "porsche-marque.medium.089d6dd@2x.png", "webp": "porsche-marque.medium.7f0893d@2x.webp" }, "3x": { "png": "porsche-marque.medium.2cb8743@3x.png", "webp": "porsche-marque.medium.3534cf0@3x.webp" } }, "small": { "1x": { "png": "porsche-marque.small.ac20427@1x.png", "webp": "porsche-marque.small.005debe@1x.webp" }, "2x": { "png": "porsche-marque.small.22f1e9d@2x.png", "webp": "porsche-marque.small.df43173@2x.webp" }, "3x": { "png": "porsche-marque.small.4920924@3x.png", "webp": "porsche-marque.small.cfd6149@3x.webp" } } }, "porscheMarque75": { "medium": { "1x": { "png": "porsche-marque75.medium.0a02e22@1x.png", "webp": "porsche-marque75.medium.99b2d65@1x.webp" }, "2x": { "png": "porsche-marque75.medium.1d41ecf@2x.png", "webp": "porsche-marque75.medium.e32580c@2x.webp" }, "3x": { "png": "porsche-marque75.medium.373bcb5@3x.png", "webp": "porsche-marque75.medium.4a003d1@3x.webp" } }, "small": { "1x": { "png": "porsche-marque75.small.f5b37fe@1x.png", "webp": "porsche-marque75.small.146b06c@1x.webp" }, "2x": { "png": "porsche-marque75.small.20d8690@2x.png", "webp": "porsche-marque75.small.025770f@2x.webp" }, "3x": { "png": "porsche-marque75.small.e89b13e@3x.png", "webp": "porsche-marque75.small.a725d2e@3x.webp" } } } };
 
 // index.ts
-var MODEL_SIGNATURES_MANIFEST = { "718": { "src": "718.493a9e3.svg", "width": 79, "height": 26 }, "911": { "src": "911.b68f913.svg", "width": 94, "height": 25 }, "boxster": { "src": "boxster.c321738.svg", "width": 239, "height": 26 }, "cayenne": { "src": "cayenne.2556201.svg", "width": 245, "height": 35 }, "cayman": { "src": "cayman.cc89196.svg", "width": 229, "height": 35 }, "macan": { "src": "macan.a1844f4.svg", "width": 196, "height": 26 }, "panamera": { "src": "panamera.6dae809.svg", "width": 260, "height": 25 }, "taycan": { "src": "taycan.df444c6.svg", "width": 167, "height": 36 }, "turbo-s": { "src": "turbo-s.73f1e10.svg", "width": 199, "height": 25 }, "turbo": { "src": "turbo.6a4084a.svg", "width": 143, "height": 25 } };
+var MODEL_SIGNATURES_MANIFEST = { "718": { "src": "718.493a9e3.svg", "width": 79, "height": 26 }, "911": { "src": "911.b68f913.svg", "width": 94, "height": 25 }, "boxster": { "src": "boxster.c321738.svg", "width": 239, "height": 26 }, "cayenne": { "src": "cayenne.2556201.svg", "width": 245, "height": 35 }, "cayman": { "src": "cayman.cc89196.svg", "width": 229, "height": 35 }, "gt3-rs": { "src": "gt3-rs.03ac3ee.svg", "width": 238, "height": 25 }, "gt3": { "src": "gt3.bd3186c.svg", "width": 151, "height": 25 }, "gts": { "src": "gts.99bd35e.svg", "width": 121, "height": 25 }, "macan": { "src": "macan.a1844f4.svg", "width": 196, "height": 26 }, "panamera": { "src": "panamera.6dae809.svg", "width": 260, "height": 25 }, "taycan": { "src": "taycan.df444c6.svg", "width": 167, "height": 36 }, "turbo-s": { "src": "turbo-s.73f1e10.svg", "width": 199, "height": 25 }, "turbo": { "src": "turbo.6a4084a.svg", "width": 143, "height": 25 } };
 
 const hasDocument = typeof document !== 'undefined';
 
 const hasShowPickerSupport = () => (hasDocument &&
     'showPicker' in HTMLInputElement.prototype &&
     CSS.supports('selector(::-webkit-calendar-picker-indicator)'));
+
+const prefix = `[Porsche Design System v${"3.35.0"}]` // this part isn't covered by unit tests
+    ;
+const consoleError$1 = (...messages) => {
+    console.error(prefix, ...messages); // eslint-disable-line no-console
+};
 
 // This class is shared since the popover needs to register a scroll listener to this node in order to hide the popover when the table is scrolled
 const scrollAreaClass = 'scroll-area';
@@ -3466,7 +3473,7 @@ const hasNativePopoverSupport = supportsNativePopover();
 const getHasNativePopoverSupport = () => hasNativePopoverSupport;
 
 /*
- Stencil Client Platform v4.23.0 | MIT Licensed | https://stenciljs.com
+ Stencil Client Platform v4.23.2 | MIT Licensed | https://stenciljs.com
  */
 var __defProp = Object.defineProperty;
 var __export = (target, all) => {
@@ -3534,7 +3541,252 @@ const formatObjectOutput = (value) => {
         .replace(/(})/g, ' $1') // add space before following: }
         .replace(/^"(.+)"$/, '$1'); // remove wrapping double quotes
 };
-`value, ${formatObjectOutput(breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})).replace(/"/g, '')}`;
+const formatArrayOutput = (value) => {
+    return (
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+    JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
+        .replace(/'/g, '') // remove single quotes
+        // eslint-disable-next-line @typescript-eslint/quotes
+        .replace(/"/g, "'") // replace double quotes with single quotes
+        .replace(/'(undefined)'/, '$1') // remove quotes around undefined
+        .replace(/,/g, ', ') // add space after comma
+    );
+};
+const printErrorMessage = ({ propName, propValue, // TODO: might be nicer if this is always a string
+propType, componentName, }) => {
+    consoleError$1(`Invalid property '${propName}' with value '${internalValidateProps.formatObjectOutput(propValue)}' supplied to ${componentName}, expected one of: ${propType}`);
+};
+const isValueNotOfType = (propValue, propType) => {
+    return propValue !== undefined && typeof propValue !== propType;
+};
+const validateValueOfType = (propName, propValue, propType) => {
+    if (internalValidateProps.isValueNotOfType(propValue, propType)) {
+        return { propName, propValue, propType };
+    }
+    return undefined;
+};
+const getBreakpointCustomizableStructure = (allowedValues) => {
+    return breakpointCustomizableTemplate.replace(/value/g, allowedValues !== 'boolean' && allowedValues !== 'number'
+        ? internalValidateProps
+            .formatArrayOutput(allowedValues)
+            .replace(/\[/g, '(') // starting inline type literal array
+            .replace(/]/g, ')[]') // ending inline type literal array
+            .replace(/,/g, ' |') // replace commas with a pipe
+        : allowedValues);
+};
+const getAriaStructure = (allowedAriaAttributes) => {
+    return (internalValidateProps
+        .formatObjectOutput(allowedAriaAttributes.reduce((prev, key) => ({
+        ...prev,
+        [key]: 'value',
+    }), {}))
+        .replace(/":/g, '"?:') // add optional modifier on keys before colon
+        // eslint-disable-next-line @typescript-eslint/quotes
+        .replace(/"/g, "'") // replace double quotes with single quotes
+    );
+};
+const getShapeStructure = (shapeStructure) => {
+    return internalValidateProps
+        .formatObjectOutput(Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name }), {}))
+        .replace(/"/g, ''); // remove double quotes
+};
+const isBreakpointCustomizableValueInvalid = (value, allowedValues) => {
+    return allowedValues === 'boolean' || allowedValues === 'number'
+        ? internalValidateProps.isValueNotOfType(value, allowedValues)
+        : !allowedValues.includes(value);
+};
+/**
+ * Validates an array using a provided validator function and returns the first encountered validation error.
+ *
+ * @param {string} propName - The name of the property being validated.
+ * @param {any} arr - The input to be validated.
+ * @param {ValidatorFunction} validator - The validator function that checks each array item.
+ * @returns {ValidationError | undefined} The first encountered validation error object, or undefined if the array is valid.
+ */
+const isValidArray = (propName, arr, validator) => {
+    const validationError = Array.isArray(arr)
+        ? validator(propName, arr.find((item) => validator(propName, item)))
+        : {
+            propName,
+            propValue: arr,
+            propType: validator(propName, null).propType, // Get propType by passing in null which will always result in error
+        };
+    if (validationError) {
+        return { ...validationError, propType: `${validationError.propType}[]` };
+    }
+    return undefined;
+};
+const internalValidateProps = {
+    isValueNotOfType,
+    formatArrayOutput,
+    formatObjectOutput,
+    printErrorMessage,
+    validateValueOfType,
+    isValidArray,
+    isBreakpointCustomizableValueInvalid,
+    getBreakpointCustomizableStructure,
+    getAriaStructure,
+    getShapeStructure,
+};
+const breakpointCustomizableTemplate = `value, ${internalValidateProps
+    .formatObjectOutput(breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {}))
+    .replace(/"/g, '')}`;
+// ISO locale code to AI text mapping
+const AI_TAG_TRANSLATIONS = {
+    bg_BG: {
+        short: 'ИИ',
+        long: 'изкуствен интелект',
+        generated: 'генериран от изкуствен интелект',
+        modified: 'модифициран от изкуствен интелект',
+    },
+    bs_BA: { short: 'AI', long: 'vještačka inteligencija', generated: 'AI-generisano', modified: 'AI-modifikovano' },
+    cs_CZ: { short: 'AI', long: 'umělá inteligence', generated: 'Vytvořeno AI', modified: 'Upraveno AI' },
+    da_DK: { short: 'KI', long: 'kunstig intelligens', generated: 'AI-genereret', modified: 'AI-modificeret' },
+    de_DE: {
+        short: 'KI',
+        long: 'künstliche Intelligenz',
+        generated: 'KI-generiert',
+        modified: 'KI-modifiziert',
+    },
+    el_GR: {
+        short: 'ΤΝ',
+        long: 'τεχνητή νοημοσύνη',
+        generated: 'Δημιουργημένο από ΤΝ',
+        modified: 'Τροποποιημένο από ΤΝ',
+    },
+    en_CY: { short: 'AI', long: 'artificial intelligence', generated: 'AI-generated', modified: 'AI-modified' },
+    en_GB: { short: 'AI', long: 'artificial intelligence', generated: 'AI-generated', modified: 'AI-modified' },
+    en_US: { short: 'AI', long: 'artificial intelligence', generated: 'AI-generated', modified: 'AI-modified' },
+    es_ES: {
+        short: 'IA',
+        long: 'inteligencia artificial',
+        generated: 'Generado por IA',
+        modified: 'Modificado por IA',
+    },
+    et_EE: { short: 'TI', long: 'tehisintellekt', generated: 'TI abil loodud', modified: 'TI abil muudetud' },
+    fi_FI: {
+        short: 'AI',
+        long: 'tekoäly',
+        generated: 'Tekoälyn tuottama',
+        modified: 'Tekoälyn muokkaama',
+    },
+    fr_FR: {
+        short: 'IA',
+        long: 'intelligence artificielle',
+        generated: 'Généré par une IA',
+        modified: 'Modifié par une IA',
+    },
+    he_IL: {
+        short: 'AI',
+        long: 'בינה מלאכותית',
+        generated: 'נוצר על ידי בינה מלאכותית',
+        modified: 'נערך באמצעות בינה מלאכותית',
+    },
+    hr_HR: {
+        short: 'UI',
+        long: 'umjetna inteligencija',
+        generated: 'Generirano uz pomoć UI',
+        modified: 'Izmijenjeno uz pomoć UI',
+    },
+    hu_HU: {
+        short: 'MI',
+        long: 'mesterséges intelligencia',
+        generated: 'MI-generált',
+        modified: 'MI-módosított',
+    },
+    is_IS: {
+        short: 'AI',
+        long: 'gervigreind',
+        generated: 'Búið til af gervigreind',
+        modified: 'Breytt af gervigreind',
+    },
+    it_IT: {
+        short: 'IA',
+        long: 'intelligenza artificiale',
+        generated: "Generato dall'IA",
+        modified: "Modificato dall'IA",
+    },
+    lt_LT: {
+        short: 'DI',
+        long: 'dirbtinis intelektas',
+        generated: 'DI sugeneruotas',
+        modified: 'DI modifikuotas',
+    },
+    lv_LV: {
+        short: 'MI',
+        long: 'mākslīgais intelekts',
+        generated: 'MI ģenerēts',
+        modified: 'MI pārveidots',
+    },
+    me_ME: { short: 'AI', long: 'veštačka inteligencija', generated: 'AI-generisano', modified: 'AI-modifikovano' },
+    mk_MK: {
+        short: 'ВИ',
+        long: 'вештачка интелигенција',
+        generated: 'Создадено од ВИ',
+        modified: 'Изменето со ВИ',
+    },
+    mt_MT: { short: 'AI', long: 'artificial intelligence', generated: 'AI-generated', modified: 'AI-modified' },
+    nb_NO: {
+        short: 'KI',
+        long: 'kunstig intelligens',
+        generated: 'KI-generert',
+        modified: 'KI-modifisert',
+    },
+    nl_NL: {
+        short: 'AI',
+        long: 'kunstmatige intelligentie',
+        generated: 'Door AI gegenereerd',
+        modified: 'Door AI gewijzigd',
+    },
+    pl_PL: {
+        short: 'SI',
+        long: 'sztuczna inteligencja',
+        generated: 'Wygenerowane przez SI',
+        modified: 'Zmodyfikowane przez SI',
+    },
+    pt_PT: {
+        short: 'IA',
+        long: 'inteligência artificial',
+        generated: 'Gerado por IA',
+        modified: 'Modificado por IA',
+    },
+    ro_RO: {
+        short: 'IA',
+        long: 'inteligență artificială',
+        generated: 'Generat cu ajutorul IA',
+        modified: 'Modificat cu ajutorul IA',
+    },
+    ru_RU: {
+        short: 'ИИ',
+        long: 'искусственный интеллект',
+        generated: 'Сгенерировано ИИ',
+        modified: 'Изменено ИИ',
+    },
+    sk_SK: { short: 'AI', long: 'umelá inteligencia', generated: 'Vytvorené AI', modified: 'Upravené AI' },
+    sl_SI: { short: 'UI', long: 'umetna inteligenca', generated: 'Ustvarjeno z UI', modified: 'Spremenjeno z UI' },
+    sr_RS: { short: 'AI', long: 'veštačka inteligencija', generated: 'AI-generisano', modified: 'AI-modifikovano' },
+    sv_SE: {
+        short: 'AI',
+        long: 'artificiell intelligens',
+        generated: 'AI-genererad',
+        modified: 'AI-modifierad',
+    },
+    tr_TR: {
+        short: 'AI',
+        long: 'yapay zeka',
+        generated: 'Yapay zeka tarafından üretilmiş',
+        modified: 'Yapay zeka tarafından değiştirilmiş',
+    },
+    uk_UA: {
+        short: 'ШІ',
+        long: 'штучний інтелект',
+        generated: 'Згенеровано ШІ',
+        modified: 'Змінено ШІ',
+    },
+};
+const getAiTagTranslation = (locale) => {
+    return AI_TAG_TRANSLATIONS[locale] ?? AI_TAG_TRANSLATIONS['en_US'];
+};
 const getButtonPureAriaAttributes = (isDisabled, isLoading, aria) => {
     return {
         ...parseAndGetAriaAttributes(aria),
@@ -3590,17 +3842,6 @@ const getDisplayTagType = (host, size, tag) => {
     return displaySizeToTagMap[size] || 'h1';
 };
 /**
- * Updates the state of the drilldown and its children based on the provided activeItem and value.
- *
- * @param {string | undefined} activeItem - The drilldown-item element which is currently active (which has the activeIdentifier as identifier). If undefined, updates the root element.
- * @param {boolean} value - The new state value to apply.
- * @returns {void}
- */
-const updateDrilldownItemState = (activeItem, value) => {
-    activeItem.secondary = value;
-    traverseTreeAndUpdateState(activeItem.parentElement, 'primary', value);
-};
-/**
  * Recursively updates the state of a drilldown item's parent elements by traversing up the DOM tree.
  *
  * @param {HTMLPDrilldownItemElement} activeItem - The current drilldown item being updated.
@@ -3610,8 +3851,22 @@ const updateDrilldownItemState = (activeItem, value) => {
 const traverseTreeAndUpdateState = (activeItem, prop, value) => {
     if (isElementOfKind(activeItem, 'p-drilldown-item')) {
         activeItem[prop] = value;
-        traverseTreeAndUpdateState(activeItem.parentElement, 'cascade', value);
+        internalDrilldown.traverseTreeAndUpdateState(activeItem.parentElement, 'cascade', value);
     }
+};
+const internalDrilldown = {
+    traverseTreeAndUpdateState,
+};
+/**
+ * Updates the state of the drilldown and its children based on the provided activeItem and value.
+ *
+ * @param {string | undefined} activeItem - The drilldown-item element which is currently active (which has the activeIdentifier as identifier). If undefined, updates the root element.
+ * @param {boolean} value - The new state value to apply.
+ * @returns {void}
+ */
+const updateDrilldownItemState = (activeItem, value) => {
+    activeItem.secondary = value;
+    internalDrilldown.traverseTreeAndUpdateState(activeItem.parentElement, 'primary', value);
 };
 const getFieldsetAriaAttributes = (isRequired, isInvalid, aria) => {
     const ariaAttrs = parseAndGetAriaAttributes(aria);
@@ -3622,7 +3877,7 @@ const getFieldsetAriaAttributes = (isRequired, isInvalid, aria) => {
     };
 };
 const buildFlagUrl = (flagName) => {
-    return `${getCDNBaseURL()}/porsche-design-system/flags/${FLAGS_MANIFEST[flagName] || FLAGS_MANIFEST.de}`;
+    return `${getCDNBaseURL()}/porsche-design-system/flags/${FLAGS_MANIFEST[flagName] || FLAGS_MANIFEST.xx}`;
 };
 const headingSizeToTagMap = {
     small: 'h6',
@@ -3703,11 +3958,6 @@ const buildImgSrc = (innerManifest) => `${getCDNBaseURL()}/porsche-design-system
 const getSvgUrl = (model) => {
     return `${getCDNBaseURL()}/porsche-design-system/model-signatures/${MODEL_SIGNATURES_MANIFEST[model].src}`;
 };
-const getSelectedOptions = (options) => options.filter((option) => option.selected);
-const getSelectedOptionValues = (options) => options.filter((option) => option.selected).map((option) => option.value);
-const getSelectedOptionsString = (options) => getSelectedOptions(options)
-    .map((option) => option.textContent)
-    .join(', ');
 var ItemType;
 (function (ItemType) {
     ItemType[ItemType["PAGE"] = 0] = "PAGE";
@@ -3816,16 +4066,15 @@ const isCurrentInput = (index, value, length) => {
     }
     return index === firstWhitespaceIndex; // Some value is entered: set current-input id on the first input element which does not have a value
 };
-const getSegmentedControlItemAriaAttributes = (isSelected, isDisabled, ariaProp) => ({
+const getSegmentedControlItemAriaAttributes = (isSelected, isDisabled, state, message, ariaProp) => ({
     ...getButtonBaseAriaAttributes(isDisabled, false),
+    ...(state !== 'none' && parseAndGetAriaAttributes({ 'aria-description': message })),
     ...parseAndGetAriaAttributes({ 'aria-pressed': isSelected }),
     ...parseAndGetAriaAttributes(ariaProp),
 });
 const getIconColor = (isDisabled) => {
     return isDisabled ? 'contrast-medium' : 'primary';
 };
-
-const ITEM_PADDING = '17px';
 const { font: BUTTON_FONT } = textSmallStyle;
 const { font: LABEL_FONT } = textXSmallStyle;
 const ICON_SIZE = '1.5rem';
@@ -3839,7 +4088,6 @@ const tempDiv = hasDocument ? document.createElement('div') : undefined;
 if (tempDiv) {
     tempDiv.style.position = 'absolute';
     tempDiv.style.visibility = 'hidden';
-    tempDiv.style.padding = `0 ${ITEM_PADDING}`; // Uses the largest possible padding of the item
     tempDiv.style.border = `${borderWidthBase} solid`;
     tempDiv.style.boxSizing = 'border-box';
     tempDiv.style.font = BUTTON_FONT.replace(fontFamily, tempFont);
@@ -3864,7 +4112,6 @@ const isCustomDropdown = (filter, native) => {
     }
     return !isTouchDevice();
 };
-const getSelectedOptionString = (options) => options.find((option) => option.selected)?.textContent ?? '';
 const isStateCompleteOrWarning = (state) => {
     return state === 'complete' || state === 'warning';
 };
@@ -3881,6 +4128,14 @@ const getSwitchButtonAriaAttributes = (isDisabled, isLoading, isChecked) => {
 const isSortable = (active, direction) => {
     return active !== undefined && direction !== undefined;
 };
+const VARIANT_TO_COLOR_MAP = {
+    primary: 'primary',
+    secondary: 'background-frosted',
+    info: 'notification-info-soft',
+    warning: 'notification-warning-soft',
+    success: 'notification-success-soft',
+    error: 'notification-error-soft',
+};
 const isType = (inputType, typeToValidate) => inputType === typeToValidate;
 const hasLocateAction = (icon) => icon === 'locate';
 const showCustomCalendarOrTimeIndicator = (isCalendar, isTime) => {
@@ -3896,4 +4151,4 @@ const getTextTagType = (host, tag) => {
     return tag;
 };
 
-export { DISPLAY_TAGS, HEADING_TAGS, HEADLINE_TAGS, ItemType, TEXT_TAGS, anchorSlot, attributeMutationMap, buildCrestImgSrc, buildCrestSrcSet, buildFlagUrl, buildIconUrl, buildImgSrc, buildSrcSet, createPaginationItems, createRange, crestSize, descriptionId, displaySizeToTagMap, getButtonAriaAttributes, getButtonBaseAriaAttributes, getButtonPureAriaAttributes, getCDNBaseURL, getClosestHTMLElement, getComboboxAriaAttributes, getContentAriaAttributes, getCurrentActivePage, getDirectChildHTMLElement, getDisplayTagType, getFieldsetAriaAttributes, getHTMLElement, getHasNativePopoverSupport, getHeadingTagType, getHeadlineTagType, getIconColor, getInlineNotificationIconName, getInnerManifest, getSegmentedControlItemAriaAttributes, getSelectedOptionMap, getSelectedOptionString, getSelectedOptionValues, getSelectedOptions, getSelectedOptionsString, getStepperHorizontalIconName, getSvgUrl, getSwitchButtonAriaAttributes, getTagName, getTagNameWithoutPrefix, getTextTagType, getTotalPages, hasDocument, hasLocateAction, hasShowPickerSupport, hasSpecificDirectChildTag, hasVisibleIcon, hasWindow$1 as hasWindow, headerSlot, isCurrentInput, isCustomDropdown, isDisabledOrLoading, isElementOfKind, isInfinitePagination, isListTypeOrdered, isScrollable, isSortable, isStateCompleteOrWarning, isTouchDevice, isType, isUrl, isWithinForm, labelId, observedNodesMap, parseAndGetAriaAttributes, parseJSONAttribute, scrollAreaClass, showCustomCalendarOrTimeIndicator, supportsConstructableStylesheets, supportsNativePopover, tempDiv, tempIcon, tempLabel, traverseTreeAndUpdateState, updateDrilldownItemState };
+export { AI_TAG_TRANSLATIONS, DISPLAY_TAGS, HEADING_TAGS, HEADLINE_TAGS, ItemType, TEXT_TAGS, VARIANT_TO_COLOR_MAP, anchorSlot, attributeMutationMap, buildCrestImgSrc, buildCrestSrcSet, buildFlagUrl, buildIconUrl, buildImgSrc, buildSrcSet, consoleError$1 as consoleError, createPaginationItems, createRange, crestSize, descriptionId, displaySizeToTagMap, getAiTagTranslation, getButtonAriaAttributes, getButtonBaseAriaAttributes, getButtonPureAriaAttributes, getCDNBaseURL, getClosestHTMLElement, getComboboxAriaAttributes, getContentAriaAttributes, getCurrentActivePage, getDirectChildHTMLElement, getDisplayTagType, getFieldsetAriaAttributes, getHTMLElement, getHasNativePopoverSupport, getHeadingTagType, getHeadlineTagType, getIconColor, getInlineNotificationIconName, getInnerManifest, getSegmentedControlItemAriaAttributes, getSelectedOptionMap, getStepperHorizontalIconName, getSvgUrl, getSwitchButtonAriaAttributes, getTagName, getTagNameWithoutPrefix, getTextTagType, getTotalPages, hasDocument, hasLocateAction, hasShowPickerSupport, hasSpecificDirectChildTag, hasVisibleIcon, hasWindow$1 as hasWindow, headerSlot, internalDrilldown, isCurrentInput, isCustomDropdown, isDisabledOrLoading, isElementOfKind, isInfinitePagination, isListTypeOrdered, isScrollable, isSortable, isStateCompleteOrWarning, isTouchDevice, isType, isUrl, isWithinForm, labelId, observedNodesMap, parseAndGetAriaAttributes, parseJSONAttribute, scrollAreaClass, showCustomCalendarOrTimeIndicator, supportsConstructableStylesheets, supportsNativePopover, tempDiv, tempIcon, tempLabel, traverseTreeAndUpdateState, updateDrilldownItemState };

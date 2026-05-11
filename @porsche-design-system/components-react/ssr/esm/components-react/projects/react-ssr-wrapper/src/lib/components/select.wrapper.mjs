@@ -5,8 +5,11 @@ import { useEventCallback, usePrefix, useTheme, useBrowserLayoutEffect, useMerge
 import { syncRef } from '../../utils.mjs';
 import { DSRSelect } from '../dsr-components/select.mjs';
 
-const PSelect = /*#__PURE__*/ forwardRef(({ compact = false, description = '', disabled = false, dropdownDirection = 'auto', filter = false, form, hideLabel = false, label = '', message = '', name, onUpdate, required = false, state = 'none', theme, value, className, children, ...rest }, ref) => {
+const PSelect = /*#__PURE__*/ forwardRef(({ compact = false, description = '', disabled = false, dropdownDirection = 'auto', filter = false, form, hideLabel = false, label = '', message = '', name, onBlur, onChange, onToggle, onUpdate, required = false, state = 'none', theme, value, className, children, ...rest }, ref) => {
     const elementRef = useRef(undefined);
+    useEventCallback(elementRef, 'blur', onBlur);
+    useEventCallback(elementRef, 'change', onChange);
+    useEventCallback(elementRef, 'toggle', onToggle);
     useEventCallback(elementRef, 'update', onUpdate);
     const WebComponentTag = usePrefix('p-select');
     const propsToSync = [compact, description, disabled, dropdownDirection, filter, form, hideLabel, label, message, name, required, state, theme || useTheme(), value];

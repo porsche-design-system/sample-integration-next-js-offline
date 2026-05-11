@@ -17,7 +17,7 @@ class DSRTagDismissible extends Component {
         const deprecationMap = {
             'background-default': 'background-base',
         };
-        const style = minifyCss(getComponentCss$a((deprecationMap[this.props.color] || this.props.color), !!this.props.label, this.props.theme));
+        const style = minifyCss(getComponentCss$a((deprecationMap[this.props.color] || this.props.color), !!this.props.label, this.props.compact, this.props.theme));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", shadowrootdelegatesfocus: "true", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsxs("button", { type: "button", ...parseAndGetAriaAttributes(this.props.aria), children: [jsx("span", { className: "sr-only", children: "Remove:" }), jsxs("span", { children: [this.props.label && jsx("span", { className: "label", children: this.props.label }), jsx("slot", {})] }), jsx(PIcon, { className: "icon", name: "close", theme: this.props.theme, "aria-hidden": "true" })] })] }), this.props.children] }));
     }
 }

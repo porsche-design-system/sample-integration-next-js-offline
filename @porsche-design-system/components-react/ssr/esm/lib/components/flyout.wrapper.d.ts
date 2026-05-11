@@ -1,10 +1,14 @@
 import type { BaseProps } from '../../BaseProps';
-import type { SelectedAriaAttributes, FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition, Theme } from '../types';
+import type { SelectedAriaAttributes, FlyoutAriaAttribute, FlyoutBackdrop, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition, Theme } from '../types';
 export type PFlyoutProps = BaseProps & {
     /**
      * Add ARIA attributes.
      */
     aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+    /**
+     * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+     */
+    backdrop?: FlyoutBackdrop;
     /**
      * If true, the flyout will not be closable via backdrop click.
      */
@@ -38,11 +42,15 @@ export type PFlyoutProps = BaseProps & {
      */
     theme?: Theme;
 };
-export declare const PFlyout: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PFlyout: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Add ARIA attributes.
      */
     aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+    /**
+     * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+     */
+    backdrop?: FlyoutBackdrop;
     /**
      * If true, the flyout will not be closable via backdrop click.
      */

@@ -9,7 +9,7 @@ var segmentedControlItem = require('../dsr-components/segmented-control-item.cjs
 
 const PSegmentedControlItem = /*#__PURE__*/ react.forwardRef((
 // @ts-ignore
-{ aria, disabled = false, icon, iconSource, label, value, className, children, selected, theme = 'light', ...rest }, ref) => {
+{ aria, disabled = false, icon, iconSource, label, value, className, children, compact, selected, state, theme = 'light', ...rest }, ref) => {
     const elementRef = react.useRef(undefined);
     const WebComponentTag = hooks.usePrefix('p-segmented-control-item');
     const propsToSync = [aria, disabled, icon, iconSource, label, value];
@@ -22,7 +22,7 @@ const PSegmentedControlItem = /*#__PURE__*/ react.forwardRef((
         // @ts-ignore
         ...(!process.browser
             ? {
-                children: (jsxRuntime.jsx(segmentedControlItem.DSRSegmentedControlItem, { aria, disabled, icon, iconSource, label, value, selected, theme, children })),
+                children: (jsxRuntime.jsx(segmentedControlItem.DSRSegmentedControlItem, { aria, disabled, icon, iconSource, label, value, compact, selected, state, theme, children })),
             }
             : {
                 children,

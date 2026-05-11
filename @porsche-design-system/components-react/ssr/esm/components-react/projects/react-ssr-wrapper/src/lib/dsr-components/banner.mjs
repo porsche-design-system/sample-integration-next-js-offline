@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getBannerCss as getComponentCss$1k } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getBannerCss as getComponentCss$1o } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { PInlineNotification } from '../components/inline-notification.wrapper.mjs';
 
 /**
@@ -23,7 +23,7 @@ class DSRBanner extends Component {
     render() {
         const { namedSlotChildren} = splitChildren(this.props.children);
         const hasTitleSlot = namedSlotChildren.filter(({ props: { slot } }) => slot === 'title').length > 0;
-        const style = minifyCss(getComponentCss$1k(this.props.open));
+        const style = minifyCss(getComponentCss$1o(this.props.open));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsx(Fragment, { children: jsxs(PInlineNotification, { heading: this.props.heading, headingTag: this.props.headingTag, description: this.props.description, state: this.props.state, dismissButton: this.hasDismissButton, theme: this.props.theme, "aria-hidden": this.props.open ? 'false' : 'true', children: [namedSlotChildren.filter(({ props: { slot } }) => slot === 'heading').length > 0 ? (jsx("slot", { name: "heading", slot: "heading" })) : (hasTitleSlot && jsx("slot", { name: "title", slot: "heading" })), namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0 && jsx("slot", { name: "description" })] }) })] }), this.props.children] }));
     }
 }

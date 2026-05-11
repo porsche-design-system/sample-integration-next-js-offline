@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getLinkCss as getComponentCss$K } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getLinkCss as getComponentCss$M } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { hasVisibleIcon, parseAndGetAriaAttributes } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
 import { PIcon } from '../components/icon.wrapper.mjs';
 
@@ -15,7 +15,7 @@ class DSRLink extends Component {
     render() {
         splitChildren(this.props.children);
         const TagType = this.props.href === undefined ? 'span' : 'a';
-        const style = minifyCss(getComponentCss$K(this.props.icon, this.props.iconSource, this.props.variant, this.props.hideLabel, !this.props.href, this.props.compact, this.props.theme));
+        const style = minifyCss(getComponentCss$M(this.props.icon, this.props.iconSource, this.props.variant, this.props.hideLabel, !this.props.href, this.props.compact, this.props.theme));
         return (jsxs(Fragment, { children: [jsxs("template", { shadowroot: "open", shadowrootmode: "open", shadowrootdelegatesfocus: "true", children: [jsx("style", { dangerouslySetInnerHTML: { __html: style } }), jsxs(TagType, { className: "root", ...(TagType === 'a' && {
                                 href: this.props.href,
                                 target: this.props.target,

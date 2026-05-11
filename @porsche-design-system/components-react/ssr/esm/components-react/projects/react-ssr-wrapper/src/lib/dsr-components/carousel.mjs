@@ -3,7 +3,7 @@ import { Component } from 'react';
 import '../../provider.mjs';
 import { splitChildren } from '../../splitChildren.mjs';
 import { minifyCss } from '../../minifyCss.mjs';
-import { getCarouselCss as getComponentCss$1e } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
+import { getCarouselCss as getComponentCss$1i } from '../../../../../../components/dist/styles/esm/styles-entry.mjs';
 import { isInfinitePagination, parseAndGetAriaAttributes } from '../../../../../../components/dist/utils/esm/utils-entry.mjs';
 import { PButtonPure } from '../components/button-pure.wrapper.mjs';
 import { PLinkPure } from '../components/link-pure.wrapper.mjs';
@@ -47,7 +47,7 @@ class DSRCarousel extends Component {
             // 'aria-controls': 'splide-track', // TODO: cross shadow dom? use native button tag instead of p-button-pure?
         };
         const headingId = 'heading';
-        const style = minifyCss(getComponentCss$1e(this.props.gradientColor, hasHeadingPropOrSlot, hasDescriptionPropOrSlot, hasControlsSlot, this.props.headingSize, this.props.width, 
+        const style = minifyCss(getComponentCss$1i(this.props.gradientColor, hasHeadingPropOrSlot, hasDescriptionPropOrSlot, hasControlsSlot, this.props.headingSize, this.props.width, 
         // flip boolean values of disablePagination since it is the inverse of pagination
         this.props.disablePagination
             ? typeof this.props.disablePagination === 'object'

@@ -4,16 +4,16 @@ import { forwardRef, useRef } from 'react';
 import { useEventCallback, usePrefix, useTheme, useBrowserLayoutEffect, useMergedClass } from '../../hooks.mjs';
 import { syncRef } from '../../utils.mjs';
 
-const PInputSearch = /*#__PURE__*/ forwardRef(({ autoComplete, clear = false, compact = false, description = '', disabled = false, form, hideLabel = false, indicator = false, label = '', loading = false, message = '', name, onBlur, onChange, onInput, placeholder = '', readOnly = false, required = false, state = 'none', theme, value = '', className, ...rest }, ref) => {
+const PInputSearch = /*#__PURE__*/ forwardRef(({ autoComplete, clear = false, compact = false, description = '', disabled = false, form, hideLabel = false, indicator = false, label = '', loading = false, maxLength, message = '', minLength, name, onBlur, onChange, onInput, placeholder = '', readOnly = false, required = false, state = 'none', theme, value = '', className, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     useEventCallback(elementRef, 'blur', onBlur);
     useEventCallback(elementRef, 'change', onChange);
     useEventCallback(elementRef, 'input', onInput);
     const WebComponentTag = usePrefix('p-input-search');
-    const propsToSync = [autoComplete, clear, compact, description, disabled, form, hideLabel, indicator, label, loading, message, name, placeholder, readOnly, required, state, theme || useTheme(), value];
+    const propsToSync = [autoComplete, clear, compact, description, disabled, form, hideLabel, indicator, label, loading, maxLength, message, minLength, name, placeholder, readOnly, required, state, theme || useTheme(), value];
     useBrowserLayoutEffect(() => {
         const { current } = elementRef;
-        ['autoComplete', 'clear', 'compact', 'description', 'disabled', 'form', 'hideLabel', 'indicator', 'label', 'loading', 'message', 'name', 'placeholder', 'readOnly', 'required', 'state', 'theme', 'value'].forEach((propName, i) => (current[propName] = propsToSync[i]));
+        ['autoComplete', 'clear', 'compact', 'description', 'disabled', 'form', 'hideLabel', 'indicator', 'label', 'loading', 'maxLength', 'message', 'minLength', 'name', 'placeholder', 'readOnly', 'required', 'state', 'theme', 'value'].forEach((propName, i) => (current[propName] = propsToSync[i]));
     }, propsToSync);
     const props = {
         ...rest,

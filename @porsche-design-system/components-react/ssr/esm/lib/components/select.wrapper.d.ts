@@ -1,5 +1,5 @@
 import type { BaseProps } from '../../BaseProps';
-import type { SelectDropdownDirection, BreakpointCustomizable, SelectUpdateEventDetail, SelectState, Theme } from '../types';
+import type { SelectDropdownDirection, BreakpointCustomizable, SelectChangeEventDetail, SelectToggleEventDetail, SelectUpdateEventDetail, SelectState, Theme } from '../types';
 export type PSelectProps = BaseProps & {
     /**
      * Displays as compact version.
@@ -18,7 +18,7 @@ export type PSelectProps = BaseProps & {
      */
     dropdownDirection?: SelectDropdownDirection;
     /**
-     * Shows an input in the dropdown allowing options to be filtered.
+     * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
      */
     filter?: boolean;
     /**
@@ -42,7 +42,19 @@ export type PSelectProps = BaseProps & {
      */
     name: string;
     /**
+     * Emitted when the select has lost focus.
+     */
+    onBlur?: (event: CustomEvent<void>) => void;
+    /**
      * Emitted when the selection is changed.
+     */
+    onChange?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+    /**
+     * Emitted when the dropdown is toggled.
+     */
+    onToggle?: (event: CustomEvent<SelectToggleEventDetail>) => void;
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
      */
     onUpdate?: (event: CustomEvent<SelectUpdateEventDetail>) => void;
     /**
@@ -62,7 +74,7 @@ export type PSelectProps = BaseProps & {
      */
     value?: string;
 };
-export declare const PSelect: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PSelect: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Displays as compact version.
      */
@@ -80,7 +92,7 @@ export declare const PSelect: import("react").ForwardRefExoticComponent<import("
      */
     dropdownDirection?: SelectDropdownDirection;
     /**
-     * Shows an input in the dropdown allowing options to be filtered.
+     * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
      */
     filter?: boolean;
     /**
@@ -104,7 +116,19 @@ export declare const PSelect: import("react").ForwardRefExoticComponent<import("
      */
     name: string;
     /**
+     * Emitted when the select has lost focus.
+     */
+    onBlur?: (event: CustomEvent<void>) => void;
+    /**
      * Emitted when the selection is changed.
+     */
+    onChange?: (event: CustomEvent<SelectChangeEventDetail>) => void;
+    /**
+     * Emitted when the dropdown is toggled.
+     */
+    onToggle?: (event: CustomEvent<SelectToggleEventDetail>) => void;
+    /**
+     * @deprecated since v3.30.0, will be removed with next major release, use `change` event instead. Emitted when the selection is changed.
      */
     onUpdate?: (event: CustomEvent<SelectUpdateEventDetail>) => void;
     /**

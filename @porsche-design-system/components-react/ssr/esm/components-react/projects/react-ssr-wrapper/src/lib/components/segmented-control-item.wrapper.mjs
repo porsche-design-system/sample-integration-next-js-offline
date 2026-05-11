@@ -7,7 +7,7 @@ import { DSRSegmentedControlItem } from '../dsr-components/segmented-control-ite
 
 const PSegmentedControlItem = /*#__PURE__*/ forwardRef((
 // @ts-ignore
-{ aria, disabled = false, icon, iconSource, label, value, className, children, selected, theme = 'light', ...rest }, ref) => {
+{ aria, disabled = false, icon, iconSource, label, value, className, children, compact, selected, state, theme = 'light', ...rest }, ref) => {
     const elementRef = useRef(undefined);
     const WebComponentTag = usePrefix('p-segmented-control-item');
     const propsToSync = [aria, disabled, icon, iconSource, label, value];
@@ -20,7 +20,7 @@ const PSegmentedControlItem = /*#__PURE__*/ forwardRef((
         // @ts-ignore
         ...(!process.browser
             ? {
-                children: (jsx(DSRSegmentedControlItem, { aria, disabled, icon, iconSource, label, value, selected, theme, children })),
+                children: (jsx(DSRSegmentedControlItem, { aria, disabled, icon, iconSource, label, value, compact, selected, state, theme, children })),
             }
             : {
                 children,

@@ -14,3 +14,6 @@ export declare const useBrowserLayoutEffect: typeof useEffect;
 export declare const useToastManager: () => {
     addMessage: (msg: ToastMessage) => void;
 };
+export declare const internalHooks: {
+    usePrefix: (tagName: string) => string;
+};

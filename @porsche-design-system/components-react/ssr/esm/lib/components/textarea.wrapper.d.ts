@@ -6,6 +6,10 @@ export type PTextareaProps = BaseProps & {
      */
     autoComplete?: string;
     /**
+     * A boolean value that, if present, renders the textarea as a compact version.
+     */
+    compact?: boolean;
+    /**
      * Show or hide the character counter.
      */
     counter?: boolean;
@@ -74,7 +78,7 @@ export type PTextareaProps = BaseProps & {
      */
     resize?: TextareaResize;
     /**
-     * The number of rows of the textarea.
+     * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
      */
     rows?: number;
     /**
@@ -98,11 +102,15 @@ export type PTextareaProps = BaseProps & {
      */
     wrap?: TextareaWrap;
 };
-export declare const PTextarea: import("react").ForwardRefExoticComponent<import("react").DOMAttributes<{}> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
+export declare const PTextarea: import("react").ForwardRefExoticComponent<Omit<import("react").DOMAttributes<{}>, "onChange" | "onInput" | "onToggle"> & Pick<import("react").HTMLAttributes<{}>, "suppressHydrationWarning" | "autoFocus" | "className" | "dir" | "hidden" | "id" | "inert" | "lang" | "slot" | "style" | "tabIndex" | "title" | "translate" | "role"> & {
     /**
      * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
      */
     autoComplete?: string;
+    /**
+     * A boolean value that, if present, renders the textarea as a compact version.
+     */
+    compact?: boolean;
     /**
      * Show or hide the character counter.
      */
@@ -172,7 +180,7 @@ export declare const PTextarea: import("react").ForwardRefExoticComponent<import
      */
     resize?: TextareaResize;
     /**
-     * The number of rows of the textarea.
+     * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
      */
     rows?: number;
     /**

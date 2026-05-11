@@ -4,9 +4,10 @@ import { forwardRef, useRef } from 'react';
 import { useEventCallback, usePrefix, useTheme, useBrowserLayoutEffect, useMergedClass } from '../../hooks.mjs';
 import { syncRef } from '../../utils.mjs';
 
-const PCheckbox = /*#__PURE__*/ forwardRef(({ checked = false, compact = false, disabled = false, form, hideLabel = false, indeterminate = false, label = '', loading = false, message = '', name = '', onBlur, onUpdate, required = false, state = 'none', theme, value = 'on', className, ...rest }, ref) => {
+const PCheckbox = /*#__PURE__*/ forwardRef(({ checked = false, compact = false, disabled = false, form, hideLabel = false, indeterminate = false, label = '', loading = false, message = '', name = '', onBlur, onChange, onUpdate, required = false, state = 'none', theme, value = 'on', className, ...rest }, ref) => {
     const elementRef = useRef(undefined);
     useEventCallback(elementRef, 'blur', onBlur);
+    useEventCallback(elementRef, 'change', onChange);
     useEventCallback(elementRef, 'update', onUpdate);
     const WebComponentTag = usePrefix('p-checkbox');
     const propsToSync = [checked, compact, disabled, form, hideLabel, indeterminate, label, loading, message, name, required, state, theme || useTheme(), value];
